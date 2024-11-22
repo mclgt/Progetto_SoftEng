@@ -16,6 +16,7 @@ public class MainProva {
     public static void main(String[] args) {
         // TODO code application logic here
         System.out.println("Prima stampa di prova!");
+        
         System.out.println("Controllo email Reb");
     }
     
