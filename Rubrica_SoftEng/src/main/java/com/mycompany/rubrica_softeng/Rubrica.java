@@ -4,17 +4,25 @@
  */
 package com.mycompany.rubrica_softeng;
 
+import javafx.application.Application;
+import javafx.stage.Stage;
+
 /**
  *
  * @author miche
  */
-public class Rubrica {
+public class Rubrica extends Application{
 
+    @Override 
+    public void start(Stage stage) throws Exception{
+        
+    }
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        launch(args);
     }
     
 }
