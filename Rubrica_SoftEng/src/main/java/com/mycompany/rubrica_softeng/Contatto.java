@@ -10,7 +10,7 @@ package com.mycompany.rubrica_softeng;
  * 
  */
 /**@file Contatto
- * @brief Informazioni contatto
+ * @brief Classe rappresentante il generico contatto
  * 
  * @author Reb
  */
