@@ -1,11 +1,122 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.rubrica_softeng.RubricaViewController">
-    
+<AnchorPane id="AnchorPane" prefHeight="689.0" prefWidth="933.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.rubrica_softeng.RubricaViewController">
+   <children>
+      <ToolBar prefHeight="55.0" prefWidth="933.0">
+        <items>
+            <TextField prefHeight="39.0" prefWidth="256.0" promptText="Inserire sottostringa da ricercare..." translateX="300.0">
+               <font>
+                  <Font name="System Italic" size="16.0" />
+               </font>
+               <effect>
+                  <Blend />
+               </effect></TextField>
+        </items>
+      </ToolBar>
+      <ToolBar layoutY="55.0" prefHeight="55.0" prefWidth="933.0">
+        <items>
+            <Button mnemonicParsing="false" text="Importa da..." />
+            <Button mnemonicParsing="false" text="Esporta contatti" />
+        </items>
+      </ToolBar>
+      <SplitPane dividerPositions="0.29797979797979796" layoutX="5.0" layoutY="110.0" prefHeight="577.0" prefWidth="924.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <VBox layoutX="6.0" prefHeight="468.0" prefWidth="259.0">
+                     <children>
+                        <Label prefHeight="27.0" prefWidth="266.0" text="Nome:">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="18.0" />
+                           </font></Label>
+                        <TextField prefHeight="39.0" prefWidth="181.0" promptText="nome e.g. Mario">
+                           <font>
+                              <Font name="System Italic" size="18.0" />
+                           </font>
+                        </TextField>
+                        <Label prefHeight="27.0" prefWidth="266.0" text="Cognome:">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField prefHeight="39.0" prefWidth="181.0" promptText="cognome e.g. Rossi">
+                           <font>
+                              <Font name="System Italic" size="18.0" />
+                           </font>
+                        </TextField>
+                        <Label prefHeight="27.0" prefWidth="266.0" text="Numero di telefono (max 3 ):">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField prefHeight="39.0" prefWidth="181.0" promptText="primo numero (opzionale)">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <font>
+                              <Font name="System Italic" size="18.0" />
+                           </font>
+                        </TextField>
+                        <TextField prefHeight="39.0" prefWidth="181.0" promptText="secondo numero (opzionale)" translateY="5.0">
+                           <font>
+                              <Font name="System Italic" size="18.0" />
+                           </font>
+                        </TextField>
+                        <TextField prefHeight="39.0" prefWidth="181.0" promptText="terzo numero (opzionale)" translateY="10.0">
+                           <font>
+                              <Font name="System Italic" size="18.0" />
+                           </font>
+                        </TextField>
+                        <Label prefHeight="27.0" prefWidth="266.0" text="E-mail (max 3 ):" translateY="20.0">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField prefHeight="39.0" prefWidth="181.0" promptText="e.g. hello@world.com (opzionale)" translateY="20.0">
+                           <font>
+                              <Font name="System Italic" size="16.0" />
+                           </font>
+                        </TextField>
+                        <TextField prefHeight="39.0" prefWidth="181.0" promptText="e.g. hello@world.com (opzionale)" translateY="25.0">
+                           <font>
+                              <Font name="System Italic" size="16.0" />
+                           </font>
+                        </TextField>
+                        <TextField prefHeight="39.0" prefWidth="181.0" promptText="e.g. hello@world.com (opzionale)" translateY="30.0">
+                           <font>
+                              <Font name="System Italic" size="16.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </VBox>
+                  <Button layoutX="14.0" layoutY="458.0" mnemonicParsing="false" text="Aggiungi" />
+                  <Button layoutX="146.0" layoutY="458.0" mnemonicParsing="false" text="Modifica" />
+                  <Button layoutX="81.0" layoutY="505.0" mnemonicParsing="false" text="Rimuovi" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <TableView layoutX="-1.0" layoutY="-2.0" prefHeight="577.0" prefWidth="642.0">
+                    <columns>
+                      <TableColumn prefWidth="165.0" text="Cognome" />
+                      <TableColumn prefWidth="133.0" text="Nome" />
+                        <TableColumn minWidth="0.0" prefWidth="176.0" text="Numero" />
+                        <TableColumn minWidth="0.0" prefWidth="167.0" text="E-mail" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
 </AnchorPane>
