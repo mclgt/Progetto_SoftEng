@@ -25,8 +25,8 @@
       </ToolBar>
       <ToolBar layoutY="55.0" prefHeight="55.0" prefWidth="933.0">
         <items>
-            <Button mnemonicParsing="false" text="Importa da..." />
-            <Button mnemonicParsing="false" text="Esporta contatti" />
+            <Button mnemonicParsing="false" onAction="#importContact" text="Importa da..." />
+            <Button mnemonicParsing="false" onAction="#exportContact" text="Esporta contatti" />
         </items>
       </ToolBar>
       <SplitPane dividerPositions="0.29797979797979796" layoutX="5.0" layoutY="110.0" prefHeight="577.0" prefWidth="924.0">
@@ -99,9 +99,9 @@
                         </TextField>
                      </children>
                   </VBox>
-                  <Button layoutX="14.0" layoutY="458.0" mnemonicParsing="false" text="Aggiungi" />
-                  <Button layoutX="146.0" layoutY="458.0" mnemonicParsing="false" text="Modifica" />
-                  <Button layoutX="81.0" layoutY="505.0" mnemonicParsing="false" text="Rimuovi" />
+                  <Button layoutX="14.0" layoutY="458.0" mnemonicParsing="false" onAction="#addContact" text="Aggiungi" />
+                  <Button layoutX="146.0" layoutY="458.0" mnemonicParsing="false" onAction="#modifyContact" text="Modifica" />
+                  <Button layoutX="81.0" layoutY="505.0" mnemonicParsing="false" onAction="#removeContact" text="Rimuovi" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
