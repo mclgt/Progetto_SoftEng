@@ -9,6 +9,9 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
@@ -17,9 +20,41 @@ import javafx.fxml.Initializable;
  */
 public class RubricaViewController implements Initializable {
 
+    @FXML
+    private TextField searchFIeld;
+    @FXML
+    private Button importButton;
+    @FXML
+    private Button exportButton;
+    @FXML
+    private TextField nameField;
+    @FXML
+    private TextField surnameField;
+    @FXML
+    private TextField firstNumberField;
+    @FXML
+    private TextField secondNumberField;
+    @FXML
+    private TextField thirdNumberField;
+    @FXML
+    private TextField firstMailFIeld;
+    @FXML
+    private TextField secondMailField;
+    @FXML
+    private TextField thirdMailFIeld;
+    @FXML
+    private Button addButton;
+    @FXML
+    private Button modifyButton;
+    @FXML
+    private Button removeButton;
+    @FXML
+    private TableView<?> contactTable;
+
     /**
      * Initializes the controller class.
      */
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO

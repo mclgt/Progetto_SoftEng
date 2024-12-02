@@ -14,7 +14,7 @@
    <children>
       <ToolBar prefHeight="55.0" prefWidth="933.0">
         <items>
-            <TextField prefHeight="39.0" prefWidth="256.0" promptText="Inserire sottostringa da ricercare..." translateX="300.0">
+            <TextField fx:id="searchFIeld" prefHeight="39.0" prefWidth="256.0" promptText="Inserire sottostringa da ricercare..." translateX="300.0">
                <font>
                   <Font name="System Italic" size="16.0" />
                </font>
@@ -25,8 +25,8 @@
       </ToolBar>
       <ToolBar layoutY="55.0" prefHeight="55.0" prefWidth="933.0">
         <items>
-            <Button mnemonicParsing="false" onAction="#importContact" text="Importa da..." />
-            <Button mnemonicParsing="false" onAction="#exportContact" text="Esporta contatti" />
+            <Button fx:id="importButton" mnemonicParsing="false" onAction="#importContact" text="Importa da..." />
+            <Button fx:id="exportButton" mnemonicParsing="false" onAction="#exportContact" text="Esporta contatti" />
         </items>
       </ToolBar>
       <SplitPane dividerPositions="0.29797979797979796" layoutX="5.0" layoutY="110.0" prefHeight="577.0" prefWidth="924.0">
@@ -39,7 +39,7 @@
                            <font>
                               <Font name="Arial Rounded MT Bold" size="18.0" />
                            </font></Label>
-                        <TextField prefHeight="39.0" prefWidth="181.0" promptText="nome e.g. Mario">
+                        <TextField fx:id="nameField" prefHeight="39.0" prefWidth="181.0" promptText="nome e.g. Mario">
                            <font>
                               <Font name="System Italic" size="18.0" />
                            </font>
@@ -49,7 +49,7 @@
                               <Font name="Arial Rounded MT Bold" size="18.0" />
                            </font>
                         </Label>
-                        <TextField prefHeight="39.0" prefWidth="181.0" promptText="cognome e.g. Rossi">
+                        <TextField fx:id="surnameField" prefHeight="39.0" prefWidth="181.0" promptText="cognome e.g. Rossi">
                            <font>
                               <Font name="System Italic" size="18.0" />
                            </font>
@@ -59,7 +59,7 @@
                               <Font name="Arial Rounded MT Bold" size="18.0" />
                            </font>
                         </Label>
-                        <TextField prefHeight="39.0" prefWidth="181.0" promptText="primo numero (opzionale)">
+                        <TextField fx:id="firstNumberField" prefHeight="39.0" prefWidth="181.0" promptText="primo numero (opzionale)">
                            <VBox.margin>
                               <Insets />
                            </VBox.margin>
@@ -67,12 +67,12 @@
                               <Font name="System Italic" size="18.0" />
                            </font>
                         </TextField>
-                        <TextField prefHeight="39.0" prefWidth="181.0" promptText="secondo numero (opzionale)" translateY="5.0">
+                        <TextField fx:id="secondNumberField" prefHeight="39.0" prefWidth="181.0" promptText="secondo numero (opzionale)" translateY="5.0">
                            <font>
                               <Font name="System Italic" size="18.0" />
                            </font>
                         </TextField>
-                        <TextField prefHeight="39.0" prefWidth="181.0" promptText="terzo numero (opzionale)" translateY="10.0">
+                        <TextField fx:id="thirdNumberField" prefHeight="39.0" prefWidth="181.0" promptText="terzo numero (opzionale)" translateY="10.0">
                            <font>
                               <Font name="System Italic" size="18.0" />
                            </font>
@@ -82,31 +82,31 @@
                               <Font name="Arial Rounded MT Bold" size="18.0" />
                            </font>
                         </Label>
-                        <TextField prefHeight="39.0" prefWidth="181.0" promptText="e.g. hello@world.com (opzionale)" translateY="20.0">
+                        <TextField fx:id="firstMailFIeld" prefHeight="39.0" prefWidth="181.0" promptText="e.g. hello@world.com (opzionale)" translateY="20.0">
                            <font>
                               <Font name="System Italic" size="16.0" />
                            </font>
                         </TextField>
-                        <TextField prefHeight="39.0" prefWidth="181.0" promptText="e.g. hello@world.com (opzionale)" translateY="25.0">
+                        <TextField fx:id="secondMailField" prefHeight="39.0" prefWidth="181.0" promptText="e.g. hello@world.com (opzionale)" translateY="25.0">
                            <font>
                               <Font name="System Italic" size="16.0" />
                            </font>
                         </TextField>
-                        <TextField prefHeight="39.0" prefWidth="181.0" promptText="e.g. hello@world.com (opzionale)" translateY="30.0">
+                        <TextField fx:id="thirdMailFIeld" prefHeight="39.0" prefWidth="181.0" promptText="e.g. hello@world.com (opzionale)" translateY="30.0">
                            <font>
                               <Font name="System Italic" size="16.0" />
                            </font>
                         </TextField>
                      </children>
                   </VBox>
-                  <Button layoutX="14.0" layoutY="458.0" mnemonicParsing="false" onAction="#addContact" text="Aggiungi" />
-                  <Button layoutX="146.0" layoutY="458.0" mnemonicParsing="false" onAction="#modifyContact" text="Modifica" />
-                  <Button layoutX="81.0" layoutY="505.0" mnemonicParsing="false" onAction="#removeContact" text="Rimuovi" />
+                  <Button fx:id="addButton" layoutX="14.0" layoutY="458.0" mnemonicParsing="false" onAction="#addContact" text="Aggiungi" />
+                  <Button fx:id="modifyButton" layoutX="146.0" layoutY="458.0" mnemonicParsing="false" onAction="#modifyContact" text="Modifica" />
+                  <Button fx:id="removeButton" layoutX="81.0" layoutY="505.0" mnemonicParsing="false" onAction="#removeContact" text="Rimuovi" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <TableView layoutX="-1.0" layoutY="-2.0" prefHeight="577.0" prefWidth="642.0">
+                  <TableView fx:id="contactTable" layoutX="-1.0" layoutY="-2.0" prefHeight="577.0" prefWidth="642.0">
                     <columns>
                       <TableColumn prefWidth="165.0" text="Cognome" />
                       <TableColumn prefWidth="133.0" text="Nome" />
