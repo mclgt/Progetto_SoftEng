@@ -6,6 +6,7 @@ package com.mycompany.rubrica_softeng;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.ObservableSet;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -52,14 +53,15 @@ public class RubricaViewController implements Initializable {
     @FXML
     private TableView<Contatto> contactTable;
     @FXML
-    private TableColumn<?, ?> surnameClm;
+    private TableColumn<Contatto, String> surnameClm;
     @FXML
-    private TableColumn<?, ?> nameClm;
+    private TableColumn<Contatto, String> nameClm;
     @FXML
-    private TableColumn<?, ?> numberClm;
+    private TableColumn<Contatto, String> numberClm;
     @FXML
-    private TableColumn<?, ?> emailClm;
+    private TableColumn<Contatto, String> emailClm;
 
+    ObservableSet<Contatto> contatti;
     
     /**
      * Initializes the controller class.
