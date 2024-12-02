@@ -10,6 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
@@ -49,8 +50,17 @@ public class RubricaViewController implements Initializable {
     @FXML
     private Button removeButton;
     @FXML
-    private TableView<?> contactTable;
+    private TableView<Contatto> contactTable;
+    @FXML
+    private TableColumn<?, ?> surnameClm;
+    @FXML
+    private TableColumn<?, ?> nameClm;
+    @FXML
+    private TableColumn<?, ?> numberClm;
+    @FXML
+    private TableColumn<?, ?> emailClm;
 
+    
     /**
      * Initializes the controller class.
      */
