@@ -14,7 +14,7 @@
    <children>
       <ToolBar prefHeight="55.0" prefWidth="933.0">
         <items>
-            <TextField fx:id="searchFIeld" prefHeight="39.0" prefWidth="256.0" promptText="Inserire sottostringa da ricercare..." translateX="300.0">
+            <TextField fx:id="searchFIeld" onAction="#searchContact" prefHeight="39.0" prefWidth="256.0" promptText="Inserire sottostringa da ricercare..." translateX="300.0">
                <font>
                   <Font name="System Italic" size="16.0" />
                </font>
