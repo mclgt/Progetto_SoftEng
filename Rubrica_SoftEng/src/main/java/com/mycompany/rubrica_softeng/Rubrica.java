@@ -5,6 +5,9 @@
 package com.mycompany.rubrica_softeng;
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
@@ -15,7 +18,7 @@ public class Rubrica extends Application{
 
     @Override 
     public void start(Stage stage) throws Exception{
-        
+
     }
     /**
      * @param args the command line arguments
