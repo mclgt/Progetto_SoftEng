@@ -91,5 +91,9 @@ public class RubricaViewController implements Initializable {
     @FXML
     private void removeContact(ActionEvent event) {
     }
+
+    @FXML
+    private void searchContact(ActionEvent event) {
+    }
     
 }
