@@ -61,7 +61,10 @@ public class RubricaViewController implements Initializable {
     @FXML
     private TableColumn<Contatto, String> emailClm;
 
-    ObservableSet<Contatto> contatti;
+    InsiemeContatti rubrica;
+    
+    @FXML
+    private Button searchButton;
     
     /**
      * Initializes the controller class.
@@ -82,6 +85,7 @@ public class RubricaViewController implements Initializable {
 
     @FXML
     private void addContact(ActionEvent event) {
+       
     }
 
     @FXML
