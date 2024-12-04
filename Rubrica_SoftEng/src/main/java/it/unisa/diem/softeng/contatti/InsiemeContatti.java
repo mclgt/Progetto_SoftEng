@@ -22,7 +22,7 @@ public class InsiemeContatti {
         
     }
     
-    public void modify(Contatto c, String newName, String newSurname, String[] newNumeri, String[] newMail ){
+    public void modify(Contatto c, String newName, String newSurname, NumeroTelefonico newNumeri, Email newMail ){
         
     }
     
