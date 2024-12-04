@@ -17,8 +17,8 @@ package it.unisa.diem.softeng.contatti;
 public class Contatto {
     private String nome;
     private String cognome;
-    private String numero[]=new String[3];
-    private String email[]=new String[3];
+    private NumeroTelefonico numero;
+    private Email email;
     
     public Contatto(String nome, String cognome){
     }
