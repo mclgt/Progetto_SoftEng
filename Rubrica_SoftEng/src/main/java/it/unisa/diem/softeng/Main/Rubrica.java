@@ -11,11 +11,26 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- *
- * @author miche
+    * @file nomefile
+    * @brief Descrizione generale della classe.
+    * Possono essere aggiunte informazioni generali che aiutano a comprendere lo scopo della classe
+    * 
+    * @author Autore
+    * @date data
+    * 
  */
 public class Rubrica extends Application{
-
+/**
+    * @brief Breve descrizione della funzione
+    * @pre descrizione precondizioni
+    * @post descrizione post-condizioni 
+    * @invariant descrizione invarianti
+    * 
+    * @param stage 
+    * (va specificato se input/output o inout)
+    * @return specifica cosa restituisce la funzione
+    * @throws Exception 
+ */
     @Override 
     public void start(Stage stage) throws Exception{
         Parent root= FXMLLoader.load(getClass().getResource("RubricaView.fxml"));
@@ -23,9 +38,19 @@ public class Rubrica extends Application{
         stage.setScene(scene);
         stage.show();
     }
+    
+
     /**
-     * @param args the command line arguments
-     */
+    * @brief Breve descrizione della funzione
+    * @pre descrizione precondizioni
+    * @post descrizione post-condizioni 
+    * @invariant descrizione invarianti
+    * 
+    * @param args 
+    * (va specificato se input/output o inout)
+    * @return specifica cosa restituisce la funzione
+    * @throws Exception 
+ */
     public static void main(String[] args) {
         // TODO code application logic here
         launch(args);

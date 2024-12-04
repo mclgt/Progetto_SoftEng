@@ -16,9 +16,13 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
 /**
- * FXML Controller class
- *
- * @author miche
+ * @file nomefile
+ * @brief Descrizione generale della classe.
+ * Possono essere aggiunte informazioni generali che aiutano a comprendere lo scopo della classe
+ * 
+ * @author Autore
+ * @date data
+ * 
  */
 public class RubricaViewController implements Initializable {
 
@@ -75,28 +79,89 @@ public class RubricaViewController implements Initializable {
         // TODO
     }    
 
+ /**
+    * @brief Breve descrizione della funzione
+    * @pre descrizione precondizioni
+    * @post descrizione post-condizioni 
+    * @invariant descrizione invarianti
+    * @param
+    * (va specificato se input/output o inout)
+    * @return specifica cosa restituisce la funzione
+    * @throws Exception 
+ */
     @FXML
     private void importContact(ActionEvent event) {
     }
 
+  /**
+    * @brief Breve descrizione della funzione
+    * @pre descrizione precondizioni
+    * @post descrizione post-condizioni 
+    * @invariant descrizione invarianti
+    * @param
+    * (va specificato se input/output o inout)
+    * @return specifica cosa restituisce la funzione
+    * @throws Exception 
+ */
     @FXML
     private void exportContact(ActionEvent event) {
     }
 
+  /**
+    * @brief Breve descrizione della funzione
+    * @pre descrizione precondizioni
+    * @post descrizione post-condizioni 
+    * @invariant descrizione invarianti
+    * @param
+    * (va specificato se input/output o inout)
+    * @return specifica cosa restituisce la funzione
+    * @throws Exception 
+ */
     @FXML
     private void addContact(ActionEvent event) {
        
     }
 
+/**
+    * @brief Breve descrizione della funzione
+    * @pre descrizione precondizioni
+    * @post descrizione post-condizioni 
+    * @invariant descrizione invarianti
+    * @param
+    * (va specificato se input/output o inout)
+    * @return specifica cosa restituisce la funzione
+    * @throws Exception 
+ */
     @FXML
     private void modifyContact(ActionEvent event) {
         
     }
 
+/**
+    * @brief Breve descrizione della funzione
+    * @pre descrizione precondizioni
+    * @post descrizione post-condizioni 
+    * @invariant descrizione invarianti
+    * @param
+    * (va specificato se input/output o inout)
+    * @return specifica cosa restituisce la funzione
+    * @throws Exception 
+ */
     @FXML
     private void removeContact(ActionEvent event) {
     }
 
+    
+  /**
+    * @brief Breve descrizione della funzione
+    * @pre descrizione precondizioni
+    * @post descrizione post-condizioni 
+    * @invariant descrizione invarianti
+    * @param
+    * (va specificato se input/output o inout)
+    * @return specifica cosa restituisce la funzione
+    * @throws Exception 
+ */
     @FXML
     private void searchContact(ActionEvent event) {
     }
