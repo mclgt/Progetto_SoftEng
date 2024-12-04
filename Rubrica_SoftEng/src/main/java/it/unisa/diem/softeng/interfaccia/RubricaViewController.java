@@ -3,9 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
 package it.unisa.diem.softeng.interfaccia;
-
-import com.mycompany.rubrica_softeng.Contatto;
-import com.mycompany.rubrica_softeng.InsiemeContatti;
+import it.unisa.diem.softeng.contatti.InsiemeContatti;
+import it.unisa.diem.softeng.contatti.Contatto;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.ObservableSet;
