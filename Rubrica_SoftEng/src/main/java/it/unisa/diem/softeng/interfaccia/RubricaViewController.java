@@ -16,9 +16,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
 /**
- * @file nomefile
- * @brief Descrizione generale della classe.
- * Possono essere aggiunte informazioni generali che aiutano a comprendere lo scopo della classe
+ * @file RubricaViewController
+ * @brief Permette di eseguire le azioni correlate ai vari campi inseriti nell'interfaccia
  * 
  * @author Autore
  * @date data
@@ -80,12 +79,12 @@ public class RubricaViewController implements Initializable {
     }    
 
  /**
-    * @brief Breve descrizione della funzione
-    * @pre descrizione precondizioni
-    * @post descrizione post-condizioni 
+    * @brief Attraverso l'attivazione dell'evento corrispondente all'azione 'importContact' possiamo richiamare il metodo presente nella classe InsiemeContatti
+    * @pre Campo di testo non vuoto
+    * @post Viene richiamato il metodo nella classe InsiemeContatti 
     * @invariant descrizione invarianti
     * @param
-    * (va specificato se input/output o inout)
+    *
     * @return specifica cosa restituisce la funzione
     * @throws Exception 
  */

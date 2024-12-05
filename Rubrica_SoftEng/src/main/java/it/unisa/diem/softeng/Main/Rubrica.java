@@ -11,9 +11,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
-    * @file nomefile
-    * @brief Descrizione generale della classe.
-    * Possono essere aggiunte informazioni generali che aiutano a comprendere lo scopo della classe
+    * @file Rubrica
+    * @brief Classe Main che permette di collegare il Controller alla View
     * 
     * @author Autore
     * @date data
@@ -21,13 +20,12 @@ import javafx.stage.Stage;
  */
 public class Rubrica extends Application{
 /**
-    * @brief Breve descrizione della funzione
-    * @pre descrizione precondizioni
-    * @post descrizione post-condizioni 
+    * @brief Metodo che permette di creare la scena e creare un collegamento tra View e Controller
+    * @pre Deve essere instanziata una View
+    * @post Viene visualizzata l'interfaccia 
     * @invariant descrizione invarianti
     * 
-    * @param stage 
-    * (va specificato se input/output o inout)
+    * @param stage[in]
     * @return specifica cosa restituisce la funzione
     * @throws Exception 
  */
@@ -39,9 +37,9 @@ public class Rubrica extends Application{
         stage.show();
     }
     
-
+//da vedere
     /**
-    * @brief Breve descrizione della funzione
+    * @brief Metodo che permette di lanciare gli elementi grafici
     * @pre descrizione precondizioni
     * @post descrizione post-condizioni 
     * @invariant descrizione invarianti

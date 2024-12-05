@@ -5,9 +5,10 @@
 package it.unisa.diem.softeng.contatti;
 
 /**
- * @file nomefile
- * @brief Descrizione generale della classe.
- * Possono essere aggiunte informazioni generali che aiutano a comprendere lo scopo della classe
+ * @file NumeroTelefonico
+ * @brief Classe creata per gestire l'inserimento del/dei numero/i di telefono di un generico contatto. 
+ * Possono essere inseriti da 0 a 3 numeri rappresentati tramite Stringa. Il generico elemento dell'array 
+ * può non essere definito sfruttando il valore NULL.
  * 
  * @author Autore
  * @date data
@@ -18,14 +19,14 @@ public class NumeroTelefonico {
     
     
  /**
-    * @brief Breve descrizione della funzione
-    * @pre descrizione precondizioni
-    * @post descrizione post-condizioni 
+    * @brief Costruttore del generico oggetto NumeroTelefonico con il quale si possono inizializzare il/i numeri telefonici
+    * @pre Nessuna precondizione
+    * @post L'array di Stringhe viene instanziato e inizializzato
     * @invariant descrizione invarianti
-    * @param numero1
-    * @param numero2
-    * @param numero3 
-    * (va specificato se input/output o inout)
+    * @param numero1[in]
+    * @param numero2[in]
+    * @param numero3[in]
+    * 
     * @return specifica cosa restituisce la funzione
     * @throws Exception 
  */

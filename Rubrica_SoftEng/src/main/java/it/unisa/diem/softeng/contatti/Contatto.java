@@ -5,9 +5,9 @@
 package it.unisa.diem.softeng.contatti;
 
 /**
-    * @file nomefile
-    * @brief Descrizione generale della classe.
-    * Possono essere aggiunte informazioni generali che aiutano a comprendere lo scopo della classe
+    * @file Contatto
+    * @brief Classe creata per gestire un contatto base. La classe è composta da vari attributi quali: nome(String), cognome(String), 
+    * numero (NumeroTelefonico, vedi file NumeroTelefonico.java) e email(Email, vedi file Email.java).
     * 
     * @author Autore
     * @date data
@@ -21,31 +21,30 @@ public class Contatto {
     private Email email;
     
  /**
-    * @brief Breve descrizione della funzione
-    * @pre descrizione precondizioni
-    * @post descrizione post-condizioni 
+    * @brief Costruttore del generico oggetto Contatto con il quale si possono inizializzare nome, cognome, numero e email
+    * @pre Bisogna aggiungere almeno un nome o un cognome
+    * @post Viene generato un contatto con un nome o un cognome o con entrambi
     * @invariant descrizione invarianti
     * 
     * @param nome[in]
     * @param cognome[in]
     * 
-    * (va specificato se input/output o inout)
     * @return specifica cosa restituisce la funzione
     * @throws Exception 
  */
-    public Contatto(String nome, String cognome){
+    public Contatto(String nome, String cognome, NumeroTelefonico numero, Email email){
     }
     
     
  /**
-    * @brief Breve descrizione della funzione
-    * @pre descrizione precondizioni
-    * @post descrizione post-condizioni 
+    * @brief Permette di ricavare l'attributo nome da un contatto
+    * @pre Deve esistere un contatto
+    * @post Ritorna il nome del contatto su cui viene richiamato il metodo
     * @invariant descrizione invarianti
     * 
     * @param
     * 
-    * (va specificato se input/output o inout)
+    * 
     * @return specifica cosa restituisce la funzione
     * @throws Exception 
  */
@@ -54,12 +53,12 @@ public class Contatto {
     }
     
   /**
-    * @brief Breve descrizione della funzione
-    * @pre descrizione precondizioni
-    * @post descrizione post-condizioni 
+    * @brief Permette di ricavare l'attributo cognome da un contatto
+    * @pre Deve esistere un contatto
+    * @post Ritorna il cognome del contatto su cui viene richiamato il metodo
     * @invariant descrizione invarianti
     * @param
-    * (va specificato se input/output o inout)
+    * 
     * @return specifica cosa restituisce la funzione
     * @throws Exception 
  */
@@ -68,12 +67,11 @@ public class Contatto {
     }
 
   /**
-    * @brief Breve descrizione della funzione
-    * @pre descrizione precondizioni
-    * @post descrizione post-condizioni 
+    * @brief Permette di ricavare l'attributo numero da un contatto
+    * @pre Deve esistere un contatto
+    * @post Ritorna il/i numero/i del contatto su cui viene richiamato il metodo
     * @invariant descrizione invarianti
     *
-    * (va specificato se input/output o inout)
     * @return specifica cosa restituisce la funzione
     * @throws Exception 
  */
@@ -82,12 +80,12 @@ public class Contatto {
     }
 
   /**
-    * @brief Breve descrizione della funzione
-    * @pre descrizione precondizioni
-    * @post descrizione post-condizioni 
+    * @brief Permette di ricavare l'attributo email da un contatto
+    * @pre Deve esistere un contatto
+    * @post Ritorna la/le email del contatto su cui viene richiamato il metodo
     * @invariant descrizione invarianti
     * @param
-    * (va specificato se input/output o inout)
+    * 
     * @return specifica cosa restituisce la funzione
     * @throws Exception 
  */
@@ -96,12 +94,12 @@ public class Contatto {
     }
     
   /**
-    * @brief Breve descrizione della funzione
-    * @pre descrizione precondizioni
-    * @post descrizione post-condizioni 
+    * @brief Permette di modificare l'attributo nome da un contatto
+    * @pre Deve esistere un contatto
+    * @post Modifica il nome del contatto su cui viene chiamato il metodo
     * @invariant descrizione invarianti
-    * @param
-    * (va specificato se input/output o inout)
+    * @param nome[in]
+    * 
     * @return specifica cosa restituisce la funzione
     * @throws Exception 
  */
@@ -109,12 +107,12 @@ public class Contatto {
     }
 
 /**
-    * @brief Breve descrizione della funzione
-    * @pre descrizione precondizioni
-    * @post descrizione post-condizioni 
+    * @brief Permette di modificare l'attributo cognome da un contatto
+    * @pre Deve esistere un contatto
+    * @post Modifica il cognome del contatto su cui viene chiamato il metodo 
     * @invariant descrizione invarianti
-    * @param
-    * (va specificato se input/output o inout)
+    * @param cognome[in]
+    * 
     * @return specifica cosa restituisce la funzione
     * @throws Exception 
  */
@@ -122,12 +120,12 @@ public class Contatto {
     }
 
  /**
-    * @brief Breve descrizione della funzione
-    * @pre descrizione precondizioni
-    * @post descrizione post-condizioni 
+    * @brief Permette di modificare l'attributo numero da un contatto
+    * @pre Deve esistere un contatto
+    * @post Modifica il/i numero/i del contatto su cui viene chiamato il metodo 
     * @invariant descrizione invarianti
-    * @param
-    * (va specificato se input/output o inout)
+    * @param numero[][in]
+    * 
     * @return specifica cosa restituisce la funzione
     * @throws Exception 
  */
@@ -135,12 +133,12 @@ public class Contatto {
     }
 
   /**
-    * @brief Breve descrizione della funzione
-    * @pre descrizione precondizioni
-    * @post descrizione post-condizioni 
+    * @brief Permette di modificare l'attributo email da un contatto
+    * @pre Deve esistere un contatto
+    * @post Modifica la/le email del contatto su cui viene chiamato il metodo
     * @invariant descrizione invarianti
-    * @param
-    * (va specificato se input/output o inout)
+    * @param email[][in]
+    * 
     * @return specifica cosa restituisce la funzione
     * @throws Exception 
  */
