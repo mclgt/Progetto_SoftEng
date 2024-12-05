@@ -13,7 +13,7 @@ import javafx.collections.ObservableList;
 
 /**
  * @file InsiemeContatti.java
- * @brief Permetti di implementare una collezione di contatti mediante un ArrayList osservabile.
+ * @brief Permette di implementare una collezione di contatti mediante un ArrayList osservabile.
  * Per maggiori informazioni sul contatto consultare il file Contatto.java
  * 
  * @author Autore
@@ -25,7 +25,7 @@ public class InsiemeContatti {
 
 
 /**
-    * @brief Permette di aggiungere un contattoalla struttura (ArrayList)
+    * @brief Permette di aggiungere un contatto alla struttura (ArrayList)
     * @pre è stato istanziato un oggetto InsiemeContatti ed un Contatto da aggiungere
     * @post Alla lista è aggiunto il contatto passato come parametro
     * @invariant descrizione invarianti
@@ -33,7 +33,7 @@ public class InsiemeContatti {
     * 
     * @return  
  */
-    public void add(Contatto contact){
+    public void aggiungi(Contatto contact){
         
     }
 
@@ -46,13 +46,13 @@ public class InsiemeContatti {
     * 
     * @return  
  */
-    public void remove(Contatto contact){
+    public void rimuovi(Contatto contact){
         
     }
     
   /**
     * @brief Permette la modifica di un contatto esistente nell'InsiemeContatti
-    * @pre è statpo istanziato un oggetto InsiemeContatti, il contatto passato appartiene già all'insieme
+    * @pre è stato istanziato un oggetto InsiemeContatti, il contatto passato appartiene già all'insieme
     * @post i vecchi attributi del  contatto vengono sovrascritti con i nuovi
     * @invariant descrizione invarianti
     * @param c[in]: rappresenta il contatto da modificare
@@ -61,7 +61,7 @@ public class InsiemeContatti {
     * @param newMail[in]
     * @return 
  */
-    public void modify(Contatto c, String newName, String newSurname, NumeroTelefonico newNumeri, Email newMail ){
+    public void modifica(Contatto c, String newName, String newSurname, NumeroTelefonico newNumeri, Email newMail ){
         
     }
     
@@ -77,14 +77,14 @@ public class InsiemeContatti {
     * @throws Exception 
  */
     
-    public InsiemeContatti search(String text ){
+    public InsiemeContatti cerca(String text ){
         return null;
     }
 
   /**
     * @brief Permette di esportare l'oggetto InsiemeContatti  su un file in formato CSV (Comma Separated Values)
     * @pre la stringa passata è non nulla
-    * @post viene generato un file .csv con il nome corrispondente alla stringa passata, il quale esporrà il contenuto della lista
+    * @post viene generato un file .csv con il nome corrispondente alla stringa passata, il quale esporrà il contenuto della lista. Il file sarà collocato nella directory del progetto.
     * @invariant descrizione invarianti
     * @param filename[in]
     * 
@@ -97,12 +97,12 @@ public class InsiemeContatti {
     
   /**
     * @brief Permette di importare un oggetto InsiemeContatti da un file CSV (Comma Separated Values)
-    * @pre descrizione precondizioni
-    * @post descrizione post-condizioni 
+    * @pre è presente un file all'interno della directory del progetto che ha un nome corrispondente a quello indicato dalla stringa passata come parametro
+    * @post l'InsiemeContatti rispecchierà il contenuto del file passato
     * @invariant descrizione invarianti
-    * @param
-    * (va specificato se input/output o inout)
-    * @return specifica cosa restituisce la funzione
+    * @param filename[in]
+    * 
+    * @return Restituisce un InsiemeContatti con contenuto che rispecchia il contenuto del file
     * @throws Exception 
  */
     public InsiemeContatti leggi(String filename)throws IOException{

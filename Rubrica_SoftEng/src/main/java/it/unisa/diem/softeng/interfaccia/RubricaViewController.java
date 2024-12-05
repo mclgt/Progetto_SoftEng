@@ -16,8 +16,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
 /**
- * @file RubricaViewController
- * @brief Permette di eseguire le azioni correlate ai vari campi inseriti nell'interfaccia
+ * @file RubricaViewController.java
+ * @brief Permette di eseguire le azioni relative ad un contatto o alla rubrica, collegate ai vari elementi interattivi inseriti nell'interfaccia
  * 
  * @author Autore
  * @date data
@@ -70,7 +70,7 @@ public class RubricaViewController implements Initializable {
     private Button searchButton;
     
     /**
-     * Initializes the controller class.
+     * Inizializza la classe del controller.
      */
     
     @Override
@@ -79,9 +79,9 @@ public class RubricaViewController implements Initializable {
     }    
 
  /**
-    * @brief Attraverso l'attivazione dell'evento corrispondente all'azione 'importContact' possiamo richiamare il metodo presente nella classe InsiemeContatti
+    * @brief Attraverso l'attivazione dell'evento corrispondente all'azione 'importContact' è possibile richiamare il metodo leggi presente nella classe InsiemeContatti
     * @pre Campo di testo non vuoto
-    * @post Viene richiamato il metodo nella classe InsiemeContatti 
+    * @post Viene richiamato il metodo nella classe InsiemeContatti , i valori della TableView corrisponderanno con i valori contenuti nel file 
     * @invariant descrizione invarianti
     * @param
     *
@@ -93,12 +93,12 @@ public class RubricaViewController implements Initializable {
     }
 
   /**
-    * @brief Breve descrizione della funzione
+    * @brief Attraverso l'attivazione dell'evento corrispondente all'azione 'exportContact' è possibile richiamare il metodo scriviCSV presente nella classe InsiemeContatti
     * @pre descrizione precondizioni
-    * @post descrizione post-condizioni 
+    * @post Viene richiamato il metodo nella classe InsiemeContatti
     * @invariant descrizione invarianti
     * @param
-    * (va specificato se input/output o inout)
+    * 
     * @return specifica cosa restituisce la funzione
     * @throws Exception 
  */
@@ -107,12 +107,13 @@ public class RubricaViewController implements Initializable {
     }
 
   /**
-    * @brief Breve descrizione della funzione
-    * @pre descrizione precondizioni
-    * @post descrizione post-condizioni 
+    * @brief  Attraverso l'attivazione dell'evento corrispondente all'azione 'addContact' è possibile richiamare il metodo aggiungi presente nella classe InsiemeContatti
+
+    * @pre almeno uno dei campi relativi al nome e al cognome risulta essere riempito
+    * @post Richiama il metodo nella classe InsiemeContatti, nella TableView verrà aggiunta una riga contenente i valori inseriti nei campi di testo
     * @invariant descrizione invarianti
     * @param
-    * (va specificato se input/output o inout)
+    * 
     * @return specifica cosa restituisce la funzione
     * @throws Exception 
  */
@@ -122,27 +123,27 @@ public class RubricaViewController implements Initializable {
     }
 
 /**
-    * @brief Breve descrizione della funzione
-    * @pre descrizione precondizioni
-    * @post descrizione post-condizioni 
+    * @brief Attraverso l'attivazione dell'evento corrispondente all'azione 'modifyContact' è possibile richiamare il metodo modifica presente nella classe InsiemeContatti
+    * @pre è stato selezionato dalla TableView un contatto
+    * @post La riga corrispondente al contatto sarà coerente con le modifiche passate- verrà richiamato il metodo di InsiemeContatti
     * @invariant descrizione invarianti
     * @param
-    * (va specificato se input/output o inout)
+    * 
     * @return specifica cosa restituisce la funzione
     * @throws Exception 
- */
+ */ 
     @FXML
     private void modifyContact(ActionEvent event) {
         
     }
 
 /**
-    * @brief Breve descrizione della funzione
-    * @pre descrizione precondizioni
-    * @post descrizione post-condizioni 
+    * @brief Attraverso l'attivazione dell'evento corrispondente all'azione 'removeContact' è possibile richiamare il metodo rimuovi presente nella classe InsiemeContatti
+    * @pre è stato selezionato dalla TableView un contatto
+    * @post La riga corrispondente al contatto verrà rimossa dalla TableView, verrà richiamato il metodo della classe InsiemeContatti
     * @invariant descrizione invarianti
     * @param
-    * (va specificato se input/output o inout)
+    * 
     * @return specifica cosa restituisce la funzione
     * @throws Exception 
  */
@@ -152,12 +153,12 @@ public class RubricaViewController implements Initializable {
 
     
   /**
-    * @brief Breve descrizione della funzione
-    * @pre descrizione precondizioni
-    * @post descrizione post-condizioni 
+    * @brief Attraverso l'attivazione dell'evento corrispondente all'azione 'searchContact' è possibile richiamare il metodo cerca presente nella classe InsiemeContatti
+    * @pre è stata inserita nel campo di testo una sottostringa non nulla
+    * @post La TableView mostrerà i risultati della ricerca, verrà richiamato il metodo della classe InsiemeContatti
     * @invariant descrizione invarianti
     * @param
-    * (va specificato se input/output o inout)
+    * 
     * @return specifica cosa restituisce la funzione
     * @throws Exception 
  */

@@ -5,7 +5,7 @@
 package it.unisa.diem.softeng.contatti;
 
 /**
-    * @file Contatto
+    * @file Contatto.java
     * @brief Classe creata per gestire un contatto base. La classe è composta da vari attributi quali: nome(String), cognome(String), 
     * numero (NumeroTelefonico, vedi file NumeroTelefonico.java) e email(Email, vedi file Email.java).
     * 
@@ -23,11 +23,13 @@ public class Contatto {
  /**
     * @brief Costruttore del generico oggetto Contatto con il quale si possono inizializzare nome, cognome, numero e email
     * @pre Bisogna aggiungere almeno un nome o un cognome
-    * @post Viene generato un contatto con un nome o un cognome o con entrambi
+    * @post Viene generato un contatto con almeno un nome o un cognome 
     * @invariant descrizione invarianti
     * 
     * @param nome[in]
     * @param cognome[in]
+    * @param numero[in]: oggetto contenente al più tre numeri
+    * @param email[in]: oggetto contenete al più tre email
     * 
     * @return specifica cosa restituisce la funzione
     * @throws Exception 
@@ -41,8 +43,7 @@ public class Contatto {
     * @pre Deve esistere un contatto
     * @post Ritorna il nome del contatto su cui viene richiamato il metodo
     * @invariant descrizione invarianti
-    * 
-    * @param
+    * @param nome[out]
     * 
     * 
     * @return specifica cosa restituisce la funzione
@@ -57,7 +58,7 @@ public class Contatto {
     * @pre Deve esistere un contatto
     * @post Ritorna il cognome del contatto su cui viene richiamato il metodo
     * @invariant descrizione invarianti
-    * @param
+    * @param cognome[out]
     * 
     * @return specifica cosa restituisce la funzione
     * @throws Exception 
@@ -71,11 +72,12 @@ public class Contatto {
     * @pre Deve esistere un contatto
     * @post Ritorna il/i numero/i del contatto su cui viene richiamato il metodo
     * @invariant descrizione invarianti
-    *
+    *@param numeri[out]: oggetto che contiene al più tre numeri
+    * 
     * @return specifica cosa restituisce la funzione
     * @throws Exception 
  */
-    public String[] getNumero() {
+    public NumeroTelefonico getNumero() {
         return null;
     }
 
@@ -84,12 +86,12 @@ public class Contatto {
     * @pre Deve esistere un contatto
     * @post Ritorna la/le email del contatto su cui viene richiamato il metodo
     * @invariant descrizione invarianti
-    * @param
+    * @param email[out]: oggetto che contiene al più tre mail
     * 
     * @return specifica cosa restituisce la funzione
     * @throws Exception 
  */
-    public String[] getEmail() {
+    public Email getEmail() {
         return null;
     }
     
@@ -129,7 +131,7 @@ public class Contatto {
     * @return specifica cosa restituisce la funzione
     * @throws Exception 
  */
-    public void setNumero(String[] numero) {
+    public void setNumero(NumeroTelefonico numero) {
     }
 
   /**
@@ -142,7 +144,7 @@ public class Contatto {
     * @return specifica cosa restituisce la funzione
     * @throws Exception 
  */
-    public void setEmail(String[] email) {
+    public void setEmail(Email email) {
     }
     
     

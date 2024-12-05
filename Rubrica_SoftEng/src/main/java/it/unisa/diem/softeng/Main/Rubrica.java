@@ -11,7 +11,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
-    * @file Rubrica
+    * @file Rubrica.java
     * @brief Classe Main che permette di collegare il Controller alla View
     * 
     * @author Autore
@@ -20,9 +20,9 @@ import javafx.stage.Stage;
  */
 public class Rubrica extends Application{
 /**
-    * @brief Metodo che permette di creare la scena e creare un collegamento tra View e Controller
-    * @pre Deve essere instanziata una View
-    * @post Viene visualizzata l'interfaccia 
+    * @brief Metodo che permette di caricare il file .fxml (che definisce l'interfaccia grafica) , creare la scena e mostrarla in una finestta.
+    * @pre Deve essere presente un file .fxmlw
+    * @post Viene caricata e visualizzata l'interfaccia  grafica mediante una finestra
     * @invariant descrizione invarianti
     * 
     * @param stage[in]
@@ -37,17 +37,17 @@ public class Rubrica extends Application{
         stage.show();
     }
     
-//da vedere
+
     /**
-    * @brief Metodo che permette di lanciare gli elementi grafici
-    * @pre descrizione precondizioni
-    * @post descrizione post-condizioni 
+    * @brief Primo metodo lanciato, permette di inizializzare l'ambiente javaFX, avviando l'interfaccia grafica
+    * @pre JavaFX deve essere correttamente configurato
+    * @post il controllo passa a JavaFX
     * @invariant descrizione invarianti
     * 
-    * @param args 
-    * (va specificato se input/output o inout)
-    * @return specifica cosa restituisce la funzione
-    * @throws Exception 
+    * @param args : argomenti della riga di comando che possono essere passati durante l'esecuzione del programma
+    * 
+    * @return 
+
  */
     public static void main(String[] args) {
         // TODO code application logic here
