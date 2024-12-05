@@ -6,9 +6,10 @@
 package it.unisa.diem.softeng.contatti;
 
 /**
- * @file nomefile
- * @brief Descrizione generale della classe.
- * Possono essere aggiunte informazioni generali che aiutano a comprendere lo scopo della classe
+ * @file Email.java
+ * @brief Classe generata per contenere gli indirizzi di posta elettronica di un generico contatto
+ * Può contenere al più tre indirizzi ciascuno rappresentato tramite Stringa. Il generico elemento dell'array 
+ * può non essere definito, sfruttando il valore NULL.
  * 
  * @author Autore
  * @date data
@@ -17,14 +18,17 @@ package it.unisa.diem.softeng.contatti;
 public class Email {
     private String email[]=new String[3];
   /**
-    * @brief Breve descrizione della funzione
-    * @pre descrizione precondizioni
-    * @post descrizione post-condizioni 
+    * @brief Costruttore del generico oggetto Email tramite il quale è possibile inizializzare 
+    * gli indirizzi di posta elettronica di un contatto.
+    * @pre Nessuna precondizione
+    * @post L'array di Stringhe viene istanziato e inizializzato
     * @invariant descrizione invarianti
-    * @param
-    * (va specificato se input/output o inout)
-    * @return specifica cosa restituisce la funzione
-    * @throws Exception 
+    * @param email1[in]
+    * @param email2[in]
+    * @param email3[in]
+    * 
+    * 
+    * @return 
  */
     public Email(String email1, String email2, String email3){
         email[0]=email1;
