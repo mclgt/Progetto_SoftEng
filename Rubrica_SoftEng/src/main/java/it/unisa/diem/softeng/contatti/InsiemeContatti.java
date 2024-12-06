@@ -44,7 +44,7 @@ public class InsiemeContatti {
     * @param contact[in]: rappresenta il contatto da rimuovere
     * 
     */
-    public void rimuovi(Contatto contact){
+    public void rimuovi(Contatto contact, String[] numeri, String[] email){
         
     }
     
