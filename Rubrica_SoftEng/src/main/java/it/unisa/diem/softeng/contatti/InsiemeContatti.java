@@ -58,7 +58,7 @@ public class InsiemeContatti {
     * @param newNumeri[in] 
     * @param newMail[in]
     */
-    public void modifica(Contatto c, String newName, String newSurname, String[] newNumeri, String[] newMail ){
+    public void modifica(Contatto c, String newName, String newSurname, NumeroTelefonico newNumeri, Email newMail ){
         
     }
     
