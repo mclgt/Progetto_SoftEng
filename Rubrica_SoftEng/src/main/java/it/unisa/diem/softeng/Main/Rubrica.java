@@ -21,12 +21,10 @@ import javafx.stage.Stage;
 public class Rubrica extends Application{
 /**
     * @brief Metodo che permette di caricare il file .fxml (che definisce l'interfaccia grafica) , creare la scena e mostrarla in una finestta.
-    * @pre Deve essere presente un file .fxmlw
+    * @pre Deve essere presente un file .fxml
     * @post Viene caricata e visualizzata l'interfaccia  grafica mediante una finestra
-    * @invariant descrizione invarianti
     * 
     * @param stage[in]
-    * @return specifica cosa restituisce la funzione
     * @throws Exception 
  */
     @Override 
@@ -40,13 +38,9 @@ public class Rubrica extends Application{
 
     /**
     * @brief Primo metodo lanciato, permette di inizializzare l'ambiente javaFX, avviando l'interfaccia grafica
-    * @pre JavaFX deve essere correttamente configurato
-    * @post il controllo passa a JavaFX
-    * @invariant descrizione invarianti
     * 
     * @param args : argomenti della riga di comando che possono essere passati durante l'esecuzione del programma
     * 
-    * @return 
 
  */
     public static void main(String[] args) {

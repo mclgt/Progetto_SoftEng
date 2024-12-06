@@ -20,16 +20,12 @@ public class NumeroTelefonico {
     
  /**
     * @brief Costruttore del generico oggetto NumeroTelefonico con il quale si possono inizializzare il/i numero/i telefonico/i
-    * @pre Nessuna precondizione
     * @post L'array di Stringhe viene instanziato e inizializzato
-    * @invariant descrizione invarianti
     * @param numero1[in]
     * @param numero2[in]
     * @param numero3[in]
     * 
-    * @return specifica cosa restituisce la funzione
-    * @throws Exception 
- */
+    */
     public NumeroTelefonico(String numero1, String numero2, String numero3){
        this.numeri[0]=numero1;
        this.numeri[1]=numero2;
