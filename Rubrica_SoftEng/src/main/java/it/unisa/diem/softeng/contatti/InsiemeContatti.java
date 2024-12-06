@@ -22,7 +22,7 @@ import javafx.collections.ObservableList;
  * @date data
  * 
  */
-public class InsiemeContatti {
+public class InsiemeContatti implements GestoreContatti {
     private ObservableList<Contatto> contatti= FXCollections.observableArrayList(); 
 
 
@@ -33,6 +33,7 @@ public class InsiemeContatti {
     * @param contact [in] : rappresenta il contatto da aggiungere
     *  
     */
+    @Override
     public void aggiungi(Contatto contact, String[] numeri, String[] email){
         
     }
@@ -44,6 +45,7 @@ public class InsiemeContatti {
     * @param contact[in]: rappresenta il contatto da rimuovere
     * 
     */
+    @Override
     public void rimuovi(Contatto contact, String[] numeri, String[] email){
         
     }
@@ -58,6 +60,7 @@ public class InsiemeContatti {
     * @param newNumeri[in] 
     * @param newMail[in]
     */
+     @Override
     public void modifica(Contatto c, String newName, String newSurname, String[] newNumeri, String[] newMail ){
         
     }
@@ -70,8 +73,8 @@ public class InsiemeContatti {
     * 
     * @return Il sottoinsieme di contatti risultanti dalla ricerca 
     */
-    
-    public InsiemeContatti cerca(String text ){
+    @Override
+    public ObservableList<Contatto> cerca(String text ){
         return null;
     }
 
@@ -84,6 +87,7 @@ public class InsiemeContatti {
     * @throws IOException
     */
     
+    @Override
     public void scriviCSV(String filename)throws IOException{
         
     }
@@ -97,7 +101,8 @@ public class InsiemeContatti {
     * @return Restituisce un InsiemeContatti con contenuto che rispecchia il contenuto del file
     * @throws IOException, FileNotFoundException
     */
-    public InsiemeContatti leggi(String filename)throws IOException{
+    @Override
+    public ObservableList<Contatto> leggi(String filename)throws IOException{
         return null;
     }
 }
