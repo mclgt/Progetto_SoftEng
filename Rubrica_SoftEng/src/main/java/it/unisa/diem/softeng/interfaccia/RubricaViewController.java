@@ -3,10 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
 package it.unisa.diem.softeng.interfaccia;
-import it.unisa.diem.softeng.contatti.*;
+
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.collections.ObservableSet;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -16,154 +15,85 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
 /**
- * @file RubricaViewController.java
- * @brief Permette di eseguire le azioni relative ad un contatto o alla rubrica, collegate ai vari elementi interattivi inseriti nell'interfaccia
- * 
- * @author Autore
- * @date data
- * 
+ * FXML Controller class
+ *
+ * @author miche
  */
 public class RubricaViewController implements Initializable {
 
     @FXML
-    private TextField searchFIeld;
+    private TextField campoCerca;
     @FXML
-    private Button importButton;
+    private Button pulsanteCerca;
     @FXML
-    private Button exportButton;
+    private Button pulsanteImporta;
     @FXML
-    private TextField nameField;
+    private TextField campoImporta;
     @FXML
-    private TextField surnameField;
+    private Button pulsanteEsporta;
     @FXML
-    private TextField firstNumberField;
+    private TextField campoNome;
     @FXML
-    private TextField secondNumberField;
+    private TextField campoCognome;
     @FXML
-    private TextField thirdNumberField;
+    private TextField campoPrimoNum;
     @FXML
-    private TextField firstMailFIeld;
+    private TextField campoSecondoNum;
     @FXML
-    private TextField secondMailField;
+    private TextField campoTerzoNum;
     @FXML
-    private TextField thirdMailFIeld;
+    private TextField campoPrimaMail;
     @FXML
-    private Button addButton;
+    private TextField campoSecondaMail;
     @FXML
-    private Button modifyButton;
+    private TextField campoTerzaMail;
     @FXML
-    private Button removeButton;
+    private Button pulsanteAggiungi;
     @FXML
-    private TableView<Contatto> contactTable;
+    private Button pulsanteModifica;
     @FXML
-    private TableColumn<Contatto, String> surnameClm;
+    private Button pulsanteRimuovi;
     @FXML
-    private TableColumn<Contatto, String> nameClm;
+    private TableView<?> tabellaContatti;
     @FXML
-    private TableColumn<Contatto, NumeroTelefonico> numberClm;
+    private TableColumn<?, ?> colonnaCognome;
     @FXML
-    private TableColumn<Contatto, Email> emailClm;
+    private TableColumn<?, ?> colonnaNome;
+    @FXML
+    private TableColumn<?, ?> colonnaNum;
+    @FXML
+    private TableColumn<?, ?> colonnaEmail;
 
-    InsiemeContatti rubrica;
-    
-    @FXML
-    private Button searchButton;
-    
     /**
-     * Inizializza la classe del controller.
+     * Initializes the controller class.
      */
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
 
- /**
-    * @brief Attraverso l'attivazione dell'evento corrispondente all'azione 'importContact' è possibile richiamare il metodo leggi presente nella classe InsiemeContatti
-    * @pre Campo di testo non vuoto
-    * @post Viene richiamato il metodo nella classe InsiemeContatti , i valori della TableView corrisponderanno con i valori contenuti nel file 
-    * @invariant descrizione invarianti
-    * @param
-    *
-    * @return specifica cosa restituisce la funzione
-    * @throws Exception 
- */
     @FXML
-    private void importContact(ActionEvent event) {
+    private void cercaContatto(ActionEvent event) {
     }
 
-  /**
-    * @brief Attraverso l'attivazione dell'evento corrispondente all'azione 'exportContact' è possibile richiamare il metodo scriviCSV presente nella classe InsiemeContatti
-    * @pre descrizione precondizioni
-    * @post Viene richiamato il metodo nella classe InsiemeContatti
-    * @invariant descrizione invarianti
-    * @param
-    * 
-    * @return specifica cosa restituisce la funzione
-    * @throws Exception 
- */
     @FXML
-    private void exportContact(ActionEvent event) {
+    private void importaContatto(ActionEvent event) {
     }
 
-  /**
-    * @brief  Attraverso l'attivazione dell'evento corrispondente all'azione 'addContact' è possibile richiamare il metodo aggiungi presente nella classe InsiemeContatti
-
-    * @pre almeno uno dei campi relativi al nome e al cognome risulta essere riempito
-    * @post Richiama il metodo nella classe InsiemeContatti, nella TableView verrà aggiunta una riga contenente i valori inseriti nei campi di testo
-    * @invariant descrizione invarianti
-    * @param
-    * 
-    * @return specifica cosa restituisce la funzione
-    * @throws Exception 
- */
     @FXML
-    private void addContact(ActionEvent event) {
-       
+    private void esportaContatto(ActionEvent event) {
     }
 
-/**
-    * @brief Attraverso l'attivazione dell'evento corrispondente all'azione 'modifyContact' è possibile richiamare il metodo modifica presente nella classe InsiemeContatti
-    * @pre è stato selezionato dalla TableView un contatto
-    * @post La riga corrispondente al contatto sarà coerente con le modifiche passate- verrà richiamato il metodo di InsiemeContatti
-    * @invariant descrizione invarianti
-    * @param
-    * 
-    * @return specifica cosa restituisce la funzione
-    * @throws Exception 
- */ 
     @FXML
-    private void modifyContact(ActionEvent event) {
-        
+    private void aggiungiContatto(ActionEvent event) {
     }
 
-/**
-    * @brief Attraverso l'attivazione dell'evento corrispondente all'azione 'removeContact' è possibile richiamare il metodo rimuovi presente nella classe InsiemeContatti
-    * @pre è stato selezionato dalla TableView un contatto
-    * @post La riga corrispondente al contatto verrà rimossa dalla TableView, verrà richiamato il metodo della classe InsiemeContatti
-    * @invariant descrizione invarianti
-    * @param
-    * 
-    * @return specifica cosa restituisce la funzione
-    * @throws Exception 
- */
     @FXML
-    private void removeContact(ActionEvent event) {
+    private void modificaContatto(ActionEvent event) {
     }
 
-    
-  /**
-    * @brief Attraverso l'attivazione dell'evento corrispondente all'azione 'searchContact' è possibile richiamare il metodo cerca presente nella classe InsiemeContatti
-    * @pre è stata inserita nel campo di testo una sottostringa non nulla
-    * @post La TableView mostrerà i risultati della ricerca, verrà richiamato il metodo della classe InsiemeContatti
-    * @invariant descrizione invarianti
-    * @param
-    * 
-    * @return specifica cosa restituisce la funzione
-    * @throws Exception 
- */
     @FXML
-    private void searchContact(ActionEvent event) {
+    private void rimuoviContatto(ActionEvent event) {
     }
     
 }

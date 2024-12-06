@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="689.0" prefWidth="933.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.rubrica_softeng.RubricaViewController">
+<AnchorPane id="AnchorPane" prefHeight="689.0" prefWidth="933.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unisa.diem.softeng.interfaccia.RubricaViewController">
    <children>
       <ToolBar prefHeight="55.0" prefWidth="933.0">
         <items>
