@@ -33,7 +33,7 @@ public class InsiemeContatti {
     * @param contact [in] : rappresenta il contatto da aggiungere
     *  
     */
-    public void aggiungi(Contatto contact){
+    public void aggiungi(Contatto contact, String[] numeri, String[] email){
         
     }
 
@@ -58,7 +58,7 @@ public class InsiemeContatti {
     * @param newNumeri[in] 
     * @param newMail[in]
     */
-    public void modifica(Contatto c, String newName, String newSurname, NumeroTelefonico newNumeri, Email newMail ){
+    public void modifica(Contatto c, String newName, String newSurname, String[] newNumeri, String[] newMail ){
         
     }
     

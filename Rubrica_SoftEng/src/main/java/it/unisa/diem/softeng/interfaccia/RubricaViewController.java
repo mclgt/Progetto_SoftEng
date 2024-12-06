@@ -5,8 +5,6 @@
 package it.unisa.diem.softeng.interfaccia;
 
 import it.unisa.diem.softeng.contatti.Contatto;
-import it.unisa.diem.softeng.contatti.Email;
-import it.unisa.diem.softeng.contatti.NumeroTelefonico;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -65,9 +63,9 @@ public class RubricaViewController implements Initializable {
     @FXML
     private TableColumn<Contatto, String> colonnaNome;
     @FXML
-    private TableColumn<Contatto, NumeroTelefonico> colonnaNum;
+    private TableColumn<Contatto, String[]> colonnaNum;
     @FXML
-    private TableColumn<Contatto, Email> colonnaEmail;
+    private TableColumn<Contatto, String[]> colonnaEmail;
 
     /**
      * Inizializza la classe del controller
