@@ -4,6 +4,7 @@
  */
 package it.unisa.diem.softeng.interfaccia;
 
+import it.unisa.diem.softeng.contatti.Contatto;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -15,9 +16,11 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
 /**
- * FXML Controller class
- *
- * @author miche
+ * @file RubricaViewController
+ * @brief Permette di eseguire le azioni relative ad un contatto o alla rubrica , collegate ai vari elementi interattivi inseriti nell'interfaccia
+ * 
+ * @author Autore
+ * @date data
  */
 public class RubricaViewController implements Initializable {
 
@@ -54,44 +57,86 @@ public class RubricaViewController implements Initializable {
     @FXML
     private Button pulsanteRimuovi;
     @FXML
-    private TableView<?> tabellaContatti;
+    private TableView<Contatto> tabellaContatti;
     @FXML
-    private TableColumn<?, ?> colonnaCognome;
+    private TableColumn<Contatto, String> colonnaCognome;
     @FXML
-    private TableColumn<?, ?> colonnaNome;
+    private TableColumn<Contatto, String> colonnaNome;
     @FXML
-    private TableColumn<?, ?> colonnaNum;
+    private TableColumn<Contatto, String[]> colonnaNum;
     @FXML
-    private TableColumn<?, ?> colonnaEmail;
+    private TableColumn<Contatto, String[]> colonnaEmail;
 
     /**
-     * Initializes the controller class.
+     * Inizializza la classe del controller
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
 
+  /**
+    * @brief Attraverso l'attivazione dell'evento corrispondente all'azione 'cercaContatto' è possibile richiamare il metodo cerca presente nella classe InsiemeContatti
+    * @pre è stata inserita nel campo di testo una sottostringa non nulla
+    * @post la TableView mostrerà i risultati della ricerca, verrà richiamato il metodo della classe InsiemeContatti
+    * @param pressOnButton(pulsanteCerca) [in]
+    *  
+    */
     @FXML
     private void cercaContatto(ActionEvent event) {
     }
 
+/**
+    * @brief Attraverso l'attivazione dell'evento corrispondente all'azione 'importaContatto' è possibile richiamare il metodo leggi presente nella classe InsiemeContatti
+    * @pre è stata inserita nel campo di testo una stringa non nulla
+    * @post i valori nella TableView corrispondono con i valori contenuti nel file, verrà richiamato il metodo della classe InsiemeContatti
+    * @param pressOnButton(pulsanteImporta) [in]
+    *  
+    */
     @FXML
     private void importaContatto(ActionEvent event) {
     }
 
+/**
+    * @brief Attraverso l'attivazione dell'evento corrispondente all'azione 'esportaContatto' è possibile richiamare il metodo scriviCSV presente nella classe InsiemeContatti
+    * @post Viene richiamato il metodo nella classe InsiemeContatti
+    * @param pressOnButton(pulsanteEsporta) [in]
+    *  
+    */
     @FXML
     private void esportaContatto(ActionEvent event) {
     }
 
+    
+/**
+    * @brief Attraverso l'attivazione dell'evento corrispondente all'azione 'aggiungiContatto' è possibile richiamare il metodo aggiungi presente nella classe InsiemeContatti
+    * @pre almeno uno dei campi relativo al nome o al cognome risulta essere riempito
+    * @post nella TableView verrà inserita una riga contenente i valori inseriti nei campi di testo, verrà richiamato il metodo della classe InsiemeContatti
+    * @param pressOnButton(pulsanteAggiungi) [in]
+    *  
+    */
     @FXML
     private void aggiungiContatto(ActionEvent event) {
     }
 
+/**
+    * @brief Attraverso l'attivazione dell'evento corrispondente all'azione 'modificaContatto' è possibile richiamare il metodo modifica presente nella classe InsiemeContatti
+    * @pre è stato selezionato dalla TableView un contatto
+    * @post la riga corrispondente al contatto sarà coerente con le modifiche passate, verrà richiamato il metodo della classe InsiemeContatti
+    * @param pressOnButton(pulsanteModifica) [in]
+    *  
+    */
     @FXML
     private void modificaContatto(ActionEvent event) {
     }
 
+/**
+    * @brief Attraverso l'attivazione dell'evento corrispondente all'azione 'rimuoviContatto' è possibile richiamare il metodo rimuovi presente nella classe InsiemeContatti
+    * @pre è stato selezionato dalla TableView un contatto
+    * @post la riga corrispondente al contatto verrà rimossa dalla TableView, verrà richiamato il metodo della classe InsiemeContatti
+    * @param pressOnButton(pulsanteRimuovi) [in]
+    *  
+    */
     @FXML
     private void rimuoviContatto(ActionEvent event) {
     }
