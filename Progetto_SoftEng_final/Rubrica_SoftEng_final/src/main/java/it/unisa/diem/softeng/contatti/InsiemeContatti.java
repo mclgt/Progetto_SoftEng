@@ -34,7 +34,7 @@ public class InsiemeContatti implements GestoreContatti {
     *  
     */
     @Override
-    public void aggiungi(Contatto contact, String[] numeri, String[] email){
+    public void aggiungi(Contatto contact){
         
     }
 
@@ -46,7 +46,7 @@ public class InsiemeContatti implements GestoreContatti {
     * 
     */
     @Override
-    public void rimuovi(Contatto contact, String[] numeri, String[] email){
+    public void rimuovi(Contatto contact){
         
     }
     

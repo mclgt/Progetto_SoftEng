@@ -12,8 +12,8 @@ import javafx.collections.ObservableList;
  * @author miche
  */
 public interface GestoreContatti {
-     public void aggiungi(Contatto contact, String[] numeri, String[] email);
-     public void rimuovi(Contatto contact, String[] numeri, String[] email);
+     public void aggiungi(Contatto contact);
+     public void rimuovi(Contatto contact);
      public void modifica(Contatto c, String newName, String newSurname, String[] newNumeri, String[] newMail );
      public ObservableList<Contatto>  cerca(String text);
      public void scriviCSV(String filename) throws IOException;
