@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['insiemecontatti_2ejava_0',['InsiemeContatti.java',['../InsiemeContatti_8java.html',1,'']]]
+  ['gestorecontatti_2ejava_0',['GestoreContatti.java',['../GestoreContatti_8java.html',1,'']]]
 ];
