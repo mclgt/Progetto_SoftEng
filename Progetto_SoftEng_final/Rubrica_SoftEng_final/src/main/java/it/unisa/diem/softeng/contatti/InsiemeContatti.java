@@ -14,7 +14,8 @@ import javafx.collections.ObservableList;
 /**
  * @file InsiemeContatti.java
  * @brief Permette di implementare una collezione di contatti mediante un ArrayList osservabile.
- * Per maggiori informazioni sul contatto consultare il file Contatto.java
+ * Per maggiori informazioni sul contatto consultare il file Contatto.java. Utilizza e riscrive i metodi 
+ * dell'interfaccia GestoreContatti.java
  * @invariant Se la struttura ArrayList contiene dei contatti, questi dovranno essere mostrati sempre in ordine alfabetico (per cognome, se due cognomi sono uguali, 
  * verranno confrontati i nomi).
  * 
