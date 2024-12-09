@@ -128,6 +128,9 @@ public class RubricaViewController implements Initializable {
     */
     @FXML
     private void aggiungiContatto(ActionEvent event) {
+        String numero[]=new String[]{campoPrimoNum.getText(),campoSecondoNum.getText(),campoTerzoNum.getText()};
+        String email[]=new String[]{campoPrimaMail.getText(),campoSecondaMail.getText(),campoTerzaMail.getText()};
+        gestore.aggiungi(new Contatto(campoNome.getText(),campoCognome.getText(),numero,email));
     }
 
    /**
