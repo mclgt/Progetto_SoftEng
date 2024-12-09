@@ -16,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
  * @file RubricaViewController
@@ -83,8 +84,9 @@ public class RubricaViewController implements Initializable {
         tabellaContatti.setItems((ObservableList<Contatto>) gestore);
         colonnaNome.setCellValueFactory(c->{ return new SimpleStringProperty(c.getValue().getNome());});
         colonnaCognome.setCellValueFactory(c->{ return new SimpleStringProperty(c.getValue().getCognome());});
-    }    
-
+        colonnaNum.setCellValueFactory(new PropertyValueFactory("numero"));
+        colonnaNum.setCellValueFactory(new PropertyValueFactory("email"));  
+    }
   /**
     * @brief Attraverso l'attivazione dell'evento corrispondente all'azione 'cercaContatto' è possibile richiamare il metodo cerca presente nella classe InsiemeContatti
     * @pre è stata inserita nel campo di testo una sottostringa non nulla
