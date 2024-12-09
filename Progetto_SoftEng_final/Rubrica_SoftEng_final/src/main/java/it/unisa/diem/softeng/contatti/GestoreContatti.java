@@ -59,7 +59,11 @@ public interface GestoreContatti {
     * @throws IOException, FileNotFoundException
     */
      public ObservableList<Contatto> leggi(String filename)throws IOException;
-    
+    /**
+    * @brief Permette di restituire la struttura usata per contenere i contatti
+    * @param insieme[out]: collezione usata per contenere gli oggetti (osservabile)
+    */
+     public ObservableList<Contatto> getInsieme();
         
     
 }

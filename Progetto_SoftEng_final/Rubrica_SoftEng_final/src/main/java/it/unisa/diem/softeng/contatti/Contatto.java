@@ -122,4 +122,23 @@ public class Contatto {
     }
     
     
+  /**
+    * @brief Permette di restituire i numeri mediante un'unica stringa
+    * @pre Deve esistere un contatto
+    * @param stringa[out]
+    * 
+    */
+    public String getNumeriTelefoniciString(){
+        return numero.toString();
+    }
+    
+  /**
+    * @brief Permette di restituire le e-mail mediante un'unica stringa
+    * @pre Deve esistere un contatto
+    * @param stringa[out]
+    * 
+    */
+     public String getEmailString(){
+        return email.toString();
+    }
 }

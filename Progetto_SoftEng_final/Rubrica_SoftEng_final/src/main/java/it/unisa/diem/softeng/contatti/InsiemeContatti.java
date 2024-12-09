@@ -32,9 +32,12 @@ import javafx.collections.ObservableList;
  * @date data
  * 
  */
-public class InsiemeContatti implements GestoreContatti, Serializable {
-    private ObservableList<Contatto> contatti= FXCollections.observableArrayList(); 
-
+public class InsiemeContatti implements GestoreContatti {
+    private ObservableList<Contatto> contatti; 
+    
+    public InsiemeContatti(){
+        contatti=FXCollections.observableArrayList();
+    }
 
   /**
     * @brief Permette di aggiungere un contatto alla struttura (ArrayList)
@@ -135,5 +138,10 @@ public class InsiemeContatti implements GestoreContatti, Serializable {
            return null;
         }
         return importato;
+    }
+
+    @Override
+    public ObservableList<Contatto> getInsieme() {
+        return this.contatti;
     }
 }

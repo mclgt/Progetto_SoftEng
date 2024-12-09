@@ -68,9 +68,9 @@ public class RubricaViewController implements Initializable {
     @FXML
     private TableColumn<Contatto, String> colonnaNome;
     @FXML
-    private TableColumn<Contatto, String[]> colonnaNum;
+    private TableColumn<Contatto, String> colonnaNum;
     @FXML
-    private TableColumn<Contatto, String[]> colonnaEmail;
+    private TableColumn<Contatto, String> colonnaEmail;
     
     GestoreContatti gestore;
     
@@ -81,11 +81,11 @@ public class RubricaViewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         gestore= new InsiemeContatti();
-        tabellaContatti.setItems((ObservableList<Contatto>) gestore);
+        tabellaContatti.setItems(gestore.getInsieme());
         colonnaNome.setCellValueFactory(c->{ return new SimpleStringProperty(c.getValue().getNome());});
         colonnaCognome.setCellValueFactory(c->{ return new SimpleStringProperty(c.getValue().getCognome());});
-        colonnaNum.setCellValueFactory(new PropertyValueFactory("numero"));
-        colonnaNum.setCellValueFactory(new PropertyValueFactory("email"));  
+        colonnaNum.setCellValueFactory(c->{return new SimpleStringProperty(c.getValue().getNumeriTelefoniciString());});
+        colonnaEmail.setCellValueFactory(c->{return new SimpleStringProperty(c.getValue().getEmailString());});  
     }
   /**
     * @brief Attraverso l'attivazione dell'evento corrispondente all'azione 'cercaContatto' è possibile richiamare il metodo cerca presente nella classe InsiemeContatti

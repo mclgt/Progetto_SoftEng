@@ -32,4 +32,10 @@ public class Email {
         email[1]=email2;
         email[2]=email3;
     }
+    
+    
+     @Override
+    public String toString(){
+        return this.email[0]+","+this.email[1]+","+this.email[2];
+    }
 }

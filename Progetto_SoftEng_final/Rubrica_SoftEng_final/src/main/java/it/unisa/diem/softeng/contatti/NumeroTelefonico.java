@@ -42,4 +42,9 @@ public class NumeroTelefonico {
         return this.numeri[2];
     }
     
+    @Override
+    public String toString(){
+        return this.getNumero1()+","+this.getNumero2()+","+this.getNumero3();
+    }
+    
 }
