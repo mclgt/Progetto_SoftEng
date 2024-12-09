@@ -33,7 +33,11 @@ public class Contatto {
     * 
     */
     public Contatto(String nome, String cognome, String[] numero, String[] email){
-      
+     this.nome=nome;
+     this.cognome=cognome;
+     this.numero=new NumeroTelefonico(numero[0],numero[1],numero[2]);
+     this.email=new Email(email[0],email[1],email[2]);
+
     }
     
     
@@ -45,7 +49,7 @@ public class Contatto {
     * @return nome contatto
     */
     public String getNome(){
-        return null;
+        return this.nome;
     }
     
   /**
@@ -56,7 +60,7 @@ public class Contatto {
     * @return cognome contatto
     */
     public String getCognome(){
-        return null;
+        return this.cognome;
     }
 
   /**
@@ -67,7 +71,7 @@ public class Contatto {
     * @return numeri associati al contatto
     */
     public NumeroTelefonico getNumero() {
-        return null;
+        return this.numero;
     }
 
   /**
@@ -78,7 +82,7 @@ public class Contatto {
     * @return email associate al contatto
     */
     public Email getEmail() {
-        return null;
+        return this.email;
     }
     
   /**
@@ -89,6 +93,7 @@ public class Contatto {
     * 
     */
     public void setNome(String nome) {
+     this.nome=nome;
     }
 
   /**
@@ -99,6 +104,7 @@ public class Contatto {
     * 
     */
     public void setCognome(String cognome) {
+     this.cognome=cognome;
     }
 
   /**
@@ -109,6 +115,7 @@ public class Contatto {
     * 
     */
     public void setNumero(NumeroTelefonico numero) {
+     this.numero=numero;
     }
 
   /**
@@ -119,6 +126,7 @@ public class Contatto {
     * 
     */
     public void setEmail(Email email) {
+     this.email=email;
     }
     
     
