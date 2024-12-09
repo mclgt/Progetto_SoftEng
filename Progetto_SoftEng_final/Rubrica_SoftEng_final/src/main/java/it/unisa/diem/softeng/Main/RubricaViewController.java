@@ -85,7 +85,40 @@ public class RubricaViewController implements Initializable {
         colonnaNome.setCellValueFactory(c->{ return new SimpleStringProperty(c.getValue().getNome());});
         colonnaCognome.setCellValueFactory(c->{ return new SimpleStringProperty(c.getValue().getCognome());});
         colonnaNum.setCellValueFactory(c->{return new SimpleStringProperty(c.getValue().getNumeriTelefoniciString());});
-        colonnaEmail.setCellValueFactory(c->{return new SimpleStringProperty(c.getValue().getEmailString());});  
+        colonnaEmail.setCellValueFactory(c->{return new SimpleStringProperty(c.getValue().getEmailString());});
+        pulsanteModifica.setDisable(true);
+        pulsanteRimuovi.setDisable(true);
+        pulsanteAggiungi.setDisable(true);
+        
+        campoNome.textProperty().addListener((osservabile, vecchioValore,nuovoValore)->{
+          abilitaPulsanteAggiungi();
+        });
+        campoCognome.textProperty().addListener((osservabile, vecchioValore,nuovoValore)->{
+           abilitaPulsanteAggiungi();
+        });
+        
+        tabellaContatti.getSelectionModel().selectedItemProperty().addListener((osservabile, vecchiaSelezione,nuovaSelezione)->{
+            if(nuovaSelezione!=null){
+                pulsanteRimuovi.setDisable(false);
+            }
+            else{
+                pulsanteRimuovi.setDisable(true);
+            }
+        });
+    }
+   
+  /**
+    * @brief Se almeno uno dei campi relativi al Nome o al Cognome  è pieno abilita il pulsante, altrimenti no
+    * @post il pulsante verrà abilitato/disabilato
+    *  
+    */
+    private void abilitaPulsanteAggiungi(){
+        if(!campoNome.getText().trim().isEmpty()||!campoCognome.getText().trim().isEmpty()){
+            pulsanteAggiungi.setDisable(false);
+        }
+        else{
+           pulsanteAggiungi.setDisable(true);    
+        }
     }
   /**
     * @brief Attraverso l'attivazione dell'evento corrispondente all'azione 'cercaContatto' è possibile richiamare il metodo cerca presente nella classe InsiemeContatti
@@ -131,6 +164,14 @@ public class RubricaViewController implements Initializable {
         String numero[]=new String[]{campoPrimoNum.getText(),campoSecondoNum.getText(),campoTerzoNum.getText()};
         String email[]=new String[]{campoPrimaMail.getText(),campoSecondaMail.getText(),campoTerzaMail.getText()};
         gestore.aggiungi(new Contatto(campoNome.getText(),campoCognome.getText(),numero,email));
+        campoNome.clear();
+        campoCognome.clear();
+        campoPrimoNum.clear();
+        campoSecondoNum.clear();
+        campoTerzoNum.clear();
+        campoPrimaMail.clear();
+        campoSecondaMail.clear();
+        campoTerzaMail.clear();
     }
 
    /**
@@ -154,5 +195,9 @@ public class RubricaViewController implements Initializable {
     */
     @FXML
     private void rimuoviContatto(ActionEvent event) {
+        Contatto selezionato= tabellaContatti.getSelectionModel().getSelectedItem();
+        if(selezionato!=null){
+            gestore.rimuovi(selezionato);
+        }
     }
 }
