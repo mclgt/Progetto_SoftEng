@@ -2,10 +2,13 @@ package it.unisa.diem.softeng.Main;
 
 import it.unisa.diem.softeng.Main.*;
 import it.unisa.diem.softeng.contatti.Contatto;
+import it.unisa.diem.softeng.contatti.GestoreContatti;
 import it.unisa.diem.softeng.contatti.InsiemeContatti;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -68,6 +71,7 @@ public class RubricaViewController implements Initializable {
     @FXML
     private TableColumn<Contatto, String[]> colonnaEmail;
     
+    GestoreContatti gestore;
     
    /**
      * Inizializza la classe del controller
@@ -75,6 +79,10 @@ public class RubricaViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        gestore= new InsiemeContatti();
+        tabellaContatti.setItems((ObservableList<Contatto>) gestore);
+        colonnaNome.setCellValueFactory(c->{ return new SimpleStringProperty(c.getValue().getNome());});
+        colonnaCognome.setCellValueFactory(c->{ return new SimpleStringProperty(c.getValue().getCognome());});
     }    
 
   /**
