@@ -4,9 +4,18 @@
  */
 package it.unisa.diem.softeng.contatti;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.TreeSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -23,7 +32,7 @@ import javafx.collections.ObservableList;
  * @date data
  * 
  */
-public class InsiemeContatti implements GestoreContatti {
+public class InsiemeContatti implements GestoreContatti, Serializable {
     private ObservableList<Contatto> contatti= FXCollections.observableArrayList(); 
 
 
@@ -36,7 +45,7 @@ public class InsiemeContatti implements GestoreContatti {
     */
     @Override
     public void aggiungi(Contatto contact){
-        
+        contatti.add(contact);
     }
 
   /**
@@ -48,7 +57,7 @@ public class InsiemeContatti implements GestoreContatti {
     */
     @Override
     public void rimuovi(Contatto contact){
-        
+        contatti.remove(contact);
     }
     
   /**
@@ -63,7 +72,10 @@ public class InsiemeContatti implements GestoreContatti {
     */
      @Override
     public void modifica(Contatto c, String newName, String newSurname, String[] newNumeri, String[] newMail ){
-        
+        c.setNome(newName);
+        c.setCognome(newSurname);
+        c.setNumero(new NumeroTelefonico(newNumeri[0],newNumeri[1],newNumeri[2]));
+        c.setEmail(new Email(newMail[0],newMail[1],newMail[2]));
     }
     
   /**
@@ -76,7 +88,12 @@ public class InsiemeContatti implements GestoreContatti {
     */
     @Override
     public ObservableList<Contatto> cerca(String text ){
-        return null;
+       ObservableList<Contatto> risultato= FXCollections.observableArrayList();
+       for(Contatto c:this.contatti){
+           if(c.getNome().startsWith(text) || c.getCognome().startsWith(text))
+               risultato.add(c);
+       }
+       return risultato;
     }
 
   /**
@@ -90,7 +107,13 @@ public class InsiemeContatti implements GestoreContatti {
     
     @Override
     public void scriviCSV(String filename)throws IOException{
-        
+        try(ObjectOutputStream oos=new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(filename+".csv")))){
+            for(Contatto c:this.contatti){
+                oos.writeObject(c);
+            }
+            oos.flush();
+            oos.close();
+        }
     }
     
   /**
@@ -104,6 +127,13 @@ public class InsiemeContatti implements GestoreContatti {
     */
     @Override
     public ObservableList<Contatto> leggi(String filename)throws IOException{
-        return null;
+        ObservableList<Contatto> importato= FXCollections.observableArrayList();
+        try(ObjectInputStream ois=new ObjectInputStream(new BufferedInputStream(new FileInputStream(filename+".csv")))){
+           importato.add((Contatto)ois.readObject());
+           ois.close();
+        } catch (ClassNotFoundException ex) {
+           return null;
+        }
+        return importato;
     }
 }

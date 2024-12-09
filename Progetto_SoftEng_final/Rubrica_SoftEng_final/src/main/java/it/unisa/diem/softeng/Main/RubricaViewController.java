@@ -2,6 +2,7 @@ package it.unisa.diem.softeng.Main;
 
 import it.unisa.diem.softeng.Main.*;
 import it.unisa.diem.softeng.contatti.Contatto;
+import it.unisa.diem.softeng.contatti.InsiemeContatti;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -15,7 +16,8 @@ import javafx.scene.control.TextField;
 
 /**
  * @file RubricaViewController
- * @brief Permette di eseguire le azioni relative ad un contatto o alla rubrica , collegate ai vari elementi interattivi inseriti nell'interfaccia
+ * @brief Permette di eseguire le azioni relative ad un contatto o alla rubrica , collegate ai vari elementi interattivi inseriti 
+ * nell'interfaccia
  * 
  * @author Autore
  * @date data
@@ -127,6 +129,7 @@ public class RubricaViewController implements Initializable {
     */
     @FXML
     private void modificaContatto(ActionEvent event) {
+        
     }
     
   /**
