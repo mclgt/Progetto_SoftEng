@@ -44,7 +44,7 @@ public class NumeroTelefonico {
     
     @Override
     public String toString(){
-        return this.getNumero1()+","+this.getNumero2()+","+this.getNumero3();
+        return this.getNumero1()+"\n"+this.getNumero2()+"\n"+this.getNumero3();
     }
     
 }

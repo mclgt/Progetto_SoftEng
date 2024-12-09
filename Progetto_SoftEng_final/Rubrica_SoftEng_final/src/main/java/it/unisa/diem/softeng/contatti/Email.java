@@ -36,6 +36,6 @@ public class Email {
     
      @Override
     public String toString(){
-        return this.email[0]+","+this.email[1]+","+this.email[2];
+        return this.email[0]+"\n"+this.email[1]+"\n"+this.email[2];
     }
 }
