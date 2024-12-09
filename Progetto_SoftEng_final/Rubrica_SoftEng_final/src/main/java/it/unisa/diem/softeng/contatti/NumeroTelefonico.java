@@ -31,4 +31,15 @@ public class NumeroTelefonico {
        this.numeri[1]=numero2;
        this.numeri[2]=numero3;
     }
+
+    public String getNumero1(){
+        return this.numeri[0];
+    }
+    public String getNumero2(){
+        return this.numeri[1];
+    }
+    public String getNumero3(){
+        return this.numeri[2];
+    }
+    
 }
