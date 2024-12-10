@@ -77,8 +77,12 @@ public class InsiemeContatti implements GestoreContatti {
     public void modifica(Contatto c, String newName, String newSurname, String[] newNumeri, String[] newMail ){
         c.setNome(newName);
         c.setCognome(newSurname);
-        c.setNumero(new NumeroTelefonico(newNumeri[0],newNumeri[1],newNumeri[2]));
-        c.setEmail(new Email(newMail[0],newMail[1],newMail[2]));
+        c.setNumero1(newNumeri[0]);
+        c.setNumero2(newNumeri[1]);
+        c.setNumero3(newNumeri[2]);
+        c.setEmail1(newMail[0]);
+        c.setEmail2(newMail[1]);
+        c.setEmail3(newMail[2]);
     }
     
   /**

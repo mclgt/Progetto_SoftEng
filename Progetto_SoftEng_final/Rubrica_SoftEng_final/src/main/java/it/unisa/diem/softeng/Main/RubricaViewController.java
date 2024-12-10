@@ -108,29 +108,37 @@ public class RubricaViewController implements Initializable {
         pulsanteModifica.setDisable(true);
         pulsanteRimuovi.setDisable(true);
         
-        BooleanBinding campiVuoti= Bindings.isEmpty(campoNome.textProperty()).and(campoCognome.textProperty().isEmpty());
+        BooleanBinding campiNonVuoti= Bindings.createBooleanBinding(()-> 
+                !campoNome.getText().trim().isEmpty() || !campoCognome.getText().trim().isEmpty(), campoNome.textProperty(),campoCognome.textProperty());
         BooleanBinding contattoSelezionato= tabellaContatti.getSelectionModel().selectedItemProperty().isNull();
-        pulsanteAggiungi.disableProperty().bind(campiVuoti);
+        pulsanteAggiungi.disableProperty().bind(campiNonVuoti.not());
         pulsanteRimuovi.disableProperty().bind(contattoSelezionato);
-        //pulsanteModifica.disableProperty().bind(campiVuoti.or(contattoSelezionato));
+        pulsanteModifica.disableProperty().bind(campiNonVuoti.not().or(contattoSelezionato));
        
-        colonnaNome.setCellFactory(TextFieldTableCell.forTableColumn());
+       /* colonnaNome.setCellFactory(TextFieldTableCell.forTableColumn());
         colonnaCognome.setCellFactory(TextFieldTableCell.forTableColumn());
         colonnaNum1.setCellFactory(TextFieldTableCell.forTableColumn());
         colonnaNum2.setCellFactory(TextFieldTableCell.forTableColumn());
         colonnaNum3.setCellFactory(TextFieldTableCell.forTableColumn());
-        
         colonnaEmail1.setCellFactory(TextFieldTableCell.forTableColumn());
         colonnaEmail2.setCellFactory(TextFieldTableCell.forTableColumn());
-        colonnaEmail3.setCellFactory(TextFieldTableCell.forTableColumn());
-        BooleanBinding campiCompilati = Bindings.createBooleanBinding(() ->
-            tabellaContatti.getSelectionModel().getSelectedItem() != null &&
-            !tabellaContatti.getSelectionModel().getSelectedItem().getNome().isEmpty() &&
-            !tabellaContatti.getSelectionModel().getSelectedItem().getCognome().isEmpty(),
-            tabellaContatti.getSelectionModel().selectedItemProperty() 
-       );
-      pulsanteModifica.disableProperty().bind(campiCompilati.not()); 
-
+        colonnaEmail3.setCellFactory(TextFieldTableCell.forTableColumn());*/
+       
+        tabellaContatti.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+        if (newValue != null) {
+            // Quando un contatto è selezionato, trasferiamo i suoi dati nei campi
+            Contatto contattoSelezionato1 = newValue;
+            campoNome.setText(contattoSelezionato1.getNome());
+            campoCognome.setText(contattoSelezionato1.getCognome());
+            campoPrimoNum.setText(contattoSelezionato1.getNumero1Contatto());
+            campoSecondoNum.setText(contattoSelezionato1.getNumero2Contatto());
+            campoTerzoNum.setText(contattoSelezionato1.getNumero3Contatto());
+            campoPrimaMail.setText(contattoSelezionato1.getEmail1Contatto());
+            campoSecondaMail.setText(contattoSelezionato1.getEmail2Contatto());
+            campoTerzaMail.setText(contattoSelezionato1.getEmail3Contatto());
+        }
+    });
+        
         
     }
    
@@ -198,7 +206,23 @@ public class RubricaViewController implements Initializable {
     */
     @FXML
     private void modificaContatto(ActionEvent event) {
-        
+        Contatto selezionato= tabellaContatti.getSelectionModel().getSelectedItem();
+        if(selezionato!=null){
+            String[] numeri= new String[]{campoPrimoNum.getText(), campoSecondoNum.getText(),campoTerzoNum.getText()};
+            String[] mail= new String[]{campoPrimaMail.getText(),campoSecondaMail.getText(),campoTerzaMail.getText()};
+            gestore.modifica(selezionato, campoNome.getText(),campoCognome.getText(),numeri,mail);
+            tabellaContatti.refresh();
+            
+        campoNome.clear();
+        campoCognome.clear();
+        campoPrimoNum.clear();
+        campoSecondoNum.clear();
+        campoTerzoNum.clear();
+        campoPrimaMail.clear();
+        campoSecondaMail.clear();
+        campoTerzaMail.clear();
+            
+        }
     }
     
   /**

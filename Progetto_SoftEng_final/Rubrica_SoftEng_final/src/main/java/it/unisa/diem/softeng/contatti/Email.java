@@ -71,4 +71,18 @@ public class Email {
     public String toString(){
         return this.email[0]+"\n"+this.email[1]+"\n"+this.email[2];
     }
+    
+    
+        
+    public void setEmail1(String email1){
+        this.email[0]=email1;
+    }
+    
+    public void setEmail2(String email2){
+        this.email[1]=email2;
+    }
+    
+    public void setEmail3(String email3){
+        this.email[2]=email3;
+    }
 }
