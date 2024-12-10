@@ -99,12 +99,12 @@ public class RubricaViewController implements Initializable {
         tabellaContatti.setItems(gestore.getInsieme());
         colonnaNome.setCellValueFactory(c->{ return new SimpleStringProperty(c.getValue().getNome());});
         colonnaCognome.setCellValueFactory(c->{ return new SimpleStringProperty(c.getValue().getCognome());});
-        colonnaNum1.setCellValueFactory(c->{return new SimpleStringProperty(c.getValue().getNumeriTelefoniciString());});
-        colonnaNum2.setCellValueFactory(c->{return new SimpleStringProperty(c.getValue().getNumeriTelefoniciString());});
-        colonnaNum3.setCellValueFactory(c->{return new SimpleStringProperty(c.getValue().getNumeriTelefoniciString());});
-        colonnaEmail1.setCellValueFactory(c->{return new SimpleStringProperty(c.getValue().getEmailString());});
-        colonnaEmail2.setCellValueFactory(c->{return new SimpleStringProperty(c.getValue().getEmailString());});
-        colonnaEmail3.setCellValueFactory(c->{return new SimpleStringProperty(c.getValue().getEmailString());});
+        colonnaNum1.setCellValueFactory(c->{return new SimpleStringProperty(c.getValue().getNumero1Contatto());});
+        colonnaNum2.setCellValueFactory(c->{return new SimpleStringProperty(c.getValue().getNumero2Contatto());});
+        colonnaNum3.setCellValueFactory(c->{return new SimpleStringProperty(c.getValue().getNumero3Contatto());});
+        colonnaEmail1.setCellValueFactory(c->{return new SimpleStringProperty(c.getValue().getEmail1Contatto());});
+        colonnaEmail2.setCellValueFactory(c->{return new SimpleStringProperty(c.getValue().getEmail2Contatto());});
+        colonnaEmail3.setCellValueFactory(c->{return new SimpleStringProperty(c.getValue().getEmail3Contatto());});
         pulsanteModifica.setDisable(true);
         pulsanteRimuovi.setDisable(true);
         
