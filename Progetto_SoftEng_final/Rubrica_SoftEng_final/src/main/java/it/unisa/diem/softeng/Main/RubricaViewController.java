@@ -7,6 +7,8 @@ import it.unisa.diem.softeng.contatti.InsiemeContatti;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.BooleanBinding;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -88,38 +90,13 @@ public class RubricaViewController implements Initializable {
         colonnaEmail.setCellValueFactory(c->{return new SimpleStringProperty(c.getValue().getEmailString());});
         pulsanteModifica.setDisable(true);
         pulsanteRimuovi.setDisable(true);
-        pulsanteAggiungi.setDisable(true);
         
-        campoNome.textProperty().addListener((osservabile, vecchioValore,nuovoValore)->{
-          abilitaPulsanteAggiungi();
-        });
-        campoCognome.textProperty().addListener((osservabile, vecchioValore,nuovoValore)->{
-           abilitaPulsanteAggiungi();
-        });
-        
-        tabellaContatti.getSelectionModel().selectedItemProperty().addListener((osservabile, vecchiaSelezione,nuovaSelezione)->{
-            if(nuovaSelezione!=null){
-                pulsanteRimuovi.setDisable(false);
-            }
-            else{
-                pulsanteRimuovi.setDisable(true);
-            }
-        });
+        BooleanBinding empty= Bindings.isEmpty(campoNome.textProperty()).and(campoCognome.textProperty().isEmpty());
+        pulsanteAggiungi.disableProperty().bind(empty);
+        pulsanteRimuovi.disableProperty().bind(tabellaContatti.getSelectionModel().selectedItemProperty().isNull());
     }
    
-  /**
-    * @brief Se almeno uno dei campi relativi al Nome o al Cognome  è pieno abilita il pulsante, altrimenti no
-    * @post il pulsante verrà abilitato/disabilato
-    *  
-    */
-    private void abilitaPulsanteAggiungi(){
-        if(!campoNome.getText().trim().isEmpty()||!campoCognome.getText().trim().isEmpty()){
-            pulsanteAggiungi.setDisable(false);
-        }
-        else{
-           pulsanteAggiungi.setDisable(true);    
-        }
-    }
+ 
   /**
     * @brief Attraverso l'attivazione dell'evento corrispondente all'azione 'cercaContatto' è possibile richiamare il metodo cerca presente nella classe InsiemeContatti
     * @pre è stata inserita nel campo di testo una sottostringa non nulla
