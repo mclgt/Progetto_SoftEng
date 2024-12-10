@@ -33,6 +33,15 @@ public class Email {
         email[2]=email3;
     }
     
+    public String getEmail1(){
+        return this.email[0];
+    }
+    public String getEmail2(){
+        return this.email[1];
+    }
+    public String getEmail3() {
+        return this.email[2];
+    }
     
      @Override
     public String toString(){
