@@ -93,8 +93,16 @@ public class Contatto {
     * @param numero[][in]
     * 
     */
-    public void setNumero(NumeroTelefonico numero) {
-     this.numero=numero;
+    public void setNumero1(String numero) {
+     this.numero.setNumero1(numero);
+    }
+    
+    public void setNumero2(String numero) {
+     this.numero.setNumero2(numero);
+    }
+       
+    public void setNumero3(String numero) {
+     this.numero.setNumero3(numero);
     }
 
   /**
@@ -104,8 +112,16 @@ public class Contatto {
     * @param email[][in]
     * 
     */
-    public void setEmail(Email email) {
-     this.email=email;
+    public void setEmail1(String email) {
+     this.email.setEmail1(email);
+    }
+    
+   public void setEmail2(String email) {
+     this.email.setEmail2(email);
+    }
+     
+    public void setEmail3(String email) {
+     this.email.setEmail3(email);
     }
       /**
     * @brief Permette di restiruire il numero in posizione 0 del vettore
