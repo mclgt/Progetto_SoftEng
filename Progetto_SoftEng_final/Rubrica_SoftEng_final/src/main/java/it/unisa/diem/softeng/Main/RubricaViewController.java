@@ -21,6 +21,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 
 /**
  * @file RubricaViewController
@@ -71,11 +72,21 @@ public class RubricaViewController implements Initializable {
     private TableColumn<Contatto, String> colonnaCognome;
     @FXML
     private TableColumn<Contatto, String> colonnaNome;
+  
     @FXML
-    private TableColumn<Contatto, String> colonnaNum;
+    private TableColumn<Contatto, String> colonnaNum1;
     @FXML
-    private TableColumn<Contatto, String> colonnaEmail;
+    private TableColumn<Contatto, String> colonnaNum2;
+    @FXML
+    private TableColumn<Contatto, String> colonnaNum3;
+    @FXML
+    private TableColumn<Contatto, String> colonnaEmail1;
+    @FXML
+    private TableColumn<Contatto, String> colonnaEmail2;
+    @FXML
+    private TableColumn<Contatto, String> colonnaEmail3;
     
+      
     GestoreContatti gestore;
     
    /**
@@ -88,8 +99,12 @@ public class RubricaViewController implements Initializable {
         tabellaContatti.setItems(gestore.getInsieme());
         colonnaNome.setCellValueFactory(c->{ return new SimpleStringProperty(c.getValue().getNome());});
         colonnaCognome.setCellValueFactory(c->{ return new SimpleStringProperty(c.getValue().getCognome());});
-        colonnaNum.setCellValueFactory(c->{return new SimpleStringProperty(c.getValue().getNumeriTelefoniciString());});
-        colonnaEmail.setCellValueFactory(c->{return new SimpleStringProperty(c.getValue().getEmailString());});
+        colonnaNum1.setCellValueFactory(c->{return new SimpleStringProperty(c.getValue().getNumeriTelefoniciString());});
+        colonnaNum2.setCellValueFactory(c->{return new SimpleStringProperty(c.getValue().getNumeriTelefoniciString());});
+        colonnaNum3.setCellValueFactory(c->{return new SimpleStringProperty(c.getValue().getNumeriTelefoniciString());});
+        colonnaEmail1.setCellValueFactory(c->{return new SimpleStringProperty(c.getValue().getEmailString());});
+        colonnaEmail2.setCellValueFactory(c->{return new SimpleStringProperty(c.getValue().getEmailString());});
+        colonnaEmail3.setCellValueFactory(c->{return new SimpleStringProperty(c.getValue().getEmailString());});
         pulsanteModifica.setDisable(true);
         pulsanteRimuovi.setDisable(true);
         
@@ -97,8 +112,25 @@ public class RubricaViewController implements Initializable {
         BooleanBinding contattoSelezionato= tabellaContatti.getSelectionModel().selectedItemProperty().isNull();
         pulsanteAggiungi.disableProperty().bind(campiVuoti);
         pulsanteRimuovi.disableProperty().bind(contattoSelezionato);
-        pulsanteModifica.disableProperty().bind(campiVuoti.or(contattoSelezionato));
+        //pulsanteModifica.disableProperty().bind(campiVuoti.or(contattoSelezionato));
        
+        colonnaNome.setCellFactory(TextFieldTableCell.forTableColumn());
+        colonnaCognome.setCellFactory(TextFieldTableCell.forTableColumn());
+        colonnaNum1.setCellFactory(TextFieldTableCell.forTableColumn());
+        colonnaNum2.setCellFactory(TextFieldTableCell.forTableColumn());
+        colonnaNum3.setCellFactory(TextFieldTableCell.forTableColumn());
+        
+        colonnaEmail1.setCellFactory(TextFieldTableCell.forTableColumn());
+        colonnaEmail2.setCellFactory(TextFieldTableCell.forTableColumn());
+        colonnaEmail3.setCellFactory(TextFieldTableCell.forTableColumn());
+        BooleanBinding campiCompilati = Bindings.createBooleanBinding(() ->
+            tabellaContatti.getSelectionModel().getSelectedItem() != null &&
+            !tabellaContatti.getSelectionModel().getSelectedItem().getNome().isEmpty() &&
+            !tabellaContatti.getSelectionModel().getSelectedItem().getCognome().isEmpty(),
+            tabellaContatti.getSelectionModel().selectedItemProperty() 
+       );
+      pulsanteModifica.disableProperty().bind(campiCompilati.not()); 
+
         
     }
    
