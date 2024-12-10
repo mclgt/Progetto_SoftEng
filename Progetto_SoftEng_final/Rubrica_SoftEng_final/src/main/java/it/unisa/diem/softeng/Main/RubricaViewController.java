@@ -9,7 +9,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
+import javafx.beans.property.Property;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -91,9 +93,13 @@ public class RubricaViewController implements Initializable {
         pulsanteModifica.setDisable(true);
         pulsanteRimuovi.setDisable(true);
         
-        BooleanBinding empty= Bindings.isEmpty(campoNome.textProperty()).and(campoCognome.textProperty().isEmpty());
-        pulsanteAggiungi.disableProperty().bind(empty);
-        pulsanteRimuovi.disableProperty().bind(tabellaContatti.getSelectionModel().selectedItemProperty().isNull());
+        BooleanBinding campiVuoti= Bindings.isEmpty(campoNome.textProperty()).and(campoCognome.textProperty().isEmpty());
+        BooleanBinding contattoSelezionato= tabellaContatti.getSelectionModel().selectedItemProperty().isNull();
+        pulsanteAggiungi.disableProperty().bind(campiVuoti);
+        pulsanteRimuovi.disableProperty().bind(contattoSelezionato);
+        pulsanteModifica.disableProperty().bind(campiVuoti.or(contattoSelezionato));
+       
+        
     }
    
  
