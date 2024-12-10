@@ -137,5 +137,36 @@ public class Contatto {
     public String getNumero3Contatto(){
         return this.numero.getNumero3();
     }
-
+     /**
+    * @brief Permette di restiruire l'email in posizione 0 del vettore
+    * @pre è stato istanziato un oggetto email
+    * @param email1[out] 
+    * @return Stringa rappresentante l'email in posizione 0
+    * 
+    */
+    public String getEmail1Contatto(){
+        return this.email.getEmail1();
+    }
+    /**
+    * @brief Permette di restiruire l'email in posizione 1 del vettore
+    * @pre è stato istanziato un oggetto email
+    * @param email2[out] 
+    * @return Stringa rappresentante l'email in posizione 1
+    * 
+    */
+    public String getEmail2Contatto(){
+        return this.email.getEmail2();
+    }
+    
+    /**
+    * @brief Permette di restiruire l'email in posizione 2 del vettore
+    * @pre è stato istanziato un oggetto email
+    * @param email3[out] 
+    * @return Stringa rappresentante l'email in posizione 2
+    * 
+    */
+    public String getEmail3Contatto() {
+        return this.email.getEmail3();
+    }
+    
 }
