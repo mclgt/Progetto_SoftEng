@@ -63,27 +63,6 @@ public class Contatto {
         return this.cognome;
     }
 
-  /**
-    * @brief Permette di ricavare l'attributo numero da un contatto
-    * @pre Deve esistere un contatto
-    *@param numeri[out]: oggetto che contiene al più tre numeri
-    * 
-    * @return numeri associati al contatto
-    */
-    public NumeroTelefonico getNumero() {
-        return this.numero;
-    }
-
-  /**
-    * @brief Permette di ricavare l'attributo email da un contatto
-    * @pre Deve esistere un contatto
-    * @param email[out]: oggetto che contiene al più tre mail
-    * 
-    * @return email associate al contatto
-    */
-    public Email getEmail() {
-        return this.email;
-    }
     
   /**
     * @brief Permette di modificare l'attributo nome da un contatto
@@ -128,25 +107,35 @@ public class Contatto {
     public void setEmail(Email email) {
      this.email=email;
     }
-    
-    
-  /**
-    * @brief Permette di restituire i numeri mediante un'unica stringa
-    * @pre Deve esistere un contatto
-    * @param stringa[out]
+      /**
+    * @brief Permette di restiruire il numero in posizione 0 del vettore
+    * @pre è stato istanziato un oggetto NumeroTelefonico
+    * @param numeri1[out] 
+    * @return Stringa rappresentante il numero in posizione 0
     * 
     */
-    public String getNumeriTelefoniciString(){
-        return numero.toString();
+    public String getNumero1Contatto(){
+        return this.numero.getNumero1();
     }
-    
-  /**
-    * @brief Permette di restituire le e-mail mediante un'unica stringa
-    * @pre Deve esistere un contatto
-    * @param stringa[out]
+    /**
+    * @brief Permette di restiruire il numero in posizione 1 del vettore
+    * @pre è stato istanziato un oggetto NumeroTelefonico
+    * @param numeri2[out] 
+    * @return Stringa rappresentante il numero in posizione 1
     * 
     */
-     public String getEmailString(){
-        return email.toString();
+    public String getNumero2Contatto(){
+        return this.numero.getNumero2();
     }
+    /**
+    * @brief Permette di restiruire il numero posizione 2 del vettore
+    * @pre è stato istanziato un oggetto NumeroTelefonico
+    * @param numeri3[out] 
+    * @return Stringa rappresentante il numero  in posizione 2
+    * 
+    */
+    public String getNumero3Contatto(){
+        return this.numero.getNumero3();
+    }
+
 }

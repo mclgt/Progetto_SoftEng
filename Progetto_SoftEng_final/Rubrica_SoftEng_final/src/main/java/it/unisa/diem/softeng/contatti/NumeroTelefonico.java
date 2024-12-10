@@ -32,12 +32,33 @@ public class NumeroTelefonico {
        this.numeri[2]=numero3;
     }
 
+    /**
+    * @brief Permette di restiruire i numeri in posizione 0 del vettore
+    * @pre è stato istanziato un oggetto NumeroTelefonico
+    * @param numeri1[out] 
+    * @return Stringa rappresentante il numero in posizione 0
+    * 
+    */
     public String getNumero1(){
         return this.numeri[0];
     }
+    /**
+    * @brief Permette di restiruire un numero in posizione 1 del vettore
+    * @pre è stato istanziato un oggetto NumeroTelefonico
+    * @param numeri2[out] 
+    * @return Stringa rappresentante il numero in posizione 1
+    * 
+    */
     public String getNumero2(){
         return this.numeri[1];
     }
+    /**
+    * @brief Permette di restiruire  in posizione 2 del vettore
+    * @pre è stato istanziato un oggetto NumeroTelefonico
+    * @param numeri3[out] 
+    * @return Stringa rappresentante il numero  in posizione 2
+    * 
+    */
     public String getNumero3(){
         return this.numeri[2];
     }
