@@ -4,9 +4,18 @@
  */
 package it.unisa.diem.softeng.contatti;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.TreeSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -14,7 +23,8 @@ import javafx.collections.ObservableList;
 /**
  * @file InsiemeContatti.java
  * @brief Permette di implementare una collezione di contatti mediante un ArrayList osservabile.
- * Per maggiori informazioni sul contatto consultare il file Contatto.java
+ * Per maggiori informazioni sul contatto consultare il file Contatto.java. Utilizza e riscrive i metodi 
+ * dell'interfaccia GestoreContatti.java
  * @invariant Se la struttura ArrayList contiene dei contatti, questi dovranno essere mostrati sempre in ordine alfabetico (per cognome, se due cognomi sono uguali, 
  * verranno confrontati i nomi).
  * 
@@ -23,8 +33,11 @@ import javafx.collections.ObservableList;
  * 
  */
 public class InsiemeContatti implements GestoreContatti {
-    private ObservableList<Contatto> contatti= FXCollections.observableArrayList(); 
-
+    private ObservableList<Contatto> contatti; 
+    
+    public InsiemeContatti(){
+        contatti=FXCollections.observableArrayList();
+    }
 
   /**
     * @brief Permette di aggiungere un contatto alla struttura (ArrayList)
@@ -34,8 +47,8 @@ public class InsiemeContatti implements GestoreContatti {
     *  
     */
     @Override
-    public void aggiungi(Contatto contact, String[] numeri, String[] email){
-        
+    public void aggiungi(Contatto contact){
+        contatti.add(contact);
     }
 
   /**
@@ -46,8 +59,8 @@ public class InsiemeContatti implements GestoreContatti {
     * 
     */
     @Override
-    public void rimuovi(Contatto contact, String[] numeri, String[] email){
-        
+    public void rimuovi(Contatto contact){
+        contatti.remove(contact);
     }
     
   /**
@@ -62,7 +75,14 @@ public class InsiemeContatti implements GestoreContatti {
     */
      @Override
     public void modifica(Contatto c, String newName, String newSurname, String[] newNumeri, String[] newMail ){
-        
+        c.setNome(newName);
+        c.setCognome(newSurname);
+        c.setNumero1(newNumeri[0]);
+        c.setNumero2(newNumeri[1]);
+        c.setNumero3(newNumeri[2]);
+        c.setEmail1(newMail[0]);
+        c.setEmail2(newMail[1]);
+        c.setEmail3(newMail[2]);
     }
     
   /**
@@ -75,7 +95,12 @@ public class InsiemeContatti implements GestoreContatti {
     */
     @Override
     public ObservableList<Contatto> cerca(String text ){
-        return null;
+       ObservableList<Contatto> risultato= FXCollections.observableArrayList();
+       for(Contatto c:this.contatti){
+           if(c.getNome().startsWith(text) || c.getCognome().startsWith(text))
+               risultato.add(c);
+       }
+       return risultato;
     }
 
   /**
@@ -89,7 +114,13 @@ public class InsiemeContatti implements GestoreContatti {
     
     @Override
     public void scriviCSV(String filename)throws IOException{
-        
+        try(ObjectOutputStream oos=new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(filename+".csv")))){
+            for(Contatto c:this.contatti){
+                oos.writeObject(c);
+            }
+            oos.flush();
+            oos.close();
+        }
     }
     
   /**
@@ -103,6 +134,18 @@ public class InsiemeContatti implements GestoreContatti {
     */
     @Override
     public ObservableList<Contatto> leggi(String filename)throws IOException{
-        return null;
+        ObservableList<Contatto> importato= FXCollections.observableArrayList();
+        try(ObjectInputStream ois=new ObjectInputStream(new BufferedInputStream(new FileInputStream(filename+".csv")))){
+           importato.add((Contatto)ois.readObject());
+           ois.close();
+        } catch (ClassNotFoundException ex) {
+           return null;
+        }
+        return importato;
+    }
+
+    @Override
+    public ObservableList<Contatto> getInsieme() {
+        return this.contatti;
     }
 }

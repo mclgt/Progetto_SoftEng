@@ -32,4 +32,57 @@ public class Email {
         email[1]=email2;
         email[2]=email3;
     }
+    
+    
+    /**
+    * @brief Permette di restiruire l'email in posizione 0 del vettore
+    * @pre è stato istanziato un oggetto email
+    * @param email1[out] 
+    * @return Stringa rappresentante l'email in posizione 0
+    * 
+    */
+    public String getEmail1(){
+        return this.email[0];
+        
+    }
+    /**
+    * @brief Permette di restiruire l'email in posizione 1 del vettore
+    * @pre è stato istanziato un oggetto email
+    * @param email2[out] 
+    * @return Stringa rappresentante l'email in posizione 1
+    * 
+    */
+    public String getEmail2(){
+        return this.email[1];
+    }
+    
+    /**
+    * @brief Permette di restiruire l'email in posizione 2 del vettore
+    * @pre è stato istanziato un oggetto email
+    * @param email3[out] 
+    * @return Stringa rappresentante l'email in posizione 2
+    * 
+    */
+    public String getEmail3() {
+        return this.email[2];
+    }
+    
+     @Override
+    public String toString(){
+        return this.email[0]+"\n"+this.email[1]+"\n"+this.email[2];
+    }
+    
+    
+        
+    public void setEmail1(String email1){
+        this.email[0]=email1;
+    }
+    
+    public void setEmail2(String email2){
+        this.email[1]=email2;
+    }
+    
+    public void setEmail3(String email3){
+        this.email[2]=email3;
+    }
 }
