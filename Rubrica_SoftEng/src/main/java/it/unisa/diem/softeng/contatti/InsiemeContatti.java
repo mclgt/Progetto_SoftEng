@@ -6,9 +6,11 @@ package it.unisa.diem.softeng.contatti;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -16,6 +18,7 @@ import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.TreeSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -117,7 +120,7 @@ public class InsiemeContatti implements GestoreContatti {
     
     @Override
     public void scriviCSV(String filename)throws IOException{
-         try(PrintWriter pw=new PrintWriter(new BufferedWriter(new FileWriter(filename)))){
+         try(PrintWriter pw=new PrintWriter(new BufferedWriter(new FileWriter(filename+".csv")))){
             pw.println("COGNOME;NOME;NUMERO1;NUMERO2;NUMERO3;E-MAIL1;E-MAIL2;E-MAIL3");
             for(Contatto c:this.contatti){
                 pw.print(c.getCognome());
@@ -136,6 +139,7 @@ public class InsiemeContatti implements GestoreContatti {
                 pw.append(";");
                 pw.print(c.getEmail3Contatto());
                 pw.append(";");
+                pw.println();
             }
         }
 
@@ -153,11 +157,17 @@ public class InsiemeContatti implements GestoreContatti {
     @Override
     public ObservableList<Contatto> leggi(String filename)throws IOException{
         ObservableList<Contatto> importato= FXCollections.observableArrayList();
-        try(ObjectInputStream ois=new ObjectInputStream(new BufferedInputStream(new FileInputStream(filename+".csv")))){
-           importato.add((Contatto)ois.readObject());
-           ois.close();
-        } catch (ClassNotFoundException ex) {
-           return null;
+        try(Scanner s=new Scanner(new BufferedReader(new FileReader(filename+".csv")))){
+            if(s.nextLine()==null)
+                return importato;
+            s.useDelimiter("[;\n]");
+            while(s.hasNext()){
+                String cognome=s.next();
+                String nome=s.next();
+                String num[]=new String[]{s.next(),s.next(),s.next()};
+                String em[]=new String[]{s.next(),s.next(),s.next()};
+                importato.add(new Contatto(nome,cognome,num,em));
+            }
         }
         return importato;
     }
