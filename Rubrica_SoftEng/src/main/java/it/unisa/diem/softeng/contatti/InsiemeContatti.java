@@ -149,6 +149,7 @@ public class InsiemeContatti implements GestoreContatti {
     */
     @Override
     public ObservableList<Contatto> leggi(String filename){
+        String nomi=filename.split("[.]")[0];
         ObservableList<Contatto> importato= FXCollections.observableArrayList();
         try(Scanner s=new Scanner(new BufferedReader(new FileReader(filename)))){
             if(s.nextLine()==null)
@@ -158,8 +159,14 @@ public class InsiemeContatti implements GestoreContatti {
             while(s.hasNext()){
                 String cognome=s.next();
                 String nome=s.next();
-                String num[]=new String[]{s.next(),s.next(),s.next()};
-                String em[]=new String[]{s.next(),s.next(),s.next()};
+                String num[]=new String[3];
+                num[0]=s.next();
+                num[1]=s.next();
+                num[2]=s.next();
+                String em[]=new String[3];
+                em[0]=s.next();
+                em[1]=s.next();
+                em[2]=s.next();
                 importato.add(new Contatto(nome,cognome,num,em));
             }
         }
