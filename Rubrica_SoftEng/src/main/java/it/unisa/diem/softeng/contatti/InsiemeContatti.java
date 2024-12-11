@@ -149,7 +149,7 @@ public class InsiemeContatti implements GestoreContatti {
     @Override
     public ObservableList<Contatto> leggi(String filename){
         String nomi=filename.split("[.]")[0];
-        ObservableList<Contatto> importato= FXCollections.observableArrayList();
+        //ObservableList<Contatto> importato= FXCollections.observableArrayList();
         try(Scanner s=new Scanner(new BufferedReader(new FileReader(filename)))){
             s.nextLine();
             s.useDelimiter("[;\n]");
@@ -165,14 +165,16 @@ public class InsiemeContatti implements GestoreContatti {
                 em[0]=s.next();
                 em[1]=s.next();
                 em[2]=s.next();
-                if(!nome.isEmpty() || !cognome.isEmpty())
-                    importato.add(new Contatto(nome,cognome,num,em));
+                if(!nome.isEmpty() || !cognome.isEmpty()){
+                    contatti.add(new Contatto(nome,cognome,num,em));
+                    this.sort();
+                }
             }
         }
         catch(Exception ex){
             
         }
-    return importato;
+    return contatti;
 }
 
     @Override

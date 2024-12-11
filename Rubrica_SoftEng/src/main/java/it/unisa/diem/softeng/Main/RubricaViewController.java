@@ -120,12 +120,12 @@ public class RubricaViewController implements Initializable {
         BooleanBinding campiNonVuoti= Bindings.createBooleanBinding(()-> 
                 !campoNome.getText().trim().isEmpty() || !campoCognome.getText().trim().isEmpty(), campoNome.textProperty(),campoCognome.textProperty());
         BooleanBinding contattoSelezionato= tabellaContatti.getSelectionModel().selectedItemProperty().isNull();
-        pulsanteAggiungi.disableProperty().bind(campiNonVuoti.not());
+        pulsanteAggiungi.disableProperty().bind(campiNonVuoti.not().or(contattoSelezionato.not()));
         pulsanteRimuovi.disableProperty().bind(contattoSelezionato);
         pulsanteModifica.disableProperty().bind(campiNonVuoti.not().or(contattoSelezionato));
        
         tabellaContatti.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-        if (newValue != null) {
+        if (newValue!= null) {
             Contatto contattoSelezionato1 = newValue;
             campoNome.setText(contattoSelezionato1.getNome());
             campoCognome.setText(contattoSelezionato1.getCognome());
@@ -176,15 +176,15 @@ public class RubricaViewController implements Initializable {
         fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("File CSV", "*.csv"));
         File file=fc.showOpenDialog(null);
         if(file!=null){
-        ObservableList<Contatto> importati = tabellaContatti.getItems();
-        importati=gestore.leggi(file.getAbsolutePath());//=gestore.leggi(file.getAbsolutePath());
+       // ObservableList<Contatto> importati = tabellaContatti.getItems();
+        //importati=;
         //gestore.setInsieme(importati);
            /* for(Contatto c: importati){
                 System.out.println(c.toString());
                 gestore.aggiungi(c);
             }*/
-          // tabellaContatti.refresh();
-       tabellaContatti.setItems(importati);
+        // tabellaContatti.refresh();
+        tabellaContatti.setItems(gestore.leggi(file.getAbsolutePath()));
         }
         else{
             System.out.println("Nessun file selezionato");
@@ -269,7 +269,7 @@ public class RubricaViewController implements Initializable {
     */
     @FXML
     private void rimuoviContatto(ActionEvent event) {
-             Contatto selezionato= tabellaContatti.getSelectionModel().getSelectedItem();
+        Contatto selezionato= tabellaContatti.getSelectionModel().getSelectedItem();
         if(selezionato!=null){
             gestore.rimuovi(selezionato);
         }
