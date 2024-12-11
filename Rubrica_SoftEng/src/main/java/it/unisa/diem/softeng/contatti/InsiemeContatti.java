@@ -185,4 +185,9 @@ public class InsiemeContatti implements GestoreContatti {
     public void sort() {
         contatti.sort(null);
     }
+
+    @Override
+    public void reset() {
+        this.getInsieme().clear();
+    }
 }

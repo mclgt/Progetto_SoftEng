@@ -29,16 +29,9 @@
       </ToolBar>
       <ToolBar layoutY="55.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="46.0" prefWidth="1324.0">
         <items>
-            <Button fx:id="pulsanteImporta" mnemonicParsing="false" onAction="#importaContatto" text="Importa da..." />
-            <TextField fx:id="campoImporta" promptText="Nome del file da importare">
-               <font>
-                  <Font name="System Italic" size="16.0" />
-               </font>
-               <effect>
-                  <Blend />
-               </effect>
-            </TextField>
-            <Button fx:id="pulsanteEsporta" mnemonicParsing="false" onAction="#esportaContatto" prefHeight="31.0" prefWidth="110.0" text="Esporta contatti" translateX="830.0" />
+            <Button fx:id="pulsanteImporta" mnemonicParsing="false" onAction="#importaContatto" prefHeight="30.0" prefWidth="89.0" text="Importa da..." />
+            <Button fx:id="pulsanteEsporta" mnemonicParsing="false" onAction="#esportaContatto" prefHeight="31.0" prefWidth="110.0" text="Esporta contatti" translateX="20.0" />
+            <Button fx:id="pulsanteReset" mnemonicParsing="false" onAction="#resetRubrica" prefHeight="33.0" prefWidth="117.0" text="Reset rubrica" translateX="980.0" />
         </items>
       </ToolBar>
       <SplitPane dividerPositions="0.21642468239564425" layoutX="5.0" layoutY="110.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="578.0" prefWidth="1324.0">

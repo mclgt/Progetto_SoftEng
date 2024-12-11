@@ -24,6 +24,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 
 
@@ -45,8 +46,6 @@ public class RubricaViewController implements Initializable {
     private Button pulsanteCerca;
     @FXML
     private Button pulsanteImporta;
-    @FXML
-    private TextField campoImporta;
     @FXML
     private Button pulsanteEsporta;
     @FXML
@@ -93,6 +92,10 @@ public class RubricaViewController implements Initializable {
     
       
     GestoreContatti gestore;
+    @FXML
+    private AnchorPane base;
+    @FXML
+    private Button pulsanteReset;
 
     
    /**
@@ -263,6 +266,12 @@ public class RubricaViewController implements Initializable {
             gestore.rimuovi(selezionato);
         }
      }
+
+    @FXML
+    private void resetRubrica(ActionEvent event) {
+        gestore.reset();
+        tabellaContatti.setItems(gestore.getInsieme());
+    }
 }
   
 
