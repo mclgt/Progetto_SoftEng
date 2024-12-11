@@ -4,6 +4,8 @@
  */
 package it.unisa.diem.softeng.contatti;
 
+import java.util.Objects;
+
 /**
     * @file Contatto.java
     * @brief Classe creata per gestire un contatto base. La classe è composta da vari attributi quali: nome(String), cognome(String), 
@@ -15,7 +17,7 @@ package it.unisa.diem.softeng.contatti;
     * 
     */
 
-public class Contatto {
+public class Contatto implements Comparable<Contatto>{
     private String nome;
     private String cognome;
     private NumeroTelefonico numero;
@@ -184,5 +186,37 @@ public class Contatto {
     public String getEmail3Contatto() {
         return this.email.getEmail3();
     }
+
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Contatto other = (Contatto) obj;
+        if (!Objects.equals(this.cognome, other.cognome)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int compareTo(Contatto o) {
+        if(o.getCognome().equalsIgnoreCase(this.getCognome())){
+            return this.getNome().compareTo(o.getNome());
+        }
+        return this.getCognome().compareTo(o.getCognome());
+    }
+    
+    
+    
+    
+    
     
 }

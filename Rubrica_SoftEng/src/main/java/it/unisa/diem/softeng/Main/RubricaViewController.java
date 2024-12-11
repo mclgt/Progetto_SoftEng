@@ -102,7 +102,7 @@ public class RubricaViewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         gestore= new InsiemeContatti();
-       tabellaContatti.setItems(gestore.getInsieme());
+        tabellaContatti.setItems(gestore.getInsieme());
         colonnaNome.setCellValueFactory(c->{ return new SimpleStringProperty(c.getValue().getNome());});
         colonnaCognome.setCellValueFactory(c->{ return new SimpleStringProperty(c.getValue().getCognome());});
         colonnaNum1.setCellValueFactory(c->{return new SimpleStringProperty(c.getValue().getNumero1Contatto());});
@@ -152,7 +152,7 @@ public class RubricaViewController implements Initializable {
     @FXML
     private void cercaContatto(ActionEvent event) {
         if(campoCerca.getText().trim().isEmpty()){
-            tabellaContatti.setItems(gestore.getInsieme());
+           tabellaContatti.setItems(gestore.getInsieme());
         }
         else{
             ObservableList<Contatto> trovati=gestore.cerca(campoCerca.getText());
@@ -232,8 +232,10 @@ public class RubricaViewController implements Initializable {
             String[] numeri= new String[]{campoPrimoNum.getText(), campoSecondoNum.getText(),campoTerzoNum.getText()};
             String[] mail= new String[]{campoPrimaMail.getText(),campoSecondaMail.getText(),campoTerzaMail.getText()};
             gestore.modifica(selezionato, campoNome.getText(),campoCognome.getText(),numeri,mail);
-            tabellaContatti.refresh();
-            
+            ObservableList<Contatto> contatti= tabellaContatti.getItems();
+            contatti.remove(selezionato);
+            contatti.add(selezionato);
+            tabellaContatti.refresh();  
         campoNome.clear();
         campoCognome.clear();
         campoPrimoNum.clear();

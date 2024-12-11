@@ -64,6 +64,8 @@ public interface GestoreContatti {
     * @param insieme[out]: collezione usata per contenere gli oggetti (osservabile)
     */
      public ObservableList<Contatto> getInsieme();
-        
+     
+     
+     public void sort(); 
     
 }
