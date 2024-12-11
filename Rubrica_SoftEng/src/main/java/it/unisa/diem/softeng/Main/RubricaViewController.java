@@ -100,7 +100,7 @@ public class RubricaViewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         gestore= new InsiemeContatti();
-       tabellaContatti.setItems(gestore.getInsieme());
+        tabellaContatti.setItems(gestore.getInsieme());
         colonnaNome.setCellValueFactory(c->{ return new SimpleStringProperty(c.getValue().getNome());});
         colonnaCognome.setCellValueFactory(c->{ return new SimpleStringProperty(c.getValue().getCognome());});
         colonnaNum1.setCellValueFactory(c->{return new SimpleStringProperty(c.getValue().getNumero1Contatto());});

@@ -43,7 +43,8 @@ public class InsiemeContatti implements GestoreContatti {
     */
     @Override
     public void aggiungi(Contatto contact){
-        contatti.add(contact);
+       contatti.add(contact);
+       this.sort();
     }
 
   /**
@@ -78,6 +79,8 @@ public class InsiemeContatti implements GestoreContatti {
         c.setEmail1(newMail[0]);
         c.setEmail2(newMail[1]);
         c.setEmail3(newMail[2]);
+        this.sort();
+        
     }
     
   /**
@@ -164,5 +167,10 @@ public class InsiemeContatti implements GestoreContatti {
     @Override
     public ObservableList<Contatto> getInsieme() {
         return this.contatti;
+    }
+
+    @Override
+    public void sort() {
+        contatti.sort(null);
     }
 }
