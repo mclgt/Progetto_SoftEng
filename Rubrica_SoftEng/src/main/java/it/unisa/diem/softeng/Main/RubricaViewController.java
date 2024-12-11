@@ -34,8 +34,8 @@ import javafx.stage.FileChooser;
  * @brief Permette di eseguire le azioni relative ad un contatto o alla rubrica , collegate ai vari elementi interattivi inseriti 
  * nell'interfaccia
  * 
- * @author Autore
- * @date data
+ * @author Gaeta Michela- Beatrice Rebecca
+ * @date 9-12-2024
  */
 
 public class RubricaViewController implements Initializable {
@@ -99,7 +99,7 @@ public class RubricaViewController implements Initializable {
 
     
    /**
-     * Inizializza la classe del controller
+     *@brief  Inizializza la classe del controller, attivando/disattivando i vari pulsanti e creando le relazioni necessarie tra gli elementi grafici 
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -146,10 +146,12 @@ public class RubricaViewController implements Initializable {
  
  
   /**
-    * @brief Attraverso l'attivazione dell'evento corrispondente all'azione 'cercaContatto' è possibile richiamare il metodo cerca presente nella classe InsiemeContatti
-    * @pre è stata inserita nel campo di testo una sottostringa non nulla
-    * @post la TableView mostrerà i risultati della ricerca, verrà richiamato il metodo della classe InsiemeContatti
-    * @param pressOnButton(pulsanteCerca) [in]
+    * @brief Gestisce l'azione di ricerca di un contatto nella lista visualizzata. Quando l'utente attiva l'evento corrispondente all'azione
+    * 'cercaContatto' verrà richiamato il metodo 'cerca' presente nell'interfaccia 'GestoreContatti' per ottenere i risultati della ricerca
+    * @pre L'istanza `gestore` deve essere inizializzata.
+    * @post se il campo di ricerca è vuoto, la TableView mostrerà tutti i contatti; altrimenti, mostrerà i contatti che trovano corrispondenza
+    * con la sottostringa passata come parametro
+    * @param event [in]: evento che attiva l'azione, un click sul pulsanteCerca 
     *  
     */
     @FXML
@@ -164,11 +166,13 @@ public class RubricaViewController implements Initializable {
     }
 
   /**
-    * @brief Attraverso l'attivazione dell'evento corrispondente all'azione 'importaContatto' è possibile richiamare il metodo leggi presente nella classe InsiemeContatti
-    * @pre è stata inserita nel campo di testo una stringa non nulla
-    * @post i valori nella TableView corrispondono con i valori contenuti nel file, verrà richiamato il metodo della classe InsiemeContatti
-    * @param pressOnButton(pulsanteImporta) [in]
-    *  
+    * @brief Gestisce l'importazione di una lista di contatti da un file .csv alla lista visualizzata. Quando l'utente attiva l'evento corrispondente 
+    * all'azione 'importaContatto' verrà richiamato il metodo 'leggi' presente nell'interfaccia 'GestoreContatti' per trasferire i contatti 
+    * dal file .csv alla TableView.
+    * @pre L'istanza `gestore` deve essere inizializzata.
+    * @post i valori nella TableView corrispondono con i valori contenuti nel file, verrà richiamato il metodo dell'interfaccia
+    * @param event [in]: evento che attiva l'azione, un click sul pulsanteImporta 
+    * @throws IOException se si verifica un errore durante la lettura del file
     */
     @FXML
     private void importaContatto(ActionEvent event) throws IOException {
@@ -190,10 +194,13 @@ public class RubricaViewController implements Initializable {
     }
     
   /**
-    * @brief Attraverso l'attivazione dell'evento corrispondente all'azione 'esportaContatto' è possibile richiamare il metodo scriviCSV presente nella classe InsiemeContatti
-    * @post Viene richiamato il metodo nella classe InsiemeContatti
-    * @param pressOnButton(pulsanteEsporta) [in]
-    *  
+    * @brief Gestisce l'esportazione di una lista di contatti dalla lista visualizzata nella TableView ad un file.csv. Quando l'utente attiva l'evento
+    * corrispondente all'azione 'esportaContatto' è possibile richiamare il metodo 'scriviCSV' presente nell'interfaccia 'GestoreContatti' per trasferire i 
+    * contatti dalla TableView al file .csv.
+    * @pre L'istanza `gestore` deve essere inizializzata.
+    * @post i valori nel file .csv selezionato corrispondono a quelli contenuti nella TableView.
+    *  @param event [in]: evento che attiva l'azione, un click sul pulsanteEsporta
+    *  @throws IOException se si verifica un errore durante la scrittura del file
     */
     @FXML
     private void esportaContatto(ActionEvent event) throws IOException {
@@ -206,10 +213,13 @@ public class RubricaViewController implements Initializable {
     }
 
   /**
-    * @brief Attraverso l'attivazione dell'evento corrispondente all'azione 'aggiungiContatto' è possibile richiamare il metodo aggiungi presente nella classe InsiemeContatti
-    * @pre almeno uno dei campi relativo al nome o al cognome risulta essere riempito
-    * @post nella TableView verrà inserita una riga contenente i valori inseriti nei campi di testo, verrà richiamato il metodo della classe InsiemeContatti
-    * @param pressOnButton(pulsanteAggiungi) [in]
+    * @brief Gestisce l'aggiunta di un contatto alla lista visualizzata nella TableView.Quando l'utente attiva l'evento corrispondente
+    * all'azione 'aggiungiContatto' è possibile richiamare il metodo 'aggiungi' presente nell'interfaccia 'GestoreContatti' per aggiungere un contatto
+    * alla lista.
+    * @pre almeno uno dei campi relativo al nome o al cognome risulta essere riempito.
+    * @pre L'istanza `gestore` deve essere inizializzata.
+    * @post nella TableView verrà inserita una riga contenente i valori inseriti nei campi di testo
+    *  @param event [in]: evento che attiva l'azione, un click sul pulsanteAggiungi
     *  
     */
     @FXML
@@ -226,12 +236,14 @@ public class RubricaViewController implements Initializable {
         campoSecondaMail.clear();
         campoTerzaMail.clear();
     }
-
-   /**
-    * @brief Attraverso l'attivazione dell'evento corrispondente all'azione 'modificaContatto' è possibile richiamare il metodo modifica presente nella classe InsiemeContatti
-    * @pre è stato selezionato dalla TableView un contatto
-    * @post la riga corrispondente al contatto sarà coerente con le modifiche passate, verrà richiamato il metodo della classe InsiemeContatti
-    * @param pressOnButton(pulsanteModifica) [in]
+    
+  /**
+    * @brief Gestisce la modifica di un contatto nella lista visualizzata nella TableView.Quando l'utente attiva l'evento corrispondente
+    * all'azione 'modificaContatto' è possibile richiamare il metodo 'modifica' presente nell'interfaccia 'GestoreContatti'
+    * @pre almeno uno dei campi relativo al nome o al cognome risulta essere riempit ed è stato selezionato almeno un contatto dalla tableView. 
+    * @pre L'istanza `gestore` deve essere inizializzata.
+    * @post nella TableView verrà modificata la riga corrispondente al contatto selezionato con i valori inseriti nei campi di testo
+    *  @param event [in]: evento che attiva l'azione, un click sul pulsanteModifica
     *  
     */
     @FXML
@@ -245,24 +257,26 @@ public class RubricaViewController implements Initializable {
             contatti.remove(selezionato);
             contatti.add(selezionato);
             tabellaContatti.refresh();  
-        campoNome.clear();
-        campoCognome.clear();
-        campoPrimoNum.clear();
-        campoSecondoNum.clear();
-        campoTerzoNum.clear();
-        campoPrimaMail.clear();
-        campoSecondaMail.clear();
-        campoTerzaMail.clear();
+            campoNome.clear();
+            campoCognome.clear();
+            campoPrimoNum.clear();
+            campoSecondoNum.clear();
+            campoTerzoNum.clear();
+            campoPrimaMail.clear();
+            campoSecondaMail.clear();
+            campoTerzaMail.clear();
             
         }
     }
     
 
-   /**
-    * @brief Attraverso l'attivazione dell'evento corrispondente all'azione 'rimuoviContatto' è possibile richiamare il metodo rimuovi presente nella classe InsiemeContatti
-    * @pre è stato selezionato dalla TableView un contatto
-    * @post la riga corrispondente al contatto verrà rimossa dalla TableView, verrà richiamato il metodo della classe InsiemeContatti
-    * @param pressOnButton(pulsanteRimuovi) [in]
+  /**
+    * @brief Gestisce la rimozione di un contatto nella lista visualizzata nella TableView. Quando l'utente attiva l'evento corrispondente
+    * all'azione 'rimuoviContatto' è possibile richiamare il metodo 'rimuovi' presente nell'interfaccia 'GestoreContatti'
+    * @pre è stato selezionato almeno un contatto dalla tableView. 
+    * @pre L'istanza `gestore` deve essere inizializzata.
+    * @post nella TableView verrà eliminata la riga corrispondente al contatto selezionato 
+    *  @param event [in]: evento che attiva l'azione, un click sul pulsanteRimuovi
     *  
     */
     @FXML
@@ -273,6 +287,14 @@ public class RubricaViewController implements Initializable {
         }
      }
 
+  /**
+    * @brief Gestisce la rimozione di tutti i contatti presenti nella lista visualizzata nella TableView.Quando l'utente attiva l'evento corrispondente
+    * all'azione 'resetRubrica' è possibile richiamare il metodo 'reset' presente nell'interfaccia 'GestoreContatti' 
+    * @pre L'istanza `gestore` deve essere inizializzata.
+    * @post nella TableView verranno eliminate tutte le righe-la TableView apparirà vuota.
+    *  @param event [in]: evento che attiva l'azione, un click sul pulsanteReset
+    *  
+    */
     @FXML
     private void resetRubrica(ActionEvent event) {
         gestore.reset();
