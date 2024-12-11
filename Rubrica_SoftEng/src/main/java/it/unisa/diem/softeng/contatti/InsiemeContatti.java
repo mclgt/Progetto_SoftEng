@@ -132,7 +132,6 @@ public class InsiemeContatti implements GestoreContatti {
                 pw.print(c.getEmail2Contatto());
                 pw.append(";");
                 pw.print(c.getEmail3Contatto());
-                pw.append(";");
                 pw.println();
             }
         }
@@ -159,8 +158,6 @@ public class InsiemeContatti implements GestoreContatti {
             while(s.hasNext()){
                 String cognome=s.next();
                 String nome=s.next();
-                if(nome==null && cognome==null)
-                    s.nextLine();
                 String num[]=new String[3];
                 num[0]=s.next();
                 num[1]=s.next();

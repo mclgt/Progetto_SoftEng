@@ -197,7 +197,12 @@ public class RubricaViewController implements Initializable {
     */
     @FXML
     private void esportaContatto(ActionEvent event) throws IOException {
-        gestore.scriviCSV("esportato");
+        FileChooser fc=new FileChooser();
+        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("File CSV", "*.csv"));
+        File file=fc.showSaveDialog(null);
+        if(file!=null){
+        gestore.scriviCSV(file.getAbsolutePath());
+        }
     }
 
   /**
