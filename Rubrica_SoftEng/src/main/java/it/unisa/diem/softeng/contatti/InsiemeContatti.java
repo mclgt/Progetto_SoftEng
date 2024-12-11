@@ -166,7 +166,8 @@ public class InsiemeContatti implements GestoreContatti {
                 em[0]=s.next();
                 em[1]=s.next();
                 em[2]=s.next();
-                importato.add(new Contatto(nome,cognome,num,em));
+                if(!nome.isEmpty() || !cognome.isEmpty())
+                    importato.add(new Contatto(nome,cognome,num,em));
             }
         }
         catch(Exception ex){
