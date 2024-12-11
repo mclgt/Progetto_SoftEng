@@ -213,6 +213,11 @@ public class Contatto implements Comparable<Contatto>{
         }
         return this.getCognome().compareTo(o.getCognome());
     }
+
+    @Override
+    public String toString() {
+        return "Contatto{" + "nome=" + nome + ", cognome=" + cognome + ", numero=" + numero + ", email=" + email + '}';
+    }
     
     
     

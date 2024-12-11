@@ -11,6 +11,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Locale;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -152,29 +153,32 @@ public class InsiemeContatti implements GestoreContatti {
         String nomi=filename.split("[.]")[0];
         ObservableList<Contatto> importato= FXCollections.observableArrayList();
         try(Scanner s=new Scanner(new BufferedReader(new FileReader(filename)))){
-            if(s.nextLine()==null)
-                return importato;
             s.useDelimiter("[;\n]");
             s.useLocale(Locale.US);
-            while(s.hasNext()){
-                String cognome=s.next();
-                String nome=s.next();
+            while(s.hasNextLine()){
+                try{
+                String cognome=s.hasNext() ? s.next(): " " ;
+                String nome=s.hasNext() ? s.next(): " " ;
                 String num[]=new String[3];
-                num[0]=s.next();
-                num[1]=s.next();
-                num[2]=s.next();
+                num[0]=s.hasNext() ? s.next(): " " ;
+                num[1]=s.hasNext() ? s.next(): " " ;
+                num[2]=s.hasNext() ? s.next(): " " ;
                 String em[]=new String[3];
-                em[0]=s.next();
-                em[1]=s.next();
-                em[2]=s.next();
+                em[0]=s.hasNext() ? s.next(): " " ;
+                em[1]=s.hasNext() ? s.next(): " " ;
+                em[2]=s.hasNext() ? s.next(): " " ;
                 importato.add(new Contatto(nome,cognome,num,em));
+            }
+            catch(NoSuchElementException ex){
+               s.nextLine();
+            }
             }
         }
         catch(IOException ex){
             
         }
-        return importato;
-    }
+    return importato;
+}
 
     @Override
     public ObservableList<Contatto> getInsieme() {

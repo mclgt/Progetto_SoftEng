@@ -173,11 +173,12 @@ public class RubricaViewController implements Initializable {
         fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("File CSV", "*.csv"));
         File file=fc.showOpenDialog(null);
         if(file!=null){
-        ObservableList<Contatto> importati=FXCollections.observableArrayList();
-        importati=gestore.leggi(file.getAbsolutePath());
-        for(Contatto c:importati){
-            gestore.aggiungi(c);
-        }
+        ObservableList<Contatto> importati = FXCollections.observableArrayList();
+        importati.addAll(gestore.leggi(file.getAbsolutePath()));//=gestore.leggi(file.getAbsolutePath());
+            for(Contatto c: importati){
+                System.out.println(c.toString());
+                gestore.aggiungi(c);
+            }
         tabellaContatti.setItems(gestore.getInsieme());
         }
         else{
