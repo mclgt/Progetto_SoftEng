@@ -20,13 +20,14 @@ import javafx.collections.ObservableList;
 /**
  * @file InsiemeContatti.java
  * @brief Permette di implementare una collezione di contatti mediante un ArrayList osservabile.
- * Per maggiori informazioni sul contatto consultare il file Contatto.java. Utilizza e riscrive i metodi 
+ * Per maggiori informazioni sul contatto consultare il file Contatto.java.
+ * Utilizza e riscrive i metodi 
  * dell'interfaccia GestoreContatti.java
  * @invariant Se la struttura ArrayList contiene dei contatti, questi dovranno essere mostrati sempre in ordine alfabetico (per cognome, se due cognomi sono uguali, 
  * verranno confrontati i nomi).
  * 
- * @author Autore
- * @date data
+ * @author Beatrice Rebecca- Gaeta Michela
+ * @date 8-12-2024
  * 
  */
 public class InsiemeContatti implements GestoreContatti {
@@ -37,10 +38,10 @@ public class InsiemeContatti implements GestoreContatti {
     }
 
   /**
-    * @brief Permette di aggiungere un contatto alla struttura (ArrayList)
-    * @pre è stato istanziato un oggetto InsiemeContatti ed un Contatto da aggiungere
+    * @brief Aggiunge un contatto alla struttura (observableArrayList) rappresentante la rubrica
+    * @pre sono stati correttamente istanziati un oggetto 'InsiemeContatti' ed un 'Contatto' da aggiungere
     * @post Alla lista è aggiunto il contatto passato come parametro
-    * @param contact [in] : rappresenta il contatto da aggiungere
+    * @param contact [in] :il contatto da aggiungere
     *  
     */
     @Override
@@ -50,10 +51,10 @@ public class InsiemeContatti implements GestoreContatti {
     }
 
   /**
-    * @brief Permette di rimuovere un contatto dalla struttura (ArrayList)
-    * @pre è stato istanziato un oggetto InsiemeContatti, il contatto passato appartiene già all'insieme
+    * @brief Rimuove un contatto dalla struttura (ArrayList) rappresentante la rubrica
+    * @pre sono stati correttamente istanziati un oggetto 'InsiemeContatti' ed un 'Contatto' da aggiungere
     * @post L'elemento corrispondente al contatto passato è rimosso dalla lista
-    * @param contact[in]: rappresenta il contatto da rimuovere
+    * @param contact[in]: il contatto da rimuovere
     * 
     */
     @Override
@@ -62,14 +63,15 @@ public class InsiemeContatti implements GestoreContatti {
     }
     
   /**
-    * @brief Permette la modifica di un contatto esistente nell'InsiemeContatti
-    * @pre è stato istanziato un oggetto InsiemeContatti, il contatto passato appartiene già all'insieme
+    * @brief Modifica un contatto esistente nella struttura (observableArrayList) rappresentante la rubrica
+    * @pre sono stati correttamente istanziati un oggetto 'InsiemeContatti' ed un 'Contatto' da aggiungere
+    * @pre il contatto passato appartiene già alla struttura dati
     * @post i vecchi attributi del  contatto vengono sovrascritti con i nuovi
-    * @param c[in]: rappresenta il contatto da modificare
-    * @param newName[in] 
-    * @param newSurname[in]
-    * @param newNumeri[in] 
-    * @param newMail[in]
+    * @param c[in]: il contatto da modificare
+    * @param newName[in]: nuovo nome del contatto (può essere null se si vuole rimuovere il nome ma ciò è possibile solo se c'è un cognome definito)
+    * @param newSurname[in]:  nuovo cognome del contatto (può essere null se si vuole rimuovere il cognome ma ciò è possibile solo se c'è un nome definito)
+    * @param newNumeri[][in]: nuovo array di numeri di telefono( può contenere valori null se si vogliono rimuovere determinati numeri)
+    * @param newMail[][in]: nuovo arrau di inidirizzi email( può contenere valori null se si vogliono rimuovere determinati indirizzi)
     */
      @Override
     public void modifica(Contatto c, String newName, String newSurname, String[] newNumeri, String[] newMail ){
@@ -84,14 +86,7 @@ public class InsiemeContatti implements GestoreContatti {
         this.sort();  
     }
     
-  /**
-    * @brief Permette di cercare un contatto tramite sottostringa iniziale del nome/cognome
-    * @pre La stringa usata per la ricerca non deve essere nulla
-    * @param text[in]: stringa da ricercare
-    * @param risultato[out]: sottoinsieme di contatti 
-    * 
-    * @return Il sottoinsieme di contatti risultanti dalla ricerca 
-    */
+   
     @Override
     public ObservableList<Contatto> cerca(String text ){
        ObservableList<Contatto> risultato= FXCollections.observableArrayList();
@@ -103,14 +98,12 @@ public class InsiemeContatti implements GestoreContatti {
     }
 
   /**
-    * @brief Permette di esportare l'oggetto InsiemeContatti  su un file in formato CSV (Comma Separated Values)
-    * @pre la stringa passata è non nulla
+    * @brief Permette di esportare l'oggetto InsiemeContatti (observableArrayList) su un file in formato CSV (Comma Separated Values)
     * @post viene generato un file .csv con il nome corrispondente alla stringa passata, il quale esporrà il contenuto della lista. Il file sarà collocato nella directory del progetto.
-    * @param filename[in]
+    * @param filename[in]: nome del file su cui esportare i contatti
     * 
-    * @throws IOException
+    * @throws IOException se si presenta un errore durante la scrittura del file
     */
-    
     @Override
     public void scriviCSV(String filename)throws IOException{
          try(PrintWriter pw=new PrintWriter(new BufferedWriter(new FileWriter(filename+".csv")))){
@@ -138,13 +131,11 @@ public class InsiemeContatti implements GestoreContatti {
     }
     
   /**
-    * @brief Permette di importare un oggetto InsiemeContatti da un file CSV (Comma Separated Values)
-    * @pre è presente un file all'interno della directory del progetto che ha un nome corrispondente a quello indicato dalla stringa passata come parametro
-    * @param filename[in]
-    * @param importato[out]
+    * @brief Permette di importare un oggetto InsiemeContatti (observableArrayList) da un file CSV (Comma Separated Values)
+    * @param filename[in]: nome del file da cui importare i contatti
     * 
-    * @return Restituisce un InsiemeContatti con contenuto che rispecchia il contenuto del file
-    * @throws IOException, FileNotFoundException
+    * @return Restituisce un observableList con contenuto che rispecchia il contenuto del file
+    * @throws IOException se si presenta un errore durante la lettura
     */
     @Override
     public ObservableList<Contatto> leggi(String filename){

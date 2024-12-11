@@ -12,8 +12,8 @@ import java.util.Objects;
     * numero (NumeroTelefonico, vedi file NumeroTelefonico.java) e email(Email, vedi file Email.java).
     * @invariant gli attributi nome e cognome non possono mai essere entrambi vuoti, almeno uno dei due deve contenere un valore non nullo.
     * 
-    * @author Autore
-    * @date data
+    * @author Caliendo Antonio - Gaeta Michela
+    * @date 8-12-2024
     * 
     */
 
@@ -24,14 +24,14 @@ public class Contatto implements Comparable<Contatto>{
     private Email email;
     
  /**
-    * @brief Costruttore del generico oggetto Contatto con il quale si possono inizializzare nome, cognome, numero e email
-    * @pre Bisogna aggiungere almeno un nome o un cognome
-    * @post Viene generato un contatto con almeno un nome o un cognome 
+    * @brief Costruttore del generico oggetto Contatto che consente di  inizializzare nome, cognome, numero e email
+    * @pre Almeno uno tra  'nome' o 'cognome' dvee essere non vuoti
+    * @post Viene generato un oggetto 'Contatto' con almeno un nome o un cognome, numeri di telefono e mail inizializzati solo se forniti
     * 
-    * @param nome[in]
-    * @param cognome[in]
-    * @param numero[in]: oggetto contenente al più tre numeri
-    * @param email[in]: oggetto contenete al più tre email
+    * @param nome[in]: nome del contatto (può essere vuoto o null solo se il cognome non è vuoto o null)
+    * @param cognome[in]:cognome del contatto (può essere vuoto o null solo se il cognome non è vuoto o null)
+    * @param numero[in]:  array di stringhe che contiene fino a tre numeri di telefono
+    * @param email[in]: array di stringhe che contiene fino a tre numeri di telefono
     * 
     */
     public Contatto(String nome, String cognome, String[] numero, String[] email){
@@ -44,9 +44,8 @@ public class Contatto implements Comparable<Contatto>{
     
     
  /**
-    * @brief Permette di ricavare l'attributo nome da un contatto
+    * @brief Restituisce l'attributo nome da un contatto
     * @pre Deve esistere un contatto
-    * @param nome[out]
     * 
     * @return nome contatto
     */
@@ -55,9 +54,8 @@ public class Contatto implements Comparable<Contatto>{
     }
     
   /**
-    * @brief Permette di ricavare l'attributo cognome da un contatto
+    * @brief Restituisce l'attributo cognome da un contatto
     * @pre Deve esistere un contatto
-    * @param cognome[out]
     * 
     * @return cognome contatto
     */
@@ -67,10 +65,8 @@ public class Contatto implements Comparable<Contatto>{
 
     
   /**
-    * @brief Permette di modificare l'attributo nome da un contatto
-    * @pre Deve esistere un contatto
-    * @post Modifica il nome del contatto su cui viene chiamato il metodo
-    * @param nome[in]
+    * @brief Modifica il nome del contatto
+    * @param nome[in]: nuovo nome del contatto
     * 
     */
     public void setNome(String nome) {
@@ -78,10 +74,8 @@ public class Contatto implements Comparable<Contatto>{
     }
 
   /**
-    * @brief Permette di modificare l'attributo cognome da un contatto
-    * @pre Deve esistere un contatto
-    * @post Modifica il cognome del contatto su cui viene chiamato il metodo 
-    * @param cognome[in]
+    * @brief Modifica il cognome del contatto
+    * @param cognome[in]: nuovo cognome del contatto
     * 
     */
     public void setCognome(String cognome) {
@@ -89,99 +83,106 @@ public class Contatto implements Comparable<Contatto>{
     }
 
   /**
-    * @brief Permette di modificare l'attributo numero da un contatto
-    * @pre Deve esistere un contatto
-    * @post Modifica il/i numero/i del contatto su cui viene chiamato il metodo 
-    * @param numero[][in]
+    * @brief Modifica il primo numero associato al contatto
+    * @param numero[in]: nuovo 'primo numero' del contatto
     * 
     */
     public void setNumero1(String numero) {
      this.numero.setNumero1(numero);
     }
     
+  /**
+    * @brief Modifica il secondo numero associato al contatto
+    * @param numero[in]: nuovo 'secondo numero' del contatto
+    * 
+    */
     public void setNumero2(String numero) {
      this.numero.setNumero2(numero);
     }
-       
+    
+  /**
+    * @brief Modifica il terzo numero associato al contatto
+    * @param numero[in]: nuovo 'terzo numero' del contatto
+    * 
+    */
     public void setNumero3(String numero) {
      this.numero.setNumero3(numero);
     }
 
   /**
-    * @brief Permette di modificare l'attributo email da un contatto
-    * @pre Deve esistere un contatto
-    * @post Modifica la/le email del contatto su cui viene chiamato il metodo
-    * @param email[][in]
+    * @brief Modifica il primo indirizzo e-mail associato al contatto
+    * @param email[in]: nuovo 'primo indirizzo e-mail' del contatto
     * 
     */
     public void setEmail1(String email) {
      this.email.setEmail1(email);
     }
     
-   public void setEmail2(String email) {
+  /**
+    * @brief Modifica il secondo indirizzo e-mail associato al contatto
+    * @param email[in]: nuovo 'secondo indirizzo e-mail' del contatto
+    * 
+    */
+    public void setEmail2(String email) {
      this.email.setEmail2(email);
     }
-     
+  
+  /**
+    * @brief Modifica il terzo indirizzo e-mail associato al contatto
+    * @param email[in]: nuovo 'terzo indirizzo e-mail' del contatto
+    * 
+    */
     public void setEmail3(String email) {
      this.email.setEmail3(email);
     }
-      /**
-    * @brief Permette di restiruire il numero in posizione 0 del vettore
-    * @pre è stato istanziato un oggetto NumeroTelefonico
-    * @param numeri1[out] 
-    * @return Stringa rappresentante il numero in posizione 0
-    * 
+    
+    
+  /**
+    * @brief Restituisce il primo numero associato al contatto
+    * @return il 'primo numero' associato al contatto
     */
     public String getNumero1Contatto(){
         return this.numero.getNumero1();
     }
-    /**
-    * @brief Permette di restiruire il numero in posizione 1 del vettore
-    * @pre è stato istanziato un oggetto NumeroTelefonico
-    * @param numeri2[out] 
-    * @return Stringa rappresentante il numero in posizione 1
-    * 
+
+  /**
+    * @brief Restituisce il secondo numero associato al contatto
+    * @return il 'secondo numero' associato al contatto
     */
     public String getNumero2Contatto(){
         return this.numero.getNumero2();
     }
-    /**
-    * @brief Permette di restiruire il numero posizione 2 del vettore
-    * @pre è stato istanziato un oggetto NumeroTelefonico
-    * @param numeri3[out] 
-    * @return Stringa rappresentante il numero  in posizione 2
-    * 
+
+  /**
+    * @brief Restituisce il terzo numero associato al contatto
+    * @return il 'terzo numero' associato al contatto
     */
     public String getNumero3Contatto(){
         return this.numero.getNumero3();
     }
-     /**
-    * @brief Permette di restiruire l'email in posizione 0 del vettore
-    * @pre è stato istanziato un oggetto email
-    * @param email1[out] 
-    * @return Stringa rappresentante l'email in posizione 0
-    * 
+
+  /**
+    * @brief Restituisce il primo indirizzo e-mail associato al contatto
+    * @return il 'primo indirizzo e-mail' associato al contatto
     */
     public String getEmail1Contatto(){
         return this.email.getEmail1();
     }
-    /**
-    * @brief Permette di restiruire l'email in posizione 1 del vettore
-    * @pre è stato istanziato un oggetto email
-    * @param email2[out] 
-    * @return Stringa rappresentante l'email in posizione 1
-    * 
+
+    
+    
+  /**
+    * @brief Restituisce il secondo indirizzo e-mail associato al contatto
+    * @return il 'secondo indirizzo e-mail' associato al contatto
     */
     public String getEmail2Contatto(){
         return this.email.getEmail2();
     }
     
-    /**
-    * @brief Permette di restiruire l'email in posizione 2 del vettore
-    * @pre è stato istanziato un oggetto email
-    * @param email3[out] 
-    * @return Stringa rappresentante l'email in posizione 2
-    * 
+
+  /**
+    * @brief Restituisce il terzo indirizzo e-mail associato al contatto
+    * @return il 'terzo indirizzo e-mail' associato al contatto
     */
     public String getEmail3Contatto() {
         return this.email.getEmail3();
