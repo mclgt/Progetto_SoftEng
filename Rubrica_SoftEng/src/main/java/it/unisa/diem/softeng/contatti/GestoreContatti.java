@@ -67,5 +67,7 @@ public interface GestoreContatti {
      
      
      public void sort(); 
+     
+     public void reset();
     
 }
