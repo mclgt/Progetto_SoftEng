@@ -10,8 +10,8 @@ package it.unisa.diem.softeng.contatti;
  * Possono essere inseriti da 0 a 3 numeri rappresentati tramite Stringa. Il generico elemento dell'array 
  * può non essere definito sfruttando il valore NULL.
  * 
- * @author Autore
- * @date data
+ * @author Beatrice Rebecca
+ * @date 8-12-2024
  * 
  */
 public class NumeroTelefonico {
@@ -21,9 +21,9 @@ public class NumeroTelefonico {
  /**
     * @brief Costruttore del generico oggetto NumeroTelefonico con il quale si possono inizializzare il/i numero/i telefonico/i
     * @post L'array di Stringhe viene instanziato e inizializzato
-    * @param numero1[in]
-    * @param numero2[in]
-    * @param numero3[in]
+    * @param numero1[in]: primo numero associato al contatto
+    * @param numero2[in]: secondo numero associato al contatto
+    * @param numero3[in]: terzo numero associato al contatto
     * 
     */
     public NumeroTelefonico(String numero1, String numero2, String numero3){
@@ -32,46 +32,57 @@ public class NumeroTelefonico {
        this.numeri[2]=numero3;
     }
 
-    /**
-    * @brief Permette di restiruire i numeri in posizione 0 del vettore
-    * @pre è stato istanziato un oggetto NumeroTelefonico
-    * @param numeri1[out] 
-    * @return Stringa rappresentante il numero in posizione 0
+  /**
+    * @brief Restituisce il primo numero (posizione 0) del vettore di numeri
+    * @return la stringa rappresentante il numero in posizione 0, oppure null se non presente
     * 
     */
     public String getNumero1(){
         return this.numeri[0];
     }
-    /**
-    * @brief Permette di restiruire un numero in posizione 1 del vettore
-    * @pre è stato istanziato un oggetto NumeroTelefonico
-    * @param numeri2[out] 
-    * @return Stringa rappresentante il numero in posizione 1
+
+    
+  /**
+    * @brief Restituisce il secondo numero (posizione 1) del vettore di numeri
+    * @return la stringa rappresentante il numero in posizione 1, oppure null se non presente
     * 
     */
     public String getNumero2(){
         return this.numeri[1];
     }
-    /**
-    * @brief Permette di restiruire  in posizione 2 del vettore
-    * @pre è stato istanziato un oggetto NumeroTelefonico
-    * @param numeri3[out] 
-    * @return Stringa rappresentante il numero  in posizione 2
+
+  /**
+    * @brief Restituisce il terzo numero (posizione 2) del vettore di numeri
+    * @return la stringa rappresentante il numero in posizione 2, oppure null se non presente
     * 
     */
     public String getNumero3(){
         return this.numeri[2];
     }
     
-    
+   /**
+    * @brief Modifica il primo numero (posizione 0) del vettore di numeri
+    * @param numero1[in]: nuovo valore del numero da impostare in posizione 0
+    * 
+    */ 
     public void setNumero1(String numero1){
         this.numeri[0]=numero1;
     }
     
+   /**
+    * @brief Modifica il secondo numero (posizione 1) del vettore di numeri
+    * @param numero2[in]: nuovo valore del numero da impostare in posizione 1
+    * 
+    */ 
     public void setNumero2(String numero2){
         this.numeri[1]=numero2;
     }
     
+  /**
+    * @brief Modifica il terzo numero (posizione 2) del vettore di numeri
+    * @param numero3[in]: nuovo valore del numero da impostare in posizione 2
+    * 
+    */ 
     public void setNumero3(String numero3){
         this.numeri[2]=numero3;
     }

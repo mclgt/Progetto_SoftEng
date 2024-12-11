@@ -11,7 +11,7 @@ package it.unisa.diem.softeng.contatti;
  * Può contenere al più tre indirizzi ciascuno rappresentato tramite Stringa. Il generico elemento dell'array 
  * può non essere definito, sfruttando il valore NULL.
  * 
- * @author Beatrice Rebecca
+ * @author Beatrice Rebecca- Cambria Jacopo
  * @date 8-12-2024
  * 
  */
@@ -36,7 +36,7 @@ public class Email {
     
     /**
     * @brief Restituisce il primo indirizzo e-mail (posizione 0) del vettore di indirizzi e-mail
-    * @return la strings rappresentante l'email in posizione 0, oppure null se non presente
+    * @return la stringa rappresentante l'email in posizione 0, oppure null se non presente
     * 
     */
     public String getEmail1(){
@@ -46,7 +46,7 @@ public class Email {
 
   /**
     * @brief Restituisce il secondo indirizzo e-mail (posizione 1) del vettore di indirizzi e-mail
-    * @return la strings rappresentante l'email in posizione 1, oppure null se non presente
+    * @return la stringa rappresentante l'email in posizione 1, oppure null se non presente
     * 
     */
     public String getEmail2(){
@@ -55,7 +55,7 @@ public class Email {
     
   /**
     * @brief Restituisce il terzo indirizzo e-mail (posizione 2) del vettore di indirizzi e-mail
-    * @return la strings rappresentante l'email in posizione 2, oppure null se non presente
+    * @return la stringa rappresentante l'email in posizione 2, oppure null se non presente
     * 
     */
     public String getEmail3() {

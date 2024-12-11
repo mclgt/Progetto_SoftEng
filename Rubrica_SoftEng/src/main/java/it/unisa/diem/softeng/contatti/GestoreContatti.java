@@ -12,7 +12,7 @@ import javafx.collections.ObservableList;
  * @brief Racchiude i metodi per la gestione della rubrica. Include funzionalità come aggiunta, rimozione, modifica e 
  * ricerca dei contatti.
  * 
- * @author Gaeta Michela- Beatrice Rebecca 
+ * @author Gaeta Michela
  * @date 9-12-2024
  * 
  */
