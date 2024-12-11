@@ -111,26 +111,12 @@ public class RubricaViewController implements Initializable {
         BooleanBinding campiNonVuoti= Bindings.createBooleanBinding(()-> 
                 !campoNome.getText().trim().isEmpty() || !campoCognome.getText().trim().isEmpty(), campoNome.textProperty(),campoCognome.textProperty());
         BooleanBinding contattoSelezionato= tabellaContatti.getSelectionModel().selectedItemProperty().isNull();
-        BooleanBinding campoCercaVuoto= Bindings.createBooleanBinding(()-> 
-               campoCerca.getText().trim().isEmpty() );
         pulsanteAggiungi.disableProperty().bind(campiNonVuoti.not());
         pulsanteRimuovi.disableProperty().bind(contattoSelezionato);
         pulsanteModifica.disableProperty().bind(campiNonVuoti.not().or(contattoSelezionato));
- 
-        pulsanteCerca.disableProperty().bind(campoCercaVuoto);
-       
-       /* colonnaNome.setCellFactory(TextFieldTableCell.forTableColumn());
-        colonnaCognome.setCellFactory(TextFieldTableCell.forTableColumn());
-        colonnaNum1.setCellFactory(TextFieldTableCell.forTableColumn());
-        colonnaNum2.setCellFactory(TextFieldTableCell.forTableColumn());
-        colonnaNum3.setCellFactory(TextFieldTableCell.forTableColumn());
-        colonnaEmail1.setCellFactory(TextFieldTableCell.forTableColumn());
-        colonnaEmail2.setCellFactory(TextFieldTableCell.forTableColumn());
-        colonnaEmail3.setCellFactory(TextFieldTableCell.forTableColumn());*/
        
         tabellaContatti.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
         if (newValue != null) {
-            // Quando un contatto è selezionato, trasferiamo i suoi dati nei campi
             Contatto contattoSelezionato1 = newValue;
             campoNome.setText(contattoSelezionato1.getNome());
             campoCognome.setText(contattoSelezionato1.getCognome());
@@ -142,6 +128,8 @@ public class RubricaViewController implements Initializable {
             campoTerzaMail.setText(contattoSelezionato1.getEmail3Contatto());
         }
     });
+        
+     
         
         
     }
@@ -156,6 +144,13 @@ public class RubricaViewController implements Initializable {
     */
     @FXML
     private void cercaContatto(ActionEvent event) {
+        if(campoCerca.getText().trim().isEmpty()){
+            tabellaContatti.setItems(gestore.getInsieme());
+        }
+        else{
+            ObservableList<Contatto> trovati=gestore.cerca(campoCerca.getText());
+            tabellaContatti.setItems(trovati);
+        }
     }
 
   /**
