@@ -120,7 +120,7 @@ public class InsiemeContatti implements GestoreContatti {
     
     @Override
     public void scriviCSV(String filename)throws IOException{
-         try(PrintWriter pw=new PrintWriter(new BufferedWriter(new FileWriter(filename)))){
+         try(PrintWriter pw=new PrintWriter(new BufferedWriter(new FileWriter(filename+".csv")))){
             pw.println("COGNOME;NOME;NUMERO1;NUMERO2;NUMERO3;E-MAIL1;E-MAIL2;E-MAIL3");
             for(Contatto c:this.contatti){
                 pw.print(c.getCognome());
@@ -139,6 +139,7 @@ public class InsiemeContatti implements GestoreContatti {
                 pw.append(";");
                 pw.print(c.getEmail3Contatto());
                 pw.append(";");
+                pw.println();
             }
         }
 

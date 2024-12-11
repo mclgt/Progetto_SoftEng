@@ -12,6 +12,7 @@ import javafx.beans.binding.BooleanBinding;
 import javafx.beans.property.Property;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -166,7 +167,12 @@ public class RubricaViewController implements Initializable {
     *  
     */
     @FXML
-    private void importaContatto(ActionEvent event) {
+    private void importaContatto(ActionEvent event) throws IOException {
+        ObservableList<Contatto> importati=FXCollections.observableArrayList();
+        importati=gestore.leggi(campoImporta.getText());
+        for(Contatto c:importati){
+            gestore.aggiungi(c);
+        }
     }
     
   /**
@@ -176,7 +182,8 @@ public class RubricaViewController implements Initializable {
     *  
     */
     @FXML
-    private void esportaContatto(ActionEvent event) {
+    private void esportaContatto(ActionEvent event) throws IOException {
+        gestore.scriviCSV("esportato");
     }
 
   /**
