@@ -6,11 +6,14 @@ package it.unisa.diem.softeng.contatti;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
+import java.io.BufferedWriter;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.PrintWriter;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.TreeSet;
@@ -114,13 +117,28 @@ public class InsiemeContatti implements GestoreContatti {
     
     @Override
     public void scriviCSV(String filename)throws IOException{
-        try(ObjectOutputStream oos=new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(filename+".csv")))){
+         try(PrintWriter pw=new PrintWriter(new BufferedWriter(new FileWriter(filename)))){
+            pw.println("COGNOME;NOME;NUMERO1;NUMERO2;NUMERO3;E-MAIL1;E-MAIL2;E-MAIL3");
             for(Contatto c:this.contatti){
-                oos.writeObject(c);
+                pw.print(c.getCognome());
+                pw.append(";");
+                pw.print(c.getNome());
+                pw.append(";");
+                pw.print(c.getNumero1Contatto());
+                pw.append(";");
+                pw.print(c.getNumero2Contatto());
+                pw.append(";");
+                pw.print(c.getNumero3Contatto());
+                pw.append(";");
+                pw.print(c.getEmail1Contatto());
+                pw.append(";");
+                pw.print(c.getEmail2Contatto());
+                pw.append(";");
+                pw.print(c.getEmail3Contatto());
+                pw.append(";");
             }
-            oos.flush();
-            oos.close();
         }
+
     }
     
   /**
