@@ -81,8 +81,7 @@ public class InsiemeContatti implements GestoreContatti {
         c.setEmail1(newMail[0]);
         c.setEmail2(newMail[1]);
         c.setEmail3(newMail[2]);
-        this.sort();
-        
+        this.sort();  
     }
     
   /**
@@ -189,5 +188,10 @@ public class InsiemeContatti implements GestoreContatti {
     @Override
     public void reset() {
         this.getInsieme().clear();
+    }
+
+    @Override
+    public void setInsieme(ObservableList<Contatto> list) {
+        this.contatti=list;
     }
 }

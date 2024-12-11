@@ -69,5 +69,6 @@ public interface GestoreContatti {
      public void sort(); 
      
      public void reset();
+     public void setInsieme(ObservableList<Contatto> list);
     
 }
