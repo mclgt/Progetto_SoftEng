@@ -209,17 +209,10 @@ public class Contatto implements Comparable<Contatto>{
     @Override
     public int compareTo(Contatto o) {
         if(o.getCognome().equalsIgnoreCase(this.getCognome())){
-            return this.getNome().compareTo(o.getNome());
+            return this.getNome().compareToIgnoreCase(o.getNome());
         }
-        return this.getCognome().compareTo(o.getCognome());
+        return this.getCognome().compareToIgnoreCase(o.getCognome());
     }
-
-    @Override
-    public String toString() {
-        return "Contatto{" + "nome=" + nome + ", cognome=" + cognome + ", numero=" + numero + ", email=" + email + '}';
-    }
-    
-    
     
     
     
