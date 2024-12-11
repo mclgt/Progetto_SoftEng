@@ -10,6 +10,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Locale;
 import java.util.Scanner;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -144,12 +145,13 @@ public class InsiemeContatti implements GestoreContatti {
     * @throws IOException, FileNotFoundException
     */
     @Override
-    public ObservableList<Contatto> leggi(String filename)throws IOException{
+    public ObservableList<Contatto> leggi(String filename){
         ObservableList<Contatto> importato= FXCollections.observableArrayList();
-        try(Scanner s=new Scanner(new BufferedReader(new FileReader(filename+".csv")))){
+        try(Scanner s=new Scanner(new BufferedReader(new FileReader(filename)))){
             if(s.nextLine()==null)
                 return importato;
             s.useDelimiter("[;\n]");
+            s.useLocale(Locale.US);
             while(s.hasNext()){
                 String cognome=s.next();
                 String nome=s.next();
@@ -157,6 +159,9 @@ public class InsiemeContatti implements GestoreContatti {
                 String em[]=new String[]{s.next(),s.next(),s.next()};
                 importato.add(new Contatto(nome,cognome,num,em));
             }
+        }
+        catch(IOException ex){
+            
         }
         return importato;
     }

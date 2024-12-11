@@ -4,6 +4,7 @@ import it.unisa.diem.softeng.Main.*;
 import it.unisa.diem.softeng.contatti.Contatto;
 import it.unisa.diem.softeng.contatti.GestoreContatti;
 import it.unisa.diem.softeng.contatti.InsiemeContatti;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -23,6 +24,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.stage.FileChooser;
 
 
 
@@ -167,10 +169,19 @@ public class RubricaViewController implements Initializable {
     */
     @FXML
     private void importaContatto(ActionEvent event) throws IOException {
+        FileChooser fc=new FileChooser();
+        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("File CSV", "*.csv"));
+        File file=fc.showOpenDialog(null);
+        if(file!=null){
         ObservableList<Contatto> importati=FXCollections.observableArrayList();
-        importati=gestore.leggi(campoImporta.getText());
+        importati=gestore.leggi(file.getAbsolutePath());
         for(Contatto c:importati){
             gestore.aggiungi(c);
+        }
+        tabellaContatti.setItems(gestore.getInsieme());
+        }
+        else{
+            System.out.println("Nessun file selezionato");
         }
     }
     
