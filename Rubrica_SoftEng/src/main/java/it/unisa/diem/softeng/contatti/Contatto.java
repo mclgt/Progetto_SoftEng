@@ -33,7 +33,11 @@ public class Contatto {
     * 
     */
     public Contatto(String nome, String cognome, String[] numero, String[] email){
-      
+     this.nome=nome;
+     this.cognome=cognome;
+     this.numero=new NumeroTelefonico(numero[0],numero[1],numero[2]);
+     this.email=new Email(email[0],email[1],email[2]);
+
     }
     
     
@@ -45,7 +49,7 @@ public class Contatto {
     * @return nome contatto
     */
     public String getNome(){
-        return null;
+        return this.nome;
     }
     
   /**
@@ -56,30 +60,9 @@ public class Contatto {
     * @return cognome contatto
     */
     public String getCognome(){
-        return null;
+        return this.cognome;
     }
 
-  /**
-    * @brief Permette di ricavare l'attributo numero da un contatto
-    * @pre Deve esistere un contatto
-    *@param numeri[out]: oggetto che contiene al più tre numeri
-    * 
-    * @return numeri associati al contatto
-    */
-    public NumeroTelefonico getNumero() {
-        return null;
-    }
-
-  /**
-    * @brief Permette di ricavare l'attributo email da un contatto
-    * @pre Deve esistere un contatto
-    * @param email[out]: oggetto che contiene al più tre mail
-    * 
-    * @return email associate al contatto
-    */
-    public Email getEmail() {
-        return null;
-    }
     
   /**
     * @brief Permette di modificare l'attributo nome da un contatto
@@ -89,6 +72,7 @@ public class Contatto {
     * 
     */
     public void setNome(String nome) {
+     this.nome=nome;
     }
 
   /**
@@ -99,6 +83,7 @@ public class Contatto {
     * 
     */
     public void setCognome(String cognome) {
+     this.cognome=cognome;
     }
 
   /**
@@ -108,7 +93,16 @@ public class Contatto {
     * @param numero[][in]
     * 
     */
-    public void setNumero(NumeroTelefonico numero) {
+    public void setNumero1(String numero) {
+     this.numero.setNumero1(numero);
+    }
+    
+    public void setNumero2(String numero) {
+     this.numero.setNumero2(numero);
+    }
+       
+    public void setNumero3(String numero) {
+     this.numero.setNumero3(numero);
     }
 
   /**
@@ -118,8 +112,77 @@ public class Contatto {
     * @param email[][in]
     * 
     */
-    public void setEmail(Email email) {
+    public void setEmail1(String email) {
+     this.email.setEmail1(email);
     }
     
+   public void setEmail2(String email) {
+     this.email.setEmail2(email);
+    }
+     
+    public void setEmail3(String email) {
+     this.email.setEmail3(email);
+    }
+      /**
+    * @brief Permette di restiruire il numero in posizione 0 del vettore
+    * @pre è stato istanziato un oggetto NumeroTelefonico
+    * @param numeri1[out] 
+    * @return Stringa rappresentante il numero in posizione 0
+    * 
+    */
+    public String getNumero1Contatto(){
+        return this.numero.getNumero1();
+    }
+    /**
+    * @brief Permette di restiruire il numero in posizione 1 del vettore
+    * @pre è stato istanziato un oggetto NumeroTelefonico
+    * @param numeri2[out] 
+    * @return Stringa rappresentante il numero in posizione 1
+    * 
+    */
+    public String getNumero2Contatto(){
+        return this.numero.getNumero2();
+    }
+    /**
+    * @brief Permette di restiruire il numero posizione 2 del vettore
+    * @pre è stato istanziato un oggetto NumeroTelefonico
+    * @param numeri3[out] 
+    * @return Stringa rappresentante il numero  in posizione 2
+    * 
+    */
+    public String getNumero3Contatto(){
+        return this.numero.getNumero3();
+    }
+     /**
+    * @brief Permette di restiruire l'email in posizione 0 del vettore
+    * @pre è stato istanziato un oggetto email
+    * @param email1[out] 
+    * @return Stringa rappresentante l'email in posizione 0
+    * 
+    */
+    public String getEmail1Contatto(){
+        return this.email.getEmail1();
+    }
+    /**
+    * @brief Permette di restiruire l'email in posizione 1 del vettore
+    * @pre è stato istanziato un oggetto email
+    * @param email2[out] 
+    * @return Stringa rappresentante l'email in posizione 1
+    * 
+    */
+    public String getEmail2Contatto(){
+        return this.email.getEmail2();
+    }
+    
+    /**
+    * @brief Permette di restiruire l'email in posizione 2 del vettore
+    * @pre è stato istanziato un oggetto email
+    * @param email3[out] 
+    * @return Stringa rappresentante l'email in posizione 2
+    * 
+    */
+    public String getEmail3Contatto() {
+        return this.email.getEmail3();
+    }
     
 }
