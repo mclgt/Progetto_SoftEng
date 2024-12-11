@@ -24,6 +24,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 
+
+
 /**
  * @file RubricaViewController
  * @brief Permette di eseguire le azioni relative ad un contatto o alla rubrica , collegate ai vari elementi interattivi inseriti 
@@ -89,6 +91,7 @@ public class RubricaViewController implements Initializable {
     
       
     GestoreContatti gestore;
+
     
    /**
      * Inizializza la classe del controller
@@ -134,7 +137,8 @@ public class RubricaViewController implements Initializable {
         
         
     }
-   
+    
+ 
  
   /**
     * @brief Attraverso l'attivazione dell'evento corrispondente all'azione 'cercaContatto' è possibile richiamare il metodo cerca presente nella classe InsiemeContatti
