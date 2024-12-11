@@ -177,7 +177,7 @@ public class RubricaViewController implements Initializable {
         File file=fc.showOpenDialog(null);
         if(file!=null){
         ObservableList<Contatto> importati = FXCollections.observableArrayList();
-        importati.setAll(gestore.leggi(file.getAbsolutePath()));//=gestore.leggi(file.getAbsolutePath());
+        importati=(gestore.leggi(file.getAbsolutePath()));
             for(Contatto c: importati){
                 System.out.println(c.toString());
                 gestore.aggiungi(c);
