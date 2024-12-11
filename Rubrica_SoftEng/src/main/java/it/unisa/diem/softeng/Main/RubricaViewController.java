@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
-package it.unisa.diem.softeng.interfaccia;
+package it.unisa.diem.softeng.Main;
 
 import it.unisa.diem.softeng.contatti.Contatto;
 import java.net.URL;
