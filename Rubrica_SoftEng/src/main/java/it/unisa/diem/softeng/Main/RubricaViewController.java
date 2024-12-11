@@ -156,6 +156,7 @@ public class RubricaViewController implements Initializable {
     */
     @FXML
     private void cercaContatto(ActionEvent event) {
+        
     }
 
   /**
