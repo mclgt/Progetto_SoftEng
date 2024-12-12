@@ -89,15 +89,15 @@ public class InsiemeContatti implements GestoreContatti {
     
    
     @Override
-    public ObservableList<Contatto> cerca(String text ){
-       ObservableList<Contatto> risultato= FXCollections.observableArrayList();
-       for(Contatto c:this.contatti){
-           if(c.getNome().startsWith(text) || c.getCognome().startsWith(text))
+    public ObservableList<Contatto> cerca(String text){
+        ObservableList<Contatto> risultato= FXCollections.observableArrayList();
+        for(Contatto c:this.contatti){
+            if(c.getNome().startsWith(text) || c.getCognome().startsWith(text))
                risultato.add(c);
-       }
+        }
        return risultato;
     }
-
+     
     @Override
     public ObservableList<Contatto> getInsieme() {
         return this.contatti;
