@@ -30,7 +30,7 @@
       <ToolBar layoutY="55.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="46.0" prefWidth="1324.0">
         <items>
             <Button fx:id="pulsanteImporta" mnemonicParsing="false" onAction="#importaContatto" prefHeight="30.0" prefWidth="89.0" text="Importa da..." />
-            <Button fx:id="pulsanteEsporta" mnemonicParsing="false" onAction="#esportaContatto" prefHeight="31.0" prefWidth="110.0" text="Esporta contatti" translateX="20.0" />
+            <Button fx:id="pulsanteEsporta" mnemonicParsing="false" onAction="#esportaContatto" prefHeight="31.0" prefWidth="128.0" text="Esporta contatti" translateX="20.0" />
             <Button fx:id="pulsanteReset" mnemonicParsing="false" onAction="#resetRubrica" prefHeight="33.0" prefWidth="117.0" text="Reset rubrica" translateX="980.0" />
         </items>
       </ToolBar>
@@ -104,14 +104,14 @@
                         </TextField>
                      </children>
                   </VBox>
-                  <Button fx:id="pulsanteAggiungi" layoutX="78.0" layoutY="468.0" mnemonicParsing="false" onAction="#aggiungiContatto" prefHeight="27.0" prefWidth="74.0" text="Aggiungi" />
-                  <Button fx:id="pulsanteModifica" layoutX="78.0" layoutY="535.0" mnemonicParsing="false" onAction="#modificaContatto" prefHeight="26.0" prefWidth="74.0" text="Modifica" />
-                  <Button fx:id="pulsanteRimuovi" layoutX="78.0" layoutY="502.0" mnemonicParsing="false" onAction="#rimuoviContatto" prefHeight="27.0" prefWidth="74.0" text="Rimuovi" />
+                  <Button fx:id="pulsanteAggiungi" layoutX="78.0" layoutY="468.0" mnemonicParsing="false" onAction="#aggiungiContatto" prefHeight="27.0" prefWidth="99.0" text="Aggiungi" />
+                  <Button fx:id="pulsanteModifica" layoutX="78.0" layoutY="535.0" mnemonicParsing="false" onAction="#modificaContatto" prefHeight="26.0" prefWidth="99.0" text="Modifica" />
+                  <Button fx:id="pulsanteRimuovi" layoutX="78.0" layoutY="502.0" mnemonicParsing="false" onAction="#rimuoviContatto" prefHeight="27.0" prefWidth="99.0" text="Rimuovi" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="577.0" prefWidth="1030.0">
                <children>
-                  <TableView fx:id="tabellaContatti" editable="true" layoutX="-4.0" layoutY="-4.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="577.0" prefWidth="1034.0">
+                  <TableView fx:id="tabellaContatti" editable="true" layoutX="-1.0" layoutY="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="577.0" prefWidth="1034.0">
                     <columns>
                       <TableColumn fx:id="colonnaCognome" prefWidth="138.93331599235535" text="Cognome" />
                       <TableColumn fx:id="colonnaNome" prefWidth="122.39985656738281" text="Nome" />
@@ -122,6 +122,9 @@
                         <TableColumn fx:id="colonnaEmail2" minWidth="0.0" prefWidth="139.466552734375" text="E-mail2" />
                         <TableColumn fx:id="colonnaEmail3" minWidth="0.0" prefWidth="129.8665771484375" text="E-mail3" />
                     </columns>
+                    <placeholder>
+                        <Label text="Rubrica vuota" />
+                    </placeholder>
                   </TableView>
                </children>
             </AnchorPane>
