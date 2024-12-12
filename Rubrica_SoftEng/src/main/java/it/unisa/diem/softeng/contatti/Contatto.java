@@ -201,10 +201,7 @@ public class Contatto implements Comparable<Contatto>{
             return false;
         }
         final Contatto other = (Contatto) obj;
-        if (!Objects.equals(this.cognome, other.cognome)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.nome, other.nome) && Objects.equals(this.cognome, other.cognome);
     }
 
     @Override
