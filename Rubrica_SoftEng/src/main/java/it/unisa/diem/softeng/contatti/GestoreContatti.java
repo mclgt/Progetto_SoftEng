@@ -48,25 +48,7 @@ public interface GestoreContatti {
     * @return la lista osservabile contenente i risultati della ricerca - se la ricerca non produce risultati verrà visualizzata una lista vuota.
     */
      public ObservableList<Contatto>  cerca(String text);
-     
-  /**
-    * @brief Esporta la struttura dati che rappresenta la rubrica su un file in formato CSV (Comma Separated Values)
-    * @param filename[in]: nome del file su cui esportare i contatti
-    * 
-    * @throws IOException se avviene un errore durante la scrittura su file
-    */
-     public void scriviCSV(String filename) throws IOException;
-   
-  /**
-    * @brief Importa la struttura dati che rappresenta la rubrica da un file CSV (Comma Separated Values)
-    * @param filename[in]: nome del file da cui importare i contatti
-    * @return la lista osservabile coerente con il contenuto del file
-    * 
-    * @throws IOException se avviene un errore durante la lettura da file
-    */
-     public ObservableList<Contatto> leggi(String filename)throws IOException;
-     
-     
+  
   /**
     * @brief Restituisce la struttura usata per contenere i contatti
     * @return lista osservabile che contiene gli elementi presenti nella struttura dati che rappresenta la rubrica.

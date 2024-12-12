@@ -4,10 +4,17 @@ import it.unisa.diem.softeng.Main.*;
 import it.unisa.diem.softeng.contatti.Contatto;
 import it.unisa.diem.softeng.contatti.GestoreContatti;
 import it.unisa.diem.softeng.contatti.InsiemeContatti;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URL;
+import java.util.Locale;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
 import javafx.beans.property.Property;
@@ -167,10 +174,10 @@ public class RubricaViewController implements Initializable {
 
   /**
     * @brief Gestisce l'importazione di una lista di contatti da un file .csv alla lista visualizzata. Quando l'utente attiva l'evento corrispondente 
-    * all'azione 'importaContatto' verrà richiamato il metodo 'leggi' presente nell'interfaccia 'GestoreContatti' per trasferire i contatti 
-    * dal file .csv alla TableView.
-    * @pre L'istanza `gestore` deve essere inizializzata.
-    * @post i valori nella TableView corrispondono con i valori contenuti nel file, verrà richiamato il metodo dell'interfaccia
+    * all'azione 'importaContatto', potrà scegliere mediante una finestra il file da importare, una volta scelto
+    * verrà importata la struttura dati che rappresenta la rubrica da un file CSV (Comma Separated Values)
+    * 
+    * @post i valori nella TableView corrispondono con i valori contenuti nel file
     * @param event [in]: evento che attiva l'azione, un click sul pulsanteImporta 
     * @throws IOException se si verifica un errore durante la lettura del file
     */
@@ -180,15 +187,27 @@ public class RubricaViewController implements Initializable {
         fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("File CSV", "*.csv"));
         File file=fc.showOpenDialog(null);
         if(file!=null){
-       // ObservableList<Contatto> importati = tabellaContatti.getItems();
-        //importati=;
-        //gestore.setInsieme(importati);
-           /* for(Contatto c: importati){
-                System.out.println(c.toString());
-                gestore.aggiungi(c);
-            }*/
-        // tabellaContatti.refresh();
-        tabellaContatti.setItems(gestore.leggi(file.getAbsolutePath()));
+        try(Scanner s=new Scanner(new BufferedReader(new FileReader(file.getAbsolutePath())))){
+            String nomi=file.getAbsolutePath().split("[.]")[0];
+            System.out.println(s.nextLine());
+            s.useDelimiter("[;\n]");
+            s.useLocale(Locale.US);
+            while(s.hasNext()){
+                String cognome=s.next();
+                String nome=s.next();
+                String num[]=new String[3];
+                num[0]=s.next();
+                num[1]=s.next();
+                num[2]=s.next();
+                String em[]=new String[3];
+                em[0]=s.next();
+                em[1]=s.next();
+                em[2]=s.next();
+                if(!nome.isEmpty() || !cognome.isEmpty()){
+                    gestore.aggiungi(new Contatto(nome,cognome,num,em));
+                }
+            }
+        }
         }
         else{
             System.out.println("Nessun file selezionato");
@@ -197,23 +216,49 @@ public class RubricaViewController implements Initializable {
     
   /**
     * @brief Gestisce l'esportazione di una lista di contatti dalla lista visualizzata nella TableView ad un file.csv. Quando l'utente attiva l'evento
-    * corrispondente all'azione 'esportaContatto' è possibile richiamare il metodo 'scriviCSV' presente nell'interfaccia 'GestoreContatti' per trasferire i 
-    * contatti dalla TableView al file .csv.
-    * @pre L'istanza `gestore` deve essere inizializzata.
+    * corrispondente all'azione 'esportaContatto' verrà esportata la struttura dati che rappresenta la rubrica su un file in formato CSV (Comma Separated Values)
+    * 
     * @post i valori nel file .csv selezionato corrispondono a quelli contenuti nella TableView.
-    *  @param event [in]: evento che attiva l'azione, un click sul pulsanteEsporta
-    *  @throws IOException se si verifica un errore durante la scrittura del file
+    * @param event [in]: evento che attiva l'azione, un click sul pulsanteEsporta
+    * @throws IOException se si verifica un errore durante la scrittura del file
     */
     @FXML
     private void esportaContatto(ActionEvent event) throws IOException {
         FileChooser fc=new FileChooser();
         fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("File CSV", "*.csv"));
         File file=fc.showSaveDialog(null);
-        if(file!=null){
-        gestore.scriviCSV(file.getAbsolutePath());
+        if(file!=null){try(PrintWriter pw=new PrintWriter(new BufferedWriter(new FileWriter(file.getAbsolutePath())))){
+            pw.println("COGNOME;NOME;NUMERO1;NUMERO2;NUMERO3;E-MAIL1;E-MAIL2;E-MAIL3");
+            for(Contatto c:this.gestore.getInsieme()){
+                pw.print(getOrDefault(c.getCognome()));
+                pw.append(';');
+                pw.print(getOrDefault(c.getNome()));
+                pw.append(';');
+                pw.print(getOrDefault(c.getNumero1Contatto()));
+                pw.append(';');
+                pw.print(getOrDefault(c.getNumero2Contatto()));
+                pw.append(';');
+                pw.print(getOrDefault(c.getNumero3Contatto()));
+                pw.append(';');
+                pw.print(getOrDefault(c.getEmail1Contatto()));
+                pw.append(';');
+                pw.print(getOrDefault(c.getEmail2Contatto()));
+                pw.append(';');
+                pw.print(getOrDefault(c.getEmail3Contatto()));
+                pw.println();
+            }
+        }
         }
     }
-
+    /**
+    * @brief Gestisce l'assegnazione del valore alla variabile passata come parametro.
+    * 
+    * @return ritorna uno spazio vuoto nel caso in cui la variabile passata sia nulla o il campo non sia compilato, in caso contrario ritorna il valore
+    * @param value [in]
+    */
+    private String getOrDefault(String value){
+        return (value == null || value.isEmpty())? " " : value;
+    }
   /**
     * @brief Gestisce l'aggiunta di un contatto alla lista visualizzata nella TableView.Quando l'utente attiva l'evento corrispondente
     * all'azione 'aggiungiContatto' è possibile richiamare il metodo 'aggiungi' presente nell'interfaccia 'GestoreContatti' per aggiungere un contatto
