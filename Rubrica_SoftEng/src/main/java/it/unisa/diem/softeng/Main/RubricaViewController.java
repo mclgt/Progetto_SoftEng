@@ -120,7 +120,8 @@ public class RubricaViewController implements Initializable {
         BooleanBinding campiNonVuoti= Bindings.createBooleanBinding(()-> 
                 !campoNome.getText().trim().isEmpty() || !campoCognome.getText().trim().isEmpty(), campoNome.textProperty(),campoCognome.textProperty());
         BooleanBinding contattoSelezionato= tabellaContatti.getSelectionModel().selectedItemProperty().isNull();
-        pulsanteAggiungi.disableProperty().bind(campiNonVuoti.not().or(contattoSelezionato.not()));
+        BooleanBinding controlloNumero=Bindings.createBooleanBinding(()->campoPrimoNum.getText().matches("\\d*") && campoSecondoNum.getText().matches("\\d*") && campoTerzoNum.getText().matches("\\d*"),campoPrimoNum.textProperty(),campoSecondoNum.textProperty(),campoTerzoNum.textProperty());
+        pulsanteAggiungi.disableProperty().bind(controlloNumero.not().or(campiNonVuoti.not()).or(contattoSelezionato.not()));
         pulsanteRimuovi.disableProperty().bind(contattoSelezionato);
         pulsanteModifica.disableProperty().bind(campiNonVuoti.not().or(contattoSelezionato));
        
