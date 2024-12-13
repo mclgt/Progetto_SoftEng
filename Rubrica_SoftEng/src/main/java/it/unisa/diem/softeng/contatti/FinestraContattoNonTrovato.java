@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package it.unisa.diem.softeng.contatti;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
@@ -16,7 +17,9 @@ import javafx.stage.Stage;
 
 public class FinestraContattoNonTrovato extends Stage {
     public FinestraContattoNonTrovato() {
-        Label testo = new Label("Contatto non trovato");
+        Label testo = new Label("Contatto non trovato!");
+        testo.setAlignment(Pos.CENTER);
+        testo.setStyle("-fx-font-family: Arial; -fx-font-size: 16px; -fx-font-weight: bold;");
         Scene scene = new Scene(new BorderPane(testo), 200, 100);
         setTitle("Errore");
         setScene(scene);
