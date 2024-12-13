@@ -121,7 +121,8 @@ public class RubricaViewController implements Initializable {
                 !campoNome.getText().trim().isEmpty() || !campoCognome.getText().trim().isEmpty(), campoNome.textProperty(),campoCognome.textProperty());
         BooleanBinding contattoSelezionato= tabellaContatti.getSelectionModel().selectedItemProperty().isNull();
         BooleanBinding controlloNumero=Bindings.createBooleanBinding(()->campoPrimoNum.getText().matches("\\d*") && campoSecondoNum.getText().matches("\\d*") && campoTerzoNum.getText().matches("\\d*"),campoPrimoNum.textProperty(),campoSecondoNum.textProperty(),campoTerzoNum.textProperty());
-        pulsanteAggiungi.disableProperty().bind(controlloNumero.not().or(campiNonVuoti.not()).or(contattoSelezionato.not()));
+        BooleanBinding controlloEmail=Bindings.createBooleanBinding(()->(campoPrimaMail.getText().contains("@") || campoPrimaMail.getText().isEmpty()) && (campoSecondaMail.getText().contains("@") || campoSecondaMail.getText().isEmpty()) && (campoTerzaMail.getText().contains("@") || campoTerzaMail.getText().isEmpty()),campoPrimaMail.textProperty(),campoSecondaMail.textProperty(),campoTerzaMail.textProperty());
+        pulsanteAggiungi.disableProperty().bind(controlloNumero.not().or((campiNonVuoti.not()).or(contattoSelezionato.not()).or(controlloEmail.not())));
         pulsanteRimuovi.disableProperty().bind(contattoSelezionato);
         pulsanteModifica.disableProperty().bind(campiNonVuoti.not().or(contattoSelezionato));
        
