@@ -1,9 +1,7 @@
 package it.unisa.diem.softeng.Main;
-
 import it.unisa.diem.softeng.contatti.Contatto;
 import it.unisa.diem.softeng.contatti.GestoreContatti;
 import it.unisa.diem.softeng.contatti.InsiemeContatti;
-import it.unisa.diem.softeng.contatti.FinestraContattoNonTrovato;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
