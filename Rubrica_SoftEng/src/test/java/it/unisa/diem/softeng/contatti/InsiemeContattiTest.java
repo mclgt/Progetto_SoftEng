@@ -5,6 +5,7 @@
  */
 package it.unisa.diem.softeng.contatti;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -55,9 +56,9 @@ public class InsiemeContattiTest {
        this.setUp();
        insiemeContatti.aggiungi(contatto1);
        insiemeContatti.aggiungi(contatto2);
+       assertEquals(2,insiemeContatti.getInsieme().size());
        insiemeContatti.rimuovi(contatto1);
        insiemeContatti.rimuovi(contatto2);
-       assertEquals(2,insiemeContatti.getInsieme().size());
        assertFalse(insiemeContatti.getInsieme().contains(contatto1));
        assertFalse(insiemeContatti.getInsieme().contains(contatto2));
     }
@@ -67,6 +68,7 @@ public class InsiemeContattiTest {
      */
     @Test
     public void testModifica() {
+        this.setUp();
        insiemeContatti.aggiungi(contatto3);
        insiemeContatti.aggiungi(contatto4);
        insiemeContatti.modifica(contatto3, "Biagio", "Zanioli",new String[]{"2341","687878","3242465"},new String[]{"email1@esempio.com","biagiooo@gmail.com","zanioli@yahoo.it"});
@@ -83,6 +85,7 @@ public class InsiemeContattiTest {
      */
     @Test
     public void testCerca() {
+        this.setUp();
         insiemeContatti.aggiungi(contatto1);
         insiemeContatti.aggiungi(contatto4);
         ObservableList<Contatto> ris=insiemeContatti.cerca("Michela");
@@ -95,6 +98,7 @@ public class InsiemeContattiTest {
      */
     @Test
     public void testGetInsieme() {
+        this.setUp();
         insiemeContatti.aggiungi(contatto1);
         insiemeContatti.aggiungi(contatto2);
         insiemeContatti.aggiungi(contatto3);
@@ -112,6 +116,7 @@ public class InsiemeContattiTest {
      */
     @Test
     public void testSort() {
+        this.setUp();
         insiemeContatti.aggiungi(contatto2);
         insiemeContatti.aggiungi(contatto3);
         insiemeContatti.sort();
@@ -125,6 +130,7 @@ public class InsiemeContattiTest {
      */
     @Test
     public void testReset() {
+        this.setUp();
         insiemeContatti.aggiungi(contatto1);
         insiemeContatti.aggiungi(contatto2);
         insiemeContatti.aggiungi(contatto3);
@@ -138,12 +144,13 @@ public class InsiemeContattiTest {
      */
     @Test
     public void testSetInsieme() {
-        System.out.println("setInsieme");
-        ObservableList<Contatto> list = null;
-        InsiemeContatti instance = new InsiemeContatti();
-        instance.setInsieme(list);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        this.setUp();
+        ObservableList<Contatto> prova=FXCollections.observableArrayList();
+        prova.add(contatto1);
+        insiemeContatti.setInsieme(prova);
+        for(Contatto c: prova){
+            assertTrue(insiemeContatti.getInsieme().contains(c));
+        }
     }
     
 }
