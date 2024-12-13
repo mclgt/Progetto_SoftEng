@@ -34,6 +34,8 @@ public class Rubrica extends Application{
         stage.setScene(scene);
         stage.show();
         stage.setTitle("Rubrica");
+        
+       
     }
     
 
