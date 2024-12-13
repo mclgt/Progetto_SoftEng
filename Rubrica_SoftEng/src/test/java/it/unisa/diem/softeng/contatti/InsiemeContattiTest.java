@@ -12,8 +12,9 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- *
- * @author Reb
+ *@brief Classe di test per la classe InsiemeContatti
+ * @author Beatrice Rebecca
+ * @date 12-12-2024
  */
 public class InsiemeContattiTest {
    
@@ -32,8 +33,8 @@ public class InsiemeContattiTest {
     
 
     /**
-     * Test of aggiungi method, of class InsiemeContatti.
-     */
+     * @brief Test del metodo aggiungi della InsiemeContatti
+    */
     @Test
     public void testAggiungi() {
         this.setUp();
@@ -49,8 +50,8 @@ public class InsiemeContattiTest {
     }
 
     /**
-     * Test of rimuovi method, of class InsiemeContatti.
-     */
+     * @brief Test del metodo rimuovi della InsiemeContatti
+    */
     @Test
     public void testRimuovi() {
        this.setUp();
@@ -64,8 +65,8 @@ public class InsiemeContattiTest {
     }
 
     /**
-     * Test of modifica method, of class InsiemeContatti.
-     */
+     * @brief Test del metodo modifica della InsiemeContatti
+    */
     @Test
     public void testModifica() {
         this.setUp();
@@ -81,8 +82,8 @@ public class InsiemeContattiTest {
     }
 
     /**
-     * Test of cerca method, of class InsiemeContatti.
-     */
+     * @brief Test del metodo cerca della InsiemeContatti
+    */
     @Test
     public void testCerca() {
         this.setUp();
@@ -94,8 +95,8 @@ public class InsiemeContattiTest {
     }
 
     /**
-     * Test of getInsieme method, of class InsiemeContatti.
-     */
+     * @brief Test del metodo getInsieme della InsiemeContatti
+    */
     @Test
     public void testGetInsieme() {
         this.setUp();
@@ -112,8 +113,8 @@ public class InsiemeContattiTest {
     }
 
     /**
-     * Test of sort method, of class InsiemeContatti.
-     */
+     * @brief Test del metodo sort della InsiemeContatti
+    */
     @Test
     public void testSort() {
         this.setUp();
@@ -126,8 +127,8 @@ public class InsiemeContattiTest {
     }
 
     /**
-     * Test of reset method, of class InsiemeContatti.
-     */
+     * @brief Test del metodo reset della InsiemeContatti
+    */
     @Test
     public void testReset() {
         this.setUp();
@@ -140,8 +141,8 @@ public class InsiemeContattiTest {
     }
 
     /**
-     * Test of setInsieme method, of class InsiemeContatti.
-     */
+     * @brief Test del metodo setInsieme della InsiemeContatti
+    */
     @Test
     public void testSetInsieme() {
         this.setUp();
