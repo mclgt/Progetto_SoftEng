@@ -39,6 +39,20 @@ public class EmailTest {
         
     }
 
+  /**
+   * @brief Test del metodo validazioneEmail della classe Email caso valido e non valido
+   */
+    void validazioneEmailTest(){
+        this.setUp();
+        assertTrue(emails.validazioneEmail(emails.getEmail1()));
+        assertTrue(emails.validazioneEmail(emails.getEmail2()));
+        assertTrue(emails.validazioneEmail(emails.getEmail3()));
+    }
+    
+     void validazioneEmailTestNonValido(){
+          assertThrows(IllegalArgumentException.class, () -> new Email(null, "email",null));
+          assertThrows(IllegalArgumentException.class, () -> new Email("email1", "email2", "email3"));
+    }
 
     /**
      * @brief Test del metodo toString method della classe Email.
@@ -59,9 +73,18 @@ public class EmailTest {
         emails.setEmail1("email1@esempio.com");
         assertEquals("email1@esempio.com",emails.getEmail1());
     }
+    
+   /**
+     * @brief Test del metodo setEmail1 della classe Email - caso set non valido
+     */
+    @Test
+    public void testSetEmail1NonValido() {
+        this.setUp();
+         assertThrows(IllegalArgumentException.class, () -> emails.setEmail1("esempio123"));
+    }
 
     /**
-     * @brief Test del metodo setEmail2 della classe Email.
+     * @brief Test del metodo setEmail2 della classe Email. 
      */
     @Test
     public void testSetEmail2() {
@@ -69,7 +92,15 @@ public class EmailTest {
         emails.setEmail2("email2@esempio.com");
         assertEquals("email2@esempio.com",emails.getEmail2());
     }
-
+    
+   /**
+     * @brief Test del metodo setEmail2 della classe Email - caso set non valido
+     */
+    @Test
+    public void testSetEmail2NonValido() {
+        this.setUp();
+         assertThrows(IllegalArgumentException.class, () -> emails.setEmail2("esempioerrore"));
+    }
     /**
      * @brief Test del metodo setEmail2 della classe Email.
      */
@@ -78,6 +109,15 @@ public class EmailTest {
         this.setUp();
         emails.setEmail3("email3@esempio.com");
         assertEquals("email3@esempio.com",emails.getEmail3());
+    }
+    
+   /**
+     * @brief Test del metodo setEmail3 della classe Email - caso set non valido
+     */
+    @Test
+    public void testSetEmail3NonValido() {
+        this.setUp();
+         assertThrows(IllegalArgumentException.class, () -> emails.setEmail3("errato"));
     }
     
     /**
