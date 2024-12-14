@@ -1,5 +1,5 @@
-COGNOME;NOME;NUMERO1;NUMERO2;NUMERO3;E-MAIL1;E-MAIL2;E-MAIL3
- ;Avvocato;0856735273;1233457884;1234678922;studiolegale@legalmail.it;lawstuff@gmail.com;lucaverdi@outlook.iy
+COGNOME;NOME;NUMERO1;NUMERO2;NUMERO3;EMAIL1;EMAIL2;EMAIL3
+ ;Avvocato;8567788223;12345678;345678;studiolegale@legalmail.it;lawstuff@gmail.com;lucaverdi@outlook.iy
 Bianchi;Maria; ; ; ;m.bianchi@yahoo.it; ; 
 De Franchi; ; ; ; ;defranchi@gmail.com;franchimaria@outlook.it;maria_franchi89@gmail.com
 Franchi;Martina;1234567;234567;2345678; ; ; 
@@ -8,4 +8,3 @@ Gaeta;Michela;34556773; ; ;m.gaeta@esempio.com; ;
 Beatrice;Rebecca; ;345678; ; ;b.rebecca@esempio.com; 
 Cambria;Jacopo; ; ;4567890; ; ;j.cambria@esempio.com
 Caliendo;Antonio;3456674467; ;234567234; ;a.caliendo@esempio.com;c.antonio@esempio.com
-
