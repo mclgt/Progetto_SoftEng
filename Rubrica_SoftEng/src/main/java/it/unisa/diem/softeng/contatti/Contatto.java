@@ -35,6 +35,10 @@ public class Contatto implements Comparable<Contatto>{
     * 
     */
     public Contatto(String nome, String cognome, String[] numero, String[] email){
+    if (nome.isEmpty() && cognome.isEmpty()) {
+        throw new IllegalArgumentException("Almeno uno tra nome o cognome deve essere definito.");
+    }
+
      this.nome=nome;
      this.cognome=cognome;
      this.numero=new NumeroTelefonico(numero[0],numero[1],numero[2]);
@@ -70,6 +74,9 @@ public class Contatto implements Comparable<Contatto>{
     * 
     */
     public void setNome(String nome) {
+     if ((nome==null ||nome.isEmpty()) && (this.cognome==null|| this.cognome.isEmpty())) {
+        throw new IllegalArgumentException("Almeno uno tra nome o cognome deve essere definito.");
+    }
      this.nome=nome;
     }
 
@@ -79,6 +86,9 @@ public class Contatto implements Comparable<Contatto>{
     * 
     */
     public void setCognome(String cognome) {
+     if ((this.nome==null ||this.nome.isEmpty()) && (cognome==null|| cognome.isEmpty())) {
+        throw new IllegalArgumentException("Almeno uno tra nome o cognome deve essere definito.");
+    }
      this.cognome=cognome;
     }
 
