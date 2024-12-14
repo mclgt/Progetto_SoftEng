@@ -120,7 +120,7 @@ public class RubricaViewController implements Initializable {
         BooleanBinding campiNonVuoti= Bindings.createBooleanBinding(()-> 
                 !campoNome.getText().trim().isEmpty() || !campoCognome.getText().trim().isEmpty(), campoNome.textProperty(),campoCognome.textProperty());
         BooleanBinding contattoSelezionato= tabellaContatti.getSelectionModel().selectedItemProperty().isNull();
-        BooleanBinding controlloNumero=Bindings.createBooleanBinding(()->campoPrimoNum.getText().matches("\\d*") && campoSecondoNum.getText().matches("\\d*") && campoTerzoNum.getText().matches("\\d*"),campoPrimoNum.textProperty(),campoSecondoNum.textProperty(),campoTerzoNum.textProperty());
+        BooleanBinding controlloNumero=Bindings.createBooleanBinding(()->(campoPrimoNum.getText().matches("\\d*") && campoSecondoNum.getText().matches("\\d*") && campoTerzoNum.getText().matches("\\d*")),campoPrimoNum.textProperty(),campoSecondoNum.textProperty(),campoTerzoNum.textProperty());
         BooleanBinding controlloEmail=Bindings.createBooleanBinding(()->(campoPrimaMail.getText().contains("@") || campoPrimaMail.getText().isEmpty()) && (campoSecondaMail.getText().contains("@") || campoSecondaMail.getText().isEmpty()) && (campoTerzaMail.getText().contains("@") || campoTerzaMail.getText().isEmpty()),campoPrimaMail.textProperty(),campoSecondaMail.textProperty(),campoTerzaMail.textProperty());
         pulsanteAggiungi.disableProperty().bind(controlloNumero.not().or((campiNonVuoti.not()).or(contattoSelezionato.not()).or(controlloEmail.not())));
         pulsanteRimuovi.disableProperty().bind(contattoSelezionato);
@@ -190,7 +190,7 @@ public class RubricaViewController implements Initializable {
         if(file!=null){
         try(Scanner s=new Scanner(new BufferedReader(new FileReader(file.getAbsolutePath())))){
             String nomi=file.getAbsolutePath().split("[.]")[0];
-            System.out.println(s.nextLine());
+            s.nextLine();
             s.useDelimiter("[;\n]");
             s.useLocale(Locale.US);
             while(s.hasNext()){
@@ -204,7 +204,7 @@ public class RubricaViewController implements Initializable {
                 em[0]=s.next();
                 em[1]=s.next();
                 em[2]=s.next();
-                if(!nome.isEmpty() || !cognome.isEmpty()){
+                if((!nome.isEmpty() || !cognome.isEmpty()) && (num[0].matches("\\d*") || num[0].matches("\\s*"))&& (num[1].matches("\\d*") || num[1].matches("\\s*")) && (num[2].matches("\\d*") || num[2].matches("\\s*")) && (em[0].contains("@") || em[0].isEmpty()) && (em[1].contains("@") || em[1].isEmpty()) && (em[2].contains("@") || em[2].isEmpty())){
                     gestore.aggiungi(new Contatto(nome,cognome,num,em));
                 }
             }
