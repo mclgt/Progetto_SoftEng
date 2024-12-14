@@ -50,7 +50,7 @@ public class NumeroTelefonico {
     * 
     */
     public boolean validazioneNumero(String numero){
-        if(numero.matches("[\\d*\\s*]")){
+        if(numero==null ||numero.trim().isEmpty() || numero.matches("\\d+")){
            return true;
         }
         else 

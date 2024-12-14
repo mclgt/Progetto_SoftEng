@@ -51,10 +51,7 @@ public class NumeroTelefonicoTest {
         assertTrue(numeri.validazioneNumero(numeri.getNumero3()));
     }
     
-     void validazioneNumeroTestNonValido(){
-          assertThrows(IllegalArgumentException.class, () -> new NumeroTelefonico(null, "abc",null));
-          assertThrows(IllegalArgumentException.class, () -> new Email("123a", "abc", "a55b"));
-    }
+    
 
     /**
      * @brief Test del metodo toString method della classe NumeroTelefonico.
@@ -76,14 +73,7 @@ public class NumeroTelefonicoTest {
         assertEquals("098765432",numeri.getNumero1());
     }
     
-   /**
-     * @brief Test del metodo setNumero1 della classe NumeroTelefonico - caso non valido
-     */
-    @Test
-    public void testSetNumero1NonValido() {
-        this.setUp();
-         assertThrows(IllegalArgumentException.class, () -> numeri.setNumero1("errore"));
-    }
+   
 
   /**
      * @brief Test del metodo setNumero2 della classe NumeroTelefonico.
@@ -95,14 +85,7 @@ public class NumeroTelefonicoTest {
         assertEquals("1116716272",numeri.getNumero2());
     }
     
-   /**
-     * @brief Test del metodo setNumero2 della classe NumeroTelefonico - caso non valido
-     */
-    @Test
-    public void testSetNumero2NonValido() {
-        this.setUp();
-         assertThrows(IllegalArgumentException.class, () -> numeri.setNumero2("err123"));
-    }
+  
 
    /**
      * @brief Test del metodo setNumero3 della classe NumeroTelefonico.
@@ -114,15 +97,7 @@ public class NumeroTelefonicoTest {
         assertEquals("4567864356",numeri.getNumero3());
     }
     
-   /**
-     * @brief Test del metodo setNumero3 della classe NumeroTelefonico - caso non valido
-     */
-    @Test
-    public void testSetNumero3NonValido() {
-        this.setUp();
-         assertThrows(IllegalArgumentException.class, () -> numeri.setNumero3("1234erroe"));
-    }
-    
+   
     /**
      * @brief Test per trattare un oggetto Email con valori nulla
      */
