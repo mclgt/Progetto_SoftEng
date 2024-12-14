@@ -124,7 +124,7 @@ public class RubricaViewController implements Initializable {
         BooleanBinding controlloEmail=Bindings.createBooleanBinding(()->(campoPrimaMail.getText().contains("@") || campoPrimaMail.getText().isEmpty()) && (campoSecondaMail.getText().contains("@") || campoSecondaMail.getText().isEmpty()) && (campoTerzaMail.getText().contains("@") || campoTerzaMail.getText().isEmpty()),campoPrimaMail.textProperty(),campoSecondaMail.textProperty(),campoTerzaMail.textProperty());
         pulsanteAggiungi.disableProperty().bind(controlloNumero.not().or((campiNonVuoti.not()).or(contattoSelezionato.not()).or(controlloEmail.not())));
         pulsanteRimuovi.disableProperty().bind(contattoSelezionato);
-        pulsanteModifica.disableProperty().bind(campiNonVuoti.not().or(contattoSelezionato));
+        pulsanteModifica.disableProperty().bind(campiNonVuoti.not().or(contattoSelezionato).or(controlloNumero.not()).or(controlloEmail.not()));
        
         tabellaContatti.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
         if (newValue!= null) {
