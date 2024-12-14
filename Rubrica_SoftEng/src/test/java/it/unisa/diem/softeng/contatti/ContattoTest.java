@@ -27,7 +27,7 @@ public class ContattoTest {
     }
 
    /**
-     * @brief Test del metodo costruttore della classe Contatto
+     * @brief Test del metodo costruttore della classe Contatto nel caso di un contatto valido e non valido
      */
     @Test
     void costruttoreContattoTest() {
@@ -42,6 +42,14 @@ public class ContattoTest {
         assertEquals("email2@esempio.com",contatto.getEmail2Contatto());
         assertEquals("email3@esempio.com",contatto.getEmail3Contatto());
         
+    }
+    
+    @Test
+    void costruttreContattoTestnonValido(){
+        String[] numeri={"1234567890","0987654321","345678965"};
+        String[] emails={"email1@esempio.com","email2@esempio.com","email3@esempio.com"};
+        assertThrows(IllegalArgumentException.class, () -> new Contatto(null, null, numeri, emails));
+        assertThrows(IllegalArgumentException.class, () -> new Contatto(" ", " ", numeri, emails));
     }
    
 
@@ -63,6 +71,19 @@ public class ContattoTest {
         this.setUp();
         contatto.setCognome("Beatrice");
         assertEquals("Beatrice",contatto.getCognome());
+    }
+    
+    /**
+     * @brief Test del metodo setCognome e setNome della classe Contatto - nome e cognome nulli
+     */
+    @Test
+    public void testSetCognomeNomeNonValido(){
+        this.setUp();
+        assertThrows(IllegalArgumentException.class, ()-> {
+            contatto.setNome(null);
+            contatto.setCognome(null);
+        });
+        
     }
 
     /**
@@ -156,6 +177,8 @@ public class ContattoTest {
         assertTrue(contatto.compareTo(contatto1)>0);
         assertTrue(contatto2.compareTo(contatto)<0);
     }
+    
+    
 
    
 }
