@@ -43,7 +43,7 @@ public class NumeroTelefonico {
     * 
     */
     public boolean validazioneNumero(String numero){
-        if(numero!= null && !numero.isEmpty() && !numero.matches("\\d+")){
+        if(numero!= null && !numero.isEmpty() && !numero.matches("[\\d*\\s*]")){
             throw new IllegalArgumentException("Il numero deve essere composto da soli caratteri numerici");
             
         }
