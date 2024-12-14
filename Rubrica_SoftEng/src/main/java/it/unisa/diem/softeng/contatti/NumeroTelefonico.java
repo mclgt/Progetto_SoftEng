@@ -27,11 +27,18 @@ public class NumeroTelefonico {
     * 
     */
     public NumeroTelefonico(String numero1, String numero2, String numero3){
-     if(validazioneNumero(numero1) && validazioneNumero(numero2) && validazioneNumero(numero3)){
+     if(validazioneNumero(numero1)){
        this.numeri[0]=numero1;
+     }else 
+         this.numeri[0]=null;
+     if(validazioneNumero(numero2)){
        this.numeri[1]=numero2;
+     }else
+         this.numeri[1]=null;
+    if(validazioneNumero(numero3)){
        this.numeri[2]=numero3;
-     }
+     }else
+        this.numeri[2]=null;
     }
 
     
@@ -39,12 +46,12 @@ public class NumeroTelefonico {
     * @brief Verifica che il numero telefonico passato, se definito, sia composto da soli caratteri numerici
     * @param numero[in]: numero da validare
     * @return true se il numero è vuota, oppure se è definito e contiene soli caratteri numerici
-    * @throws IllegalArgumentException se il numero è definito e contiene anche solo un carattere non numerico
+    * false se il numero non contiene solo numeri
     * 
     */
     public boolean validazioneNumero(String numero){
         if(numero!= null && !numero.isEmpty() && !numero.matches("[\\d*\\s*]")){
-           throw new IllegalArgumentException("Il numero deve essere composto da soli caratteri numerici"); 
+           return false;
         }
         else 
             return true;

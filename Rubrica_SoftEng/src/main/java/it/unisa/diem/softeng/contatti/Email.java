@@ -28,11 +28,18 @@ public class Email {
     * 
     */
     public Email(String email1, String email2, String email3){
-       if(validazioneEmail(email1) && validazioneEmail(email2)&& validazioneEmail(email3)){
+       if(validazioneEmail(email1)){
             email[0]=email1;
+       }else 
+           email[0]=null;
+       if(validazioneEmail(email2)){
             email[1]=email2;
+       }else
+           email[1]=null;
+       if(validazioneEmail(email3)){
             email[2]=email3;
-       }
+       }else
+            email[2]=null;
 
     }
     
@@ -40,12 +47,12 @@ public class Email {
     * @brief Verifica che l'indirizzo e- mail passato, se definito, contiene il carattere '@'
     * @param email[in]: email da validare
     * @return true se la mail è vuota, oppure se è definita e contiene il carattrere '@'
-    * @throws IllegalArgumentException se la mail è definita e non contiene il caratarrere '@'
+    * false se la mail è definita ma non contiene il carattere '@'
     * 
     */
     public boolean validazioneEmail(String email){
         if(email!=null && !email.isEmpty() && !email.contains("@")){
-            throw new IllegalArgumentException("L'email se definita deve contenere il carattere '@'");
+            return false;
         }
         else
             return true;
