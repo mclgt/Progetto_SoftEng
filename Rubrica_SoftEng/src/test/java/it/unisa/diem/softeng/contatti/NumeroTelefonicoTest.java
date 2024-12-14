@@ -39,6 +39,22 @@ public class NumeroTelefonicoTest {
         assertEquals("5551234567",numeri.getNumero3());
         
     }
+    
+    
+     /**
+   * @brief Test del metodo validazioneNumero della classe NumeroTelefonico caso valido e non valido
+   */
+    void validazioneNumeroTest(){
+        this.setUp();
+        assertTrue(numeri.validazioneNumero(numeri.getNumero1()));
+        assertTrue(numeri.validazioneNumero(numeri.getNumero2()));
+        assertTrue(numeri.validazioneNumero(numeri.getNumero3()));
+    }
+    
+     void validazioneNumeroTestNonValido(){
+          assertThrows(IllegalArgumentException.class, () -> new NumeroTelefonico(null, "abc",null));
+          assertThrows(IllegalArgumentException.class, () -> new Email("123a", "abc", "a55b"));
+    }
 
     /**
      * @brief Test del metodo toString method della classe NumeroTelefonico.
@@ -59,6 +75,15 @@ public class NumeroTelefonicoTest {
         numeri.setNumero1("098765432");
         assertEquals("098765432",numeri.getNumero1());
     }
+    
+   /**
+     * @brief Test del metodo setNumero1 della classe NumeroTelefonico - caso non valido
+     */
+    @Test
+    public void testSetNumero1NonValido() {
+        this.setUp();
+         assertThrows(IllegalArgumentException.class, () -> numeri.setNumero1("errore"));
+    }
 
   /**
      * @brief Test del metodo setNumero2 della classe NumeroTelefonico.
@@ -68,6 +93,15 @@ public class NumeroTelefonicoTest {
         this.setUp();
         numeri.setNumero2("1116716272");
         assertEquals("1116716272",numeri.getNumero2());
+    }
+    
+   /**
+     * @brief Test del metodo setNumero2 della classe NumeroTelefonico - caso non valido
+     */
+    @Test
+    public void testSetNumero2NonValido() {
+        this.setUp();
+         assertThrows(IllegalArgumentException.class, () -> numeri.setNumero2("err123"));
     }
 
    /**
@@ -80,11 +114,20 @@ public class NumeroTelefonicoTest {
         assertEquals("4567864356",numeri.getNumero3());
     }
     
+   /**
+     * @brief Test del metodo setNumero3 della classe NumeroTelefonico - caso non valido
+     */
+    @Test
+    public void testSetNumero3NonValido() {
+        this.setUp();
+         assertThrows(IllegalArgumentException.class, () -> numeri.setNumero3("1234erroe"));
+    }
+    
     /**
      * @brief Test per trattare un oggetto Email con valori nulla
      */
     @Test
-    public void testNullEmails(){
+    public void testNullNumeri(){
         NumeroTelefonico numeriNulli= new NumeroTelefonico(null,null,null);
         assertNull(numeriNulli.getNumero1());
         assertNull(numeriNulli.getNumero2());

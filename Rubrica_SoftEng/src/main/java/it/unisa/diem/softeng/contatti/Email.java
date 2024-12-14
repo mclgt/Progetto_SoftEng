@@ -28,13 +28,31 @@ public class Email {
     * 
     */
     public Email(String email1, String email2, String email3){
-        email[0]=email1;
-        email[1]=email2;
-        email[2]=email3;
+       if(validazioneEmail(email1) && validazioneEmail(email2)&& validazioneEmail(email3)){
+            email[0]=email1;
+            email[1]=email2;
+            email[2]=email3;
+       }
+
+    }
+    
+  /**
+    * @brief Verifica che l'indirizzo e- mail passato, se definito, contiene il carattere '@'
+    * @param email[in]: email da validare
+    * @return true se la mail è vuota, oppure se è definita e contiene il carattrere '@'
+    * @throws IllegalArgumentException se la mail è definita e non contiene il caratarrere '@'
+    * 
+    */
+    public boolean validazioneEmail(String email){
+        if(email!=null && !email.isEmpty() && !email.contains("@")){
+            throw new IllegalArgumentException("L'email se definita deve contenere il carattere '@'");
+        }
+        else
+            return true;
     }
     
     
-    /**
+  /**
     * @brief Restituisce il primo indirizzo e-mail (posizione 0) del vettore di indirizzi e-mail
     * @return la stringa rappresentante l'email in posizione 0, oppure null se non presente
     * 
@@ -75,7 +93,9 @@ public class Email {
     * 
     */ 
     public void setEmail1(String email1){
+       if(validazioneEmail(email1)){
         this.email[0]=email1;
+       }
     }
  
   /**
@@ -84,7 +104,9 @@ public class Email {
     * 
     */ 
     public void setEmail2(String email2){
+       if(validazioneEmail(email2)){
         this.email[1]=email2;
+       }
     }
     
   /**
@@ -93,6 +115,8 @@ public class Email {
     * 
     */ 
     public void setEmail3(String email3){
+       if(validazioneEmail(email3)){
         this.email[2]=email3;
+        }
     }
 }
