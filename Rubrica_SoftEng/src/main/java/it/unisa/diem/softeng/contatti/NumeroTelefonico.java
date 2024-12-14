@@ -50,11 +50,11 @@ public class NumeroTelefonico {
     * 
     */
     public boolean validazioneNumero(String numero){
-        if(numero!= null && !numero.isEmpty() && !numero.matches("[\\d*\\s*]")){
-           return false;
+        if(numero.matches("[\\d*\\s*]")){
+           return true;
         }
         else 
-            return true;
+            return false;
     }
   /**
     * @brief Restituisce il primo numero (posizione 0) del vettore di numeri
