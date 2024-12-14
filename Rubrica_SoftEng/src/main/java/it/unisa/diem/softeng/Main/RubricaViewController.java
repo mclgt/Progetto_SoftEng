@@ -188,31 +188,11 @@ public class RubricaViewController implements Initializable {
         fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("File CSV", "*.csv"));
         File file=fc.showOpenDialog(null);
         if(file!=null){
-        try(Scanner s=new Scanner(new BufferedReader(new FileReader(file.getAbsolutePath())))){
-            String nomi=file.getAbsolutePath().split("[.]")[0];
-            s.nextLine();
-            s.useDelimiter("[;\n]");
-            s.useLocale(Locale.US);
-            while(s.hasNext()){
-                String cognome=s.next();
-                String nome=s.next();
-                String num[]=new String[3];
-                num[0]=s.next();
-                num[1]=s.next();
-                num[2]=s.next();
-                String em[]=new String[3];
-                em[0]=s.next();
-                em[1]=s.next();
-                em[2]=s.next();
-                if((!nome.isEmpty() || !cognome.isEmpty()) && (num[0].matches("[\\d\\s]*") || num[0].trim().isEmpty())&& (num[1].matches("[\\d\\s]*") || num[1].trim().isEmpty()) && (num[2].matches("[\\d\\s]*") || num[2].trim().isEmpty()) && (em[0].contains("@") || em[0].trim().isEmpty()) && (em[1].contains("@") || em[1].trim().isEmpty()) && (em[2].contains("@") || em[2].trim().isEmpty())){
-                    gestore.aggiungi(new Contatto(nome,cognome,num,em));
-                }
-            }
+            gestore.setInsieme(gestore.importaContatti(file.getAbsolutePath()));
+            tabellaContatti.setItems(gestore.getInsieme());
         }
-        }
-        else{
-            System.out.println("Nessun file selezionato");
-        }
+        else
+            System.out.println("Nessun file selezionato");      
     }
     
   /**
@@ -228,27 +208,8 @@ public class RubricaViewController implements Initializable {
         FileChooser fc=new FileChooser();
         fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("File CSV", "*.csv"));
         File file=fc.showSaveDialog(null);
-        if(file!=null){try(PrintWriter pw=new PrintWriter(new BufferedWriter(new FileWriter(file.getAbsolutePath())))){
-            pw.println("COGNOME;NOME;NUMERO1;NUMERO2;NUMERO3;E-MAIL1;E-MAIL2;E-MAIL3");
-            for(Contatto c:this.gestore.getInsieme()){
-                pw.print(getOrDefault(c.getCognome()));
-                pw.append(';');
-                pw.print(getOrDefault(c.getNome()));
-                pw.append(';');
-                pw.print(getOrDefault(c.getNumero1Contatto()));
-                pw.append(';');
-                pw.print(getOrDefault(c.getNumero2Contatto()));
-                pw.append(';');
-                pw.print(getOrDefault(c.getNumero3Contatto()));
-                pw.append(';');
-                pw.print(getOrDefault(c.getEmail1Contatto()));
-                pw.append(';');
-                pw.print(getOrDefault(c.getEmail2Contatto()));
-                pw.append(';');
-                pw.print(getOrDefault(c.getEmail3Contatto()));
-                pw.println();
-            }
-        }
+        if(file!=null){
+            gestore.esportaContatti(file.getAbsolutePath());
         }
     }
     /**
@@ -257,9 +218,7 @@ public class RubricaViewController implements Initializable {
     * @return ritorna uno spazio vuoto nel caso in cui la variabile passata sia nulla o il campo non sia compilato, in caso contrario ritorna il valore
     * @param value [in]
     */
-    private String getOrDefault(String value){
-        return (value == null || value.isEmpty())? " " : value;
-    }
+    
   /**
     * @brief Gestisce l'aggiunta di un contatto alla lista visualizzata nella TableView.Quando l'utente attiva l'evento corrispondente
     * all'azione 'aggiungiContatto' è possibile richiamare il metodo 'aggiungi' presente nell'interfaccia 'GestoreContatti' per aggiungere un contatto

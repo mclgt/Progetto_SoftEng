@@ -71,4 +71,8 @@ public interface GestoreContatti {
     */
      public void setInsieme(ObservableList<Contatto> list);
     
+     public void esportaContatti(String nomeFile);
+     
+     public ObservableList<Contatto> importaContatti(String nomeFile);
+     
 }

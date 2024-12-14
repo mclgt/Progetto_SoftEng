@@ -4,6 +4,18 @@
  */
 package it.unisa.diem.softeng.contatti;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Collections;
+import java.util.Locale;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -106,5 +118,66 @@ public class InsiemeContatti implements GestoreContatti {
     @Override
     public void setInsieme(ObservableList<Contatto> list) {
         this.contatti=list;
+    }
+
+    @Override
+    public void esportaContatti(String nomeFile) {
+        try(PrintWriter pw=new PrintWriter(new BufferedWriter(new FileWriter(nomeFile)))){
+            pw.println("COGNOME;NOME;NUMERO1;NUMERO2;NUMERO3;E-MAIL1;E-MAIL2;E-MAIL3");
+            for(Contatto c:contatti){
+                pw.print(getOrDefault(c.getCognome()));
+                pw.append(';');
+                pw.print(getOrDefault(c.getNome()));
+                pw.append(';');
+                pw.print(getOrDefault(c.getNumero1Contatto()));
+                pw.append(';');
+                pw.print(getOrDefault(c.getNumero2Contatto()));
+                pw.append(';');
+                pw.print(getOrDefault(c.getNumero3Contatto()));
+                pw.append(';');
+                pw.print(getOrDefault(c.getEmail1Contatto()));
+                pw.append(';');
+                pw.print(getOrDefault(c.getEmail2Contatto()));
+                pw.append(';');
+                pw.print(getOrDefault(c.getEmail3Contatto()));
+                pw.println();
+            }
+        } catch (IOException ex) {
+           return;
+        }
+    }
+    private String getOrDefault(String value){
+        return (value == null || value.isEmpty())? " " : value;
+    }
+    @Override
+    public ObservableList<Contatto> importaContatti(String nomeFile) {
+        ObservableList<Contatto> importati=FXCollections.observableArrayList();
+        try(Scanner s=new Scanner(new BufferedReader(new FileReader(nomeFile)))){
+            String nomi=nomeFile.split("[.]")[0];
+            s.nextLine();
+            s.useDelimiter("[;\n]");
+            s.useLocale(Locale.US);
+            while(s.hasNext()){
+                String cognome=s.next();
+                String nome=s.next();
+                String num[]=new String[3];
+                num[0]=s.next();
+                num[1]=s.next();
+                num[2]=s.next();
+                String em[]=new String[3];
+                em[0]=s.next();
+                em[1]=s.next();
+                em[2]=s.next();
+                if((!nome.isEmpty() || !cognome.isEmpty()) && (num[0].matches("[\\d\\s]*") || num[0].trim().isEmpty())&& (num[1].matches("[\\d\\s]*") || num[1].trim().isEmpty()) && (num[2].matches("[\\d\\s]*") || num[2].trim().isEmpty()) && (em[0].contains("@") || em[0].trim().isEmpty()) && (em[1].contains("@") || em[1].trim().isEmpty()) && (em[2].contains("@") || em[2].trim().isEmpty())){
+                   importati.add(new Contatto(nome,cognome,num,em));
+                }
+                 
+            }
+            Collections.sort(importati);
+        } catch (FileNotFoundException ex) {
+            
+        }
+       
+        return importati;
     }
 }
