@@ -14,8 +14,6 @@ import java.io.PrintWriter;
 import java.util.Collections;
 import java.util.Locale;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -86,7 +84,7 @@ public class InsiemeContatti implements GestoreContatti {
         c.setEmail1(newMail[0]);
         c.setEmail2(newMail[1]);
         c.setEmail3(newMail[2]);
-         Collections.sort(this.contatti); 
+        Collections.sort(this.contatti);
     }
     
    
