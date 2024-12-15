@@ -67,12 +67,26 @@ public interface GestoreContatti {
      
   /**
     * @brief Imposta la lista osservabile rappresentante la rubrica.
-    * @param list: l'ObservableList di contatti  da associare alla rubrica
+    * @param list[in]: l'ObservableList di contatti  da associare alla rubrica
     */
      public void setInsieme(ObservableList<Contatto> list);
     
+  /**
+    * @brief Esporta la lista osservabile rappresentante la rubrica su un file .csv (Comma-Separated-Values). Questa funzione salva i dati della lista osservabile,
+    * che rappresenta i contatti delòla rubrica, in un file CSV specificato dal nome del file fornito.
+    * @param nomeFile[in]: il nome del file su cui verrà esportata la lista contatti
+    */
      public void esportaContatti(String nomeFile);
      
+     
+  /**
+    * @brief Importa la lista osservabile rappresentante la rubrica su un file .csv (Comma-Separated-Values). Questo metodo 
+    * legge un file CSV e converte le informazioni in una lista osservabile di oggetti di tipo 'Contatto', che rappresentano i contatti 
+    * della rubrica.
+    * @param nomeFile[in]: il nome del file su cui verrà importata la lista contatti
+    * @return Una 'ObservableList' formata da Contatti contenente tutti gli elementi importati dal file
+    * 
+    */
      public ObservableList<Contatto> importaContatti(String nomeFile);
      
 }

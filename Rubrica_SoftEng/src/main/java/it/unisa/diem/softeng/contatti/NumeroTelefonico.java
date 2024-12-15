@@ -46,11 +46,11 @@ public class NumeroTelefonico {
     * @brief Verifica che il numero telefonico passato, se definito, sia composto da soli caratteri numerici
     * @param numero[in]: numero da validare
     * @return true se il numero è vuota, oppure se è definito e contiene soli caratteri numerici
-    * false se il numero non contiene solo numeri
+    * false se il numero è definito e non contiene solo numeri
     * 
     */
     public boolean validazioneNumero(String numero){
-        if(numero==null ||numero.trim().isEmpty() || numero.matches("\\d+")){
+        if(numero==null ||numero.trim().isEmpty() || numero.matches("[\\d\\s]*")){
            return true;
         }
         else 

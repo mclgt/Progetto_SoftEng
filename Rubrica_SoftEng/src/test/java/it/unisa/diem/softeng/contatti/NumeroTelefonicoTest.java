@@ -40,9 +40,17 @@ public class NumeroTelefonicoTest {
         
     }
     
+        /**
+   * @brief Test del metodo costruttore della classe NumeroTelefonico - caso non valido
+   */
+    void costruttoreNumeroTelefonicoTestNonValido(){
+        NumeroTelefonico numeri2= new NumeroTelefonico("abcd","123abc","errato0");
+        assertTrue(numeri2.equals(null));
+        
+    }
     
-     /**
-   * @brief Test del metodo validazioneNumero della classe NumeroTelefonico caso valido e non valido
+ /**
+   * @brief Test del metodo validazioneNumero della classe NumeroTelefonico caso valido
    */
     void validazioneNumeroTest(){
         this.setUp();
@@ -51,6 +59,14 @@ public class NumeroTelefonicoTest {
         assertTrue(numeri.validazioneNumero(numeri.getNumero3()));
     }
     
+ /**
+   * @brief Test del metodo validazioneNumero della classe NumeroTelefonico caso non valido
+   */
+    void validazioneNumeroTestNonValido(){
+        NumeroTelefonico numeri2= new NumeroTelefonico(null,null,null);
+        assertFalse(numeri2.validazioneNumero("abc"));
+        assertFalse(numeri2.validazioneNumero("12345numero"));
+    }
     
 
     /**
@@ -71,6 +87,16 @@ public class NumeroTelefonicoTest {
         this.setUp();
         numeri.setNumero1("098765432");
         assertEquals("098765432",numeri.getNumero1());
+    }
+    
+        /**
+     * @brief Test del metodo setNumero1 della classe NumeroTelefonico - caso non valido
+     */
+    @Test
+    public void testSetNumero1NonValido() {
+        this.setUp();
+        numeri.setNumero1("018374abn");
+        assertNotEquals("018374abn",numeri.getNumero1());
     }
     
    

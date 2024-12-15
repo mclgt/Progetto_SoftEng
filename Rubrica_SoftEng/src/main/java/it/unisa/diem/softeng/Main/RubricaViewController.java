@@ -120,7 +120,7 @@ public class RubricaViewController implements Initializable {
         BooleanBinding campiNonVuoti= Bindings.createBooleanBinding(()-> 
                 !campoNome.getText().trim().isEmpty() || !campoCognome.getText().trim().isEmpty(), campoNome.textProperty(),campoCognome.textProperty());
         BooleanBinding contattoSelezionato= tabellaContatti.getSelectionModel().selectedItemProperty().isNull();
-        BooleanBinding controlloNumero=Bindings.createBooleanBinding(()->(campoPrimoNum.getText().matches("[\\d\\s]*") && campoSecondoNum.getText().matches("[\\d\\s]*") && campoTerzoNum.getText().matches("[\\d\\s]*")),campoPrimoNum.textProperty(),campoSecondoNum.textProperty(),campoTerzoNum.textProperty());
+        BooleanBinding controlloNumero=Bindings.createBooleanBinding(()->((campoPrimoNum.getText().matches("[\\d\\s]*") || campoPrimoNum.getText().isEmpty()) && (campoSecondoNum.getText().matches("[\\d\\s]*") || campoSecondoNum.getText().isEmpty())) && (campoTerzoNum.getText().matches("[\\d\\s]*") || campoTerzoNum.getText().isEmpty()),campoPrimoNum.textProperty(),campoSecondoNum.textProperty(),campoTerzoNum.textProperty());
         BooleanBinding controlloEmail=Bindings.createBooleanBinding(()->(campoPrimaMail.getText().contains("@") || campoPrimaMail.getText().isEmpty()) && (campoSecondaMail.getText().contains("@") || campoSecondaMail.getText().isEmpty()) && (campoTerzaMail.getText().contains("@") || campoTerzaMail.getText().isEmpty()),campoPrimaMail.textProperty(),campoSecondaMail.textProperty(),campoTerzaMail.textProperty());
         pulsanteAggiungi.disableProperty().bind(controlloNumero.not().or((campiNonVuoti.not()).or(contattoSelezionato.not()).or(controlloEmail.not())));
         pulsanteRimuovi.disableProperty().bind(contattoSelezionato);
@@ -234,6 +234,7 @@ public class RubricaViewController implements Initializable {
         String numero[]=new String[]{campoPrimoNum.getText(),campoSecondoNum.getText(),campoTerzoNum.getText()};
         String email[]=new String[]{campoPrimaMail.getText(),campoSecondaMail.getText(),campoTerzaMail.getText()};
         gestore.aggiungi(new Contatto(campoNome.getText(),campoCognome.getText(),numero,email));
+        gestore.sort();
         campoNome.clear();
         campoCognome.clear();
         campoPrimoNum.clear();
@@ -263,6 +264,7 @@ public class RubricaViewController implements Initializable {
             ObservableList<Contatto> contatti= tabellaContatti.getItems();
             contatti.remove(selezionato);
             contatti.add(selezionato);
+            gestore.sort();
             tabellaContatti.refresh();  
             campoNome.clear();
             campoCognome.clear();

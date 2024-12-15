@@ -86,7 +86,7 @@ public class InsiemeContatti implements GestoreContatti {
         c.setEmail1(newMail[0]);
         c.setEmail2(newMail[1]);
         c.setEmail3(newMail[2]);
-        this.sort();  
+         Collections.sort(this.contatti); 
     }
     
    

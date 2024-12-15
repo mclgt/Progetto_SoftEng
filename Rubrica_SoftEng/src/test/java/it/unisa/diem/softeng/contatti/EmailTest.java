@@ -31,6 +31,7 @@ public class EmailTest {
   /**
    * @brief Test del metodo costruttore della classe Email
    */
+    @Test
     void costruttoreEmailTest(){
         this.setUp();
         assertEquals("tyrannosaurus.totk@instantletter.net",emails.getEmail1());
@@ -39,14 +40,36 @@ public class EmailTest {
         
     }
 
+       
   /**
-   * @brief Test del metodo validazioneEmail della classe Email caso valido e non valido
+   * @brief Test del metodo costruttore della classe Email - caso non valido
    */
+    @Test
+    void costruttoreEmailTestNonValido(){
+        Email email2= new Email("esempio1","12345notvalid","errore");
+        assertTrue(email2.equals(null));
+    }
+    
+  /**
+   * @brief Test del metodo validazioneEmail della classe Email- caso valido
+   */
+    @Test
     void validazioneEmailTest(){
         this.setUp();
         assertTrue(emails.validazioneEmail(emails.getEmail1()));
         assertTrue(emails.validazioneEmail(emails.getEmail2()));
         assertTrue(emails.validazioneEmail(emails.getEmail3()));
+        
+ 
+    }
+    
+ /**
+   * @brief Test del metodo validazioneEmail della classe Email- caso non valido
+   */
+    @Test
+    void validazioneEmailTestNonValido(){
+         Email email2 = new Email(null,null,null);
+        assertFalse(email2.validazioneEmail("esempio"));
     }
     
     
@@ -71,6 +94,16 @@ public class EmailTest {
         assertEquals("email1@esempio.com",emails.getEmail1());
     }
     
+   /**
+     * @brief Test del metodo setEmail1 della classe Email - caso non valido
+     */
+    @Test
+    public void testSetEmail1NonValido() {
+        this.setUp();
+        emails.setEmail1("email1esempio.com");
+        assertNotEquals("email1esempio.com",emails.getEmail1());
+    }
+    
 
 
     /**
@@ -83,6 +116,15 @@ public class EmailTest {
         assertEquals("email2@esempio.com",emails.getEmail2());
     }
     
+   /**
+     * @brief Test del metodo setEmail2 della classe Email - caso non valido
+     */
+    @Test
+    public void testSetEmail2NonValido() {
+        this.setUp();
+        emails.setEmail2("email2esempio.com");
+        assertNotEquals("email2esempio.com",emails.getEmail2());
+    }
  
     /**
      * @brief Test del metodo setEmail2 della classe Email.
@@ -94,7 +136,16 @@ public class EmailTest {
         assertEquals("email3@esempio.com",emails.getEmail3());
     }
     
-  
+   /**
+     * @brief Test del metodo setEmail2 della classe Email. - caso non valido
+     */
+    @Test
+    public void testSetEmail3NonValido() {
+        this.setUp();
+        emails.setEmail3("email3esempio.com");
+        assertNotEquals("email3esempio.com",emails.getEmail3());
+    }
+    
     
     /**
      * @brief Test per trattare un oggetto Email con valori nulla
