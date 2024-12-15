@@ -45,7 +45,9 @@ public class NumeroTelefonicoTest {
    */
     void costruttoreNumeroTelefonicoTestNonValido(){
         NumeroTelefonico numeri2= new NumeroTelefonico("abcd","123abc","errato0");
-        assertTrue(numeri2.equals(null));
+        assertTrue(numeri2.getNumero1().equals(""));
+        assertTrue(numeri2.getNumero2().equals(""));
+        assertTrue(numeri2.getNumero3().equals(""));
         
     }
     
@@ -89,7 +91,7 @@ public class NumeroTelefonicoTest {
         assertEquals("098765432",numeri.getNumero1());
     }
     
-        /**
+   /**
      * @brief Test del metodo setNumero1 della classe NumeroTelefonico - caso non valido
      */
     @Test
@@ -111,6 +113,16 @@ public class NumeroTelefonicoTest {
         assertEquals("1116716272",numeri.getNumero2());
     }
     
+   /**
+     * @brief Test del metodo setNumero2 della classe NumeroTelefonico - caso non valido
+     */
+    @Test
+    public void testSetNumero2NonValido() {
+        this.setUp();
+        numeri.setNumero1("abc");
+        assertNotEquals("abc",numeri.getNumero1());
+    }
+    
   
 
    /**
@@ -122,8 +134,17 @@ public class NumeroTelefonicoTest {
         numeri.setNumero3("4567864356");
         assertEquals("4567864356",numeri.getNumero3());
     }
-    
    
+   /**
+     * @brief Test del metodo setNumero3 della classe NumeroTelefonico - caso non valido
+     */
+    @Test
+    public void testSetNumero3NonValido() {
+        this.setUp();
+        numeri.setNumero3("errore67");
+        assertNotEquals("errore67",numeri.getNumero3());
+    }
+    
     /**
      * @brief Test per trattare un oggetto Email con valori nulla
      */

@@ -9,6 +9,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import java.lang.IllegalArgumentException;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -27,7 +28,7 @@ public class ContattoTest {
     }
 
    /**
-     * @brief Test del metodo costruttore della classe Contatto nel caso di un contatto valido e non valido
+     * @brief Test del metodo costruttore della classe Contatto nel caso di un contatto valido 
      */
     @Test
     void costruttoreContattoTest() {
@@ -44,9 +45,17 @@ public class ContattoTest {
         
     }
     
- 
-   
-
+       /**
+     * @brief Test del metodo costruttore della classe Contatto nel caso di un contatto non valido 
+     */
+    @Test
+    void costruttoreContattoTestNonValido() {
+        String[] numeri={"1234567890","0987654321","345678965"};
+        String[] emails={"email1@esempio.com","email2@esempio.com","email3@esempio.com"};
+        assertThrows(IllegalArgumentException.class,()-> new Contatto("","",numeri,emails));
+        
+    }
+    
     /**
      * @brief Test del metodo setNome della classe Contatto.
      */
@@ -55,6 +64,18 @@ public class ContattoTest {
         this.setUp();
         contatto.setNome("Rebecca");
         assertEquals("Rebecca",contatto.getNome());
+    }
+    
+   /**
+     * @brief Test del metodo setNome e setCognome della classe Contatto - caso non valido
+     */
+    @Test
+    public void testSetNomeCognomeNonValido() {
+        this.setUp();
+        assertThrows(IllegalArgumentException.class,()-> {
+          contatto.setNome("");
+          contatto.setCognome("");
+        });
     }
 
     /**
@@ -67,7 +88,6 @@ public class ContattoTest {
         assertEquals("Beatrice",contatto.getCognome());
     }
     
- 
 
     /**
      * @brief Test del metodo setNumero1 della classe Contatto.

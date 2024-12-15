@@ -47,7 +47,9 @@ public class EmailTest {
     @Test
     void costruttoreEmailTestNonValido(){
         Email email2= new Email("esempio1","12345notvalid","errore");
-        assertTrue(email2.equals(null));
+        assertTrue(email2.getEmail1().equals(""));
+        assertTrue(email2.getEmail2().equals(""));
+        assertTrue(email2.getEmail3().equals(""));
     }
     
   /**

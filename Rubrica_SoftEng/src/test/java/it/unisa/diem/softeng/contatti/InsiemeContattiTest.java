@@ -5,6 +5,13 @@
  */
 package it.unisa.diem.softeng.contatti;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
+import java.io.FileReader;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.junit.jupiter.api.BeforeEach;
@@ -65,7 +72,7 @@ public class InsiemeContattiTest {
     }
 
     /**
-     * @brief Test del metodo modifica della InsiemeContatti
+     * @brief Test del metodo modifica della classe InsiemeContatti
     */
     @Test
     public void testModifica() {
@@ -82,7 +89,7 @@ public class InsiemeContattiTest {
     }
 
     /**
-     * @brief Test del metodo cerca della InsiemeContatti
+     * @brief Test del metodo cerca della classe InsiemeContatti
     */
     @Test
     public void testCerca() {
@@ -95,7 +102,7 @@ public class InsiemeContattiTest {
     }
 
     /**
-     * @brief Test del metodo getInsieme della InsiemeContatti
+     * @brief Test del metodo getInsieme della classe InsiemeContatti
     */
     @Test
     public void testGetInsieme() {
@@ -113,7 +120,7 @@ public class InsiemeContattiTest {
     }
 
     /**
-     * @brief Test del metodo sort della InsiemeContatti
+     * @brief Test del metodo sort della classe InsiemeContatti
     */
     @Test
     public void testSort() {
@@ -127,7 +134,7 @@ public class InsiemeContattiTest {
     }
 
     /**
-     * @brief Test del metodo reset della InsiemeContatti
+     * @brief Test del metodo reset della classe InsiemeContatti
     */
     @Test
     public void testReset() {
@@ -141,7 +148,7 @@ public class InsiemeContattiTest {
     }
 
     /**
-     * @brief Test del metodo setInsieme della InsiemeContatti
+     * @brief Test del metodo setInsieme della classe InsiemeContatti
     */
     @Test
     public void testSetInsieme() {
@@ -153,5 +160,36 @@ public class InsiemeContattiTest {
             assertTrue(insiemeContatti.getInsieme().contains(c));
         }
     }
+    
+    
+    /**
+     * @brief Test del metodo esportaContatti della classe InsiemeContatto 
+     */
+    @Test
+    public void testEsportaContatti() throws IOException {
+        this.setUp();
+        insiemeContatti.aggiungi(contatto1);
+        insiemeContatti.aggiungi(contatto2);
+        insiemeContatti.aggiungi(contatto3);
+        insiemeContatti.aggiungi(contatto4);
+        
+        insiemeContatti.esportaContatti("temporaneo.csv");
+        File file= new File("temporaneo.csv");
+        assertTrue(file.exists(),"Il file CSV non è stato creato.");
+        List<String> righe= new ArrayList<>();
+        try(BufferedReader reader= new BufferedReader(new FileReader("temporaneo.csv"))){
+           String riga;
+           while((riga=reader.readLine()) != null){
+               righe.add(riga);
+           }
+          assertEquals("COGNOME;NOME;NUMERO1;NUMERO2;NUMERO3;E-MAIL1;E-MAIL2;E-MAIL3", righe.get(0),"Intestazione errata");
+          assertEquals("Beatrice;Rebecca;343;453;24243;rebeccabeatrice@gmail.com;reb@yahoo.it;beatricer@hotmail.it", righe.get(1),"Prima riga di dati errata");
+          assertEquals("Caliendo;Antonio;7845;23423;675657;antoniocaliendo@gmail.com;antoc@yahoo.it;caliendoa@hotmail.it", righe.get(2),"Seconda riga di dati errata");
+          assertEquals("Cambria;Jacopo;2341;687878;3242465;jacopocambria@gmail.com;jacocam@yahoo.it;cambriaj@hotmail.it", righe.get(3),"Terza riga di dati errata");
+          assertEquals("Gaeta;Michela;123;456;789;michelagaeta@gmail.com;m.gaeta6@yahoo.it;micheg@hotmail.it", righe.get(4),"Quarta riga di dati errata");
+        }
+        file.delete();
+    }
+    
     
 }
