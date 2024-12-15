@@ -168,7 +168,7 @@ public class InsiemeContatti implements GestoreContatti {
                 em[0]=s.next();
                 em[1]=s.next();
                 em[2]=s.next();
-                if((!nome.isEmpty() || !cognome.isEmpty()) && (num[0].matches("[\\d\\s]*") || num[0].isEmpty())&& (num[1].matches("[\\d\\s]*") || num[1].isEmpty()) && (num[2].matches("[\\d\\s]*") || num[2].isEmpty()) && (em[0].contains("@") || em[0].trim().isEmpty()) && (em[1].contains("@") || em[1].trim().isEmpty()) && (em[2].contains("@") || em[2].trim().isEmpty())){
+                if((!nome.isEmpty() || !cognome.isEmpty()) && (num[0].isEmpty() || num[0].matches("[\\d\\s]*"))&& (num[1].isEmpty() || num[1].matches("[\\d\\s]*"))  && (num[2].isEmpty() || num[2].matches("[\\d\\s]*")) && (em[0].trim().isEmpty()  ||  em[0].contains("@")) && ( em[1].trim().isEmpty() || em[1].contains("@") ) && ( em[2].trim().isEmpty()  || em[2].contains("@"))){
                    importati.add(new Contatto(nome,cognome,num,em));
                 }
                  
