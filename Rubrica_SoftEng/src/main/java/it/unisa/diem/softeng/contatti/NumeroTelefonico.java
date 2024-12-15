@@ -30,15 +30,15 @@ public class NumeroTelefonico {
      if(validazioneNumero(numero1)){
        this.numeri[0]=numero1;
      }else 
-         this.numeri[0]=null;
+         this.numeri[0]="";
      if(validazioneNumero(numero2)){
        this.numeri[1]=numero2;
      }else
-         this.numeri[1]=null;
+         this.numeri[1]="";
     if(validazioneNumero(numero3)){
        this.numeri[2]=numero3;
      }else
-        this.numeri[2]=null;
+        this.numeri[2]="";
     }
 
     
