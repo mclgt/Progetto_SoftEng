@@ -31,15 +31,15 @@ public class Email {
        if(validazioneEmail(email1)){
             email[0]=email1;
        }else 
-           email[0]=null;
+           email[0]="";
        if(validazioneEmail(email2)){
             email[1]=email2;
        }else
-           email[1]=null;
+           email[1]="";
        if(validazioneEmail(email3)){
             email[2]=email3;
        }else
-            email[2]=null;
+            email[2]="";
 
     }
     
